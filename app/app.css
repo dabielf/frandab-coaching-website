@@ -1,15 +1,155 @@
-@import "tailwindcss" source(".");
+@import "tailwindcss";
 
-@theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+/* Design system color tokens */
+:root {
+  /* Light theme - Base Colors */
+  --color-background: #FAFAF8;
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F5F5F0;
+  
+  /* Light theme - Text Colors */
+  --color-text-primary: #2D2D2A;
+  --color-text-secondary: #5C5C57;
+  --color-text-tertiary: #8B8B84;
+  
+  /* Light theme - Accent Colors */
+  --color-primary: #2D5A4E;
+  --color-primary-hover: #234539;
+  --color-primary-soft: #E8F0ED;
+  
+  --color-secondary: #7B6D5D;
+  --color-secondary-hover: #6B5D4D;
+  --color-secondary-soft: #F5F2EF;
+  
+  /* Light theme - Semantic Colors */
+  --color-success: #4A7C64;
+  --color-warning: #C49A5B;
+  --color-error: #B87A7A;
+  --color-info: #6B8CAE;
+  
+  /* Light theme - Borders & Dividers */
+  --color-border: #E5E5E0;
+  --color-border-hover: #D5D5D0;
 }
 
+.dark {
+  /* Dark theme - Base Colors */
+  --color-background: #1A1A18;
+  --color-surface: #252523;
+  --color-surface-alt: #2D2D2B;
+  
+  /* Dark theme - Text Colors */
+  --color-text-primary: #FAFAF8;
+  --color-text-secondary: #C5C5C0;
+  --color-text-tertiary: #8B8B84;
+  
+  /* Dark theme - Accent Colors */
+  --color-primary: #7FB5A3;
+  --color-primary-hover: #9CC5B7;
+  --color-primary-soft: #2D4039;
+  
+  --color-secondary: #B5A595;
+  --color-secondary-hover: #C5B5A5;
+  --color-secondary-soft: #3A3530;
+  
+  /* Dark theme - Semantic Colors */
+  --color-success: #7FB5A3;
+  --color-warning: #D4AA6B;
+  --color-error: #C89A9A;
+  --color-info: #8BACCE;
+  
+  /* Dark theme - Borders & Dividers */
+  --color-border: #353532;
+  --color-border-hover: #454542;
+}
+
+@theme {
+  --font-sans: "Lexend", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  
+  /* Color system using CSS variables */
+  --color-background: var(--color-background);
+  --color-surface: var(--color-surface);
+  --color-surface-alt: var(--color-surface-alt);
+  
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-tertiary: var(--color-text-tertiary);
+  
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-primary-soft: var(--color-primary-soft);
+  
+  --color-secondary: var(--color-secondary);
+  --color-secondary-hover: var(--color-secondary-hover);
+  --color-secondary-soft: var(--color-secondary-soft);
+  
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
+  --color-info: var(--color-info);
+  
+  --color-border: var(--color-border);
+  --color-border-hover: var(--color-border-hover);
+  
+  /* Typography scale with improved readability */
+  --font-size-xs: 0.875rem;
+  --font-size-sm: 0.9375rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  
+  /* Line heights for better readability */
+  --line-height-tight: 1.4;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  
+  /* Animation tokens */
+  --animate-fade-in: fadeIn 0.3s ease-in-out;
+  --animate-slide-up: slideUp 0.3s ease-out;
+}
+
+/* Base styles */
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  transition: colors 200ms;
+  font-family: var(--font-sans);
+}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+/* Smooth theme transitions */
+* {
+  transition: colors 200ms;
+}
+
+/* Motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
   }
 }

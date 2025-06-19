@@ -11,3 +11,11 @@
 .wrangler
 .dev.vars*
 
+# Claude Code
+.claude
+CONTENT.md
+BEST_PRACTICES.md
+CLOUDFLARE_COMPATIBILITY.md
+STYLE_GUIDE.md
+
+
