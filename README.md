@@ -22,7 +22,7 @@ Install the dependencies:
 pnpm install
 ```
 
-### Development
+### Developmenten
 
 Start the development server with HMR:
 
