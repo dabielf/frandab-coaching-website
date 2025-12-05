@@ -44,7 +44,7 @@ export function Navigation() {
 								{item.label}
 							</Link>
 						))}
-						<ButtonLink to="/services" size="sm">
+						<ButtonLink to="/services" size="sm" className="cursor-pointer">
 							Work With Me
 						</ButtonLink>
 						<ThemeToggle />

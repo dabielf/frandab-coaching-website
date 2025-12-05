@@ -1,6 +1,23 @@
 import { useId } from "react";
 import { Link } from "react-router";
 import {
+	ArrowRight,
+	BatteryCharging,
+	Brain,
+	Calendar,
+	CheckCircle2,
+	Clock,
+	Compass,
+	Heart,
+	Map,
+	MessageCircle,
+	Shield,
+	Sparkles,
+	Users,
+	XCircle,
+	Zap,
+} from "lucide-react";
+import {
 	BodyBase,
 	BodyLarge,
 	BodySmall,
@@ -31,683 +48,561 @@ export default function Services() {
 	const tierPricingId = useId();
 	return (
 		<>
-			{/* Hero Section - Personal Story */}
-			<section className="py-20 md:py-32 bg-primary-soft">
-				<div className="max-w-3xl mx-auto px-6">
-					<div className="text-center mb-12">
-						<H1 className="text-3xl md:text-4xl font-semibold tracking-tight text-text-primary mb-6">
+			{/* Hero Section - Client Centered Value Prop */}
+			<section className="relative pt-18 pb-20 md:pt-28 md:pb-32 bg-primary-soft/30 overflow-hidden">
+				{/* Abstract background shape for visual interest */}
+				<div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary-soft to-transparent opacity-60 -z-10 rounded-l-full blur-3xl" />
+
+				<Container size="base">
+					<div className="text-center max-w-4xl mx-auto">
+						<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-primary/20 text-primary text-sm font-medium mb-6 shadow-sm">
+							<Sparkles className="w-4 h-4" />
+							<span>A Personal Invitation to you</span>
+						</div>
+						<H1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary mb-8 leading-tight">
 							The Re-Architect's Journey
 						</H1>
-						<BodyLarge className="text-xl leading-relaxed text-text-secondary font-medium">
-							A Personal Invitation to you
-						</BodyLarge>
+
+						<p className="text-xl md:text-2xl text-text-secondary leading-relaxed max-w-2xl mx-auto font-medium">
+							A dedicated, 4-month partnership to help you understand your
+							unique blueprint, recover from burnout, and build a life that
+							actually works for your brain.
+						</p>
 					</div>
-
-					<div className="max-w-4xl mx-auto space-y-6">
-						<BodyBase className="text-lg leading-relaxed">
-							My name is François. I'm 42, French, and a few years ago, I was
-							given the language for a lifetime of experience: I am Autistic and
-							have ADHD.
-						</BodyBase>
-
-						<BodyBase className="text-lg leading-relaxed">
-							That discovery was followed by a two-year collision with profound
-							autistic burnout. The kind that steals your words, drains your
-							energy, and makes the world feel unbearably loud. I had to stop
-							everything and begin the slow, deliberate process of rebuilding a
-							life that didn't lead to collapse. I had to become my own life's
-							architect.
-						</BodyBase>
-
-						<BodyBase className="text-lg leading-relaxed">
-							My special interest has always been understanding what makes
-							people tick—our unique blueprints. Coaching is the activity that
-							nourishes me, the one thing my burnout couldn't touch. This
-							program, "The Re-Architect's Journey," is the culmination of my
-							professional training and my personal rebuilding. It's the
-							focused, compassionate apprenticeship I wish I'd had.
-						</BodyBase>
-					</div>
-				</div>
+				</Container>
 			</section>
 
 			{/* Client-Led Journey */}
-			<section className="py-16 md:py-24">
-				<div className="max-w-3xl mx-auto px-6">
-					<H2 className="text-2xl md:text-3xl font-semibold tracking-tight text-text-primary mb-8 text-center">
-						A Radically Responsive, Client-Led Journey
-					</H2>
-
-					<div className="max-w-4xl mx-auto space-y-6 mb-12">
-						<BodyBase className="text-lg leading-relaxed">
+			<Section className="py-20">
+				<Container>
+					<div className="text-center max-w-3xl mx-auto mb-16">
+						<H2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
+							A Radically Responsive, Client-Led Journey
+						</H2>
+						<BodyLarge className="text-text-secondary">
 							This is not a one-size-fits-all curriculum with pre-set modules.
 							It is a deeply collaborative and client-led space. You are the
 							architect of your life; my role is to act as your specialist
 							consultant, helping you read your unique blueprints and understand
 							your materials.
-						</BodyBase>
-
-						<BodyBase className="text-lg leading-relaxed">
-							Your journey is unique, so our work will be too. We will go where
-							you need to go. One month, we might focus on building sustainable,
-							neurodivergent-friendly productivity systems. The next, we may
-							dive deep into navigating relationships or advocating for your
-							needs.
-						</BodyBase>
+						</BodyLarge>
 					</div>
 
-					<div className="bg-surface border border-border rounded-xl p-8">
-						<H3 className="text-xl font-semibold text-text-primary mb-6">
-							We can explore:
-						</H3>
-						<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-							<div className="space-y-4">
-								<div>
-									<H4 className="font-semibold text-primary mb-2">
-										Self-Acceptance
-									</H4>
-									<BodySmall className="text-text-secondary">
-										Integrating your AuDHD identity and unlearning a lifetime of
-										masking.
-									</BodySmall>
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+						{[
+							{
+								title: "Self-Acceptance",
+								desc: "Integrating your AuDHD identity and unlearning a lifetime of masking.",
+								icon: Heart,
+							},
+							{
+								title: "Burnout Recovery",
+								desc: "Creating practical strategies for managing energy and sensory needs.",
+								icon: BatteryCharging,
+							},
+							{
+								title: "Productivity & Executive Function",
+								desc: "Designing systems that work with your brain, not against it.",
+								icon: Brain,
+							},
+							{
+								title: "Relationships & Communication",
+								desc: "Learning the language to express your needs and connect authentically.",
+								icon: MessageCircle,
+							},
+							{
+								title: "Finding Community",
+								desc: "Exploring what it means to feel a sense of belonging.",
+								icon: Users,
+							},
+							{
+								title: "Pathfinding",
+								desc: "Answering the big questions—'What does a thriving life look like for me, and how do I make it happen?'",
+								icon: Compass,
+							},
+						].map((item, i) => (
+							<div
+								key={i}
+								className="bg-surface border border-border p-6 rounded-xl hover:shadow-md hover:border-primary/30 transition-all duration-300 ease-in-out group"
+							>
+								<div className="w-12 h-12 rounded-full bg-primary-soft flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 ease-in-out">
+									<item.icon className="w-6 h-6 text-primary" />
 								</div>
-								<div>
-									<H4 className="font-semibold text-primary mb-2">
-										Burnout Recovery
-									</H4>
-									<BodySmall className="text-text-secondary">
-										Creating practical strategies for managing energy and
-										sensory needs.
-									</BodySmall>
-								</div>
-								<div>
-									<H4 className="font-semibold text-primary mb-2">
-										Productivity & Executive Function
-									</H4>
-									<BodySmall className="text-text-secondary">
-										Designing systems that work with your brain, not against it.
-									</BodySmall>
-								</div>
+								<H4 className="mb-2 text-primary">{item.title}</H4>
+								<BodySmall className="text-text-secondary">
+									{item.desc}
+								</BodySmall>
 							</div>
-							<div className="space-y-4">
-								<div>
-									<H4 className="font-semibold text-primary mb-2">
-										Relationships & Communication
-									</H4>
-									<BodySmall className="text-text-secondary">
-										Learning the language to express your needs and connect
-										authentically.
-									</BodySmall>
-								</div>
-								<div>
-									<H4 className="font-semibold text-primary mb-2">
-										Finding Community
-									</H4>
-									<BodySmall className="text-text-secondary">
-										Exploring what it means to feel a sense of belonging.
-									</BodySmall>
-								</div>
-								<div>
-									<H4 className="font-semibold text-primary mb-2">
-										Pathfinding
-									</H4>
-									<BodySmall className="text-text-secondary">
-										Answering the big questions—"What does a thriving life look
-										like for me, and how do I make it happen?"
-									</BodySmall>
-								</div>
-							</div>
-						</div>
+						))}
+					</div>
 
-						<div className="mt-8 p-4 bg-primary-soft rounded-lg">
-							<BodyBase className="font-medium leading-loose">
-								You set the destination.
-								<br />I help you read the map and navigate the terrain.
-								<br /> We’ll take your spoon levels into account at each
-								session.
-								<br /> Not every session has to be a deep dive.
-								<br /> Sometimes it's just about recentering, accepting where
-								you are and figuring out where to go from there.
+					<div className="max-w-4xl mx-auto bg-primary-soft/50 border border-primary/10 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-8 items-center">
+						<div className="flex-shrink-0 p-4 bg-white rounded-full shadow-sm">
+							<Map className="w-8 h-8 text-primary" />
+						</div>
+						<div className="space-y-4 text-center md:text-left">
+							<BodyBase className="text-lg font-medium text-primary">
+								You set the destination. I help you read the map and navigate
+								the terrain.
+							</BodyBase>
+							<BodyBase className="text-text-secondary">
+								We’ll take your spoon levels into account at each session. Not
+								every session has to be a deep dive. Sometimes it's just about
+								recentering, accepting where you are and figuring out where to
+								go from there.
 							</BodyBase>
 						</div>
 					</div>
-				</div>
-			</section>
+				</Container>
+			</Section>
 
 			{/* Coaching Container */}
-			<section className="py-16 md:py-24 bg-surface-alt">
-				<div className="max-w-5xl mx-auto px-6">
-					<H2 className="text-2xl md:text-3xl font-semibold tracking-tight text-text-primary mb-8 text-center">
-						The Coaching Container: Your Scaffolding for Deep Work
-					</H2>
-
-					<div className="max-w-3xl mx-auto mb-12">
-						<BodyBase className="text-lg leading-relaxed text-center">
+			<Section background="alt" className="py-20">
+				<Container>
+					<div className="text-center max-w-3xl mx-auto mb-16">
+						<H2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
+							The Coaching Container
+						</H2>
+						<BodyLarge className="text-text-secondary">
 							To do this deep, client-led work, we need a container built on
 							trust and consistency. This structure is the reliable scaffolding
 							that gives our exploratory work a safe place to land.
-						</BodyBase>
+						</BodyLarge>
 					</div>
 
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-						<div className="bg-surface border border-border rounded-xl p-6">
-							<H3 className="text-xl font-semibold text-text-primary mb-4">
-								Duration
-							</H3>
-							<BodyBase>
-								A 4-month (16-week) deep dive to allow for real, sustainable
-								change.
-							</BodyBase>
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+						<div className="bg-surface border border-border rounded-2xl p-8 relative overflow-hidden group transition-all duration-300 ease-in-out shadow-sm hover:shadow-md transform">
+							<div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity duration-500 ease-in-out">
+								<Calendar className="w-24 h-24" />
+							</div>
+							<div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary font-bold text-xl relative z-10 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300 ease-out">
+								16
+							</div>
+							<div className="relative z-10">
+								<H3 className="text-xl font-bold text-primary mb-3">Duration</H3>
+								<BodyBase className="text-text-secondary">
+									A 4-month (16-week) deep dive to allow for real, sustainable
+									change.
+								</BodyBase>
+							</div>
 						</div>
 
-						<div className="bg-surface border border-border rounded-xl p-6">
-							<H3 className="text-xl font-semibold text-text-primary mb-4">
-								Core Sessions
-							</H3>
-							<BodyBase>
-								16 weekly, 60-minute 1-on-1 Re-Architect Sessions. This is our
-								dedicated time for the strategic work that matters most to you
-								in the moment.
-							</BodyBase>
+						<div className="bg-surface border border-border rounded-2xl p-8 relative overflow-hidden group transition-all duration-300 ease-in-out shadow-sm hover:shadow-md transform">
+							<div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity duration-500 ease-in-out">
+								<Clock className="w-24 h-24" />
+							</div>
+							<div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 relative z-10 group-hover:scale-110 group-hover:bg-primary transition-all duration-300 ease-out">
+								<Users className="w-6 h-6 text-primary group-hover:text-white transition-colors duration-300" />
+							</div>
+							<div className="relative z-10">
+								<H3 className="text-xl font-bold text-primary mb-3">
+									Core Sessions
+								</H3>
+								<BodyBase className="text-text-secondary">
+									16 weekly, 60-minute 1-on-1 Re-Architect Sessions. Dedicated
+									time for the strategic work that matters most.
+								</BodyBase>
+							</div>
 						</div>
 
-						<div className="bg-surface border border-border rounded-xl p-6">
-							<H3 className="text-xl font-semibold text-text-primary mb-4">
-								Responsive Support
-							</H3>
-							<BodyBase>
-								Up to 2 weekly, 20-minute "Spotlight Sessions" on demand. These
-								are for real-time implementation support when you're stuck,
-								celebrating a win, or need a sounding board between our main
-								sessions.
-							</BodyBase>
+						<div className="bg-surface border border-border rounded-2xl p-8 relative overflow-hidden group transition-all duration-300 ease-in-out shadow-sm hover:shadow-md transform">
+							<div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity duration-500 ease-in-out">
+								<Zap className="w-24 h-24" />
+							</div>
+							<div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 relative z-10 group-hover:scale-110 group-hover:bg-primary transition-all duration-300 ease-out">
+								<Zap className="w-6 h-6 text-primary group-hover:text-white transition-colors duration-300" />
+							</div>
+							<div className="relative z-10">
+								<H3 className="text-xl font-bold text-primary mb-3">
+									Responsive Support
+								</H3>
+								<BodyBase className="text-text-secondary">
+									Up to 2 weekly, 20-minute "Spotlight Sessions" on demand for
+									real-time implementation support.
+								</BodyBase>
+							</div>
 						</div>
 					</div>
 
-					<div className="bg-surface border border-border rounded-xl p-8">
-						<H3 className="text-xl font-semibold text-text-primary mb-6">
-							A Note on Capacity & Integrity
-						</H3>
-						<BodyBase className="text-lg leading-relaxed mb-4">
-							I am still navigating my own recovery from burnout. Because of
-							this, and to protect the depth and integrity of our work, I take
-							on a maximum of two to three new clients per month. This isn't a
-							marketing tactic; it's me practicing the principles of
-							sustainability this entire program is built on.
-						</BodyBase>
-						<BodyBase className="text-lg leading-relaxed">
-							It ensures you get my focused, present, and highest-quality
-							engagement.
-						</BodyBase>
+					<div className="bg-surface border border-border rounded-2xl p-8 md:p-10 max-w-4xl mx-auto flex gap-6 items-start">
+						<Shield className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
+						<div>
+							<H3 className="text-xl font-bold text-primary mb-4">
+								A Note on Capacity & Integrity
+							</H3>
+							<BodyBase className="text-text-secondary mb-4">
+								I am still navigating my own recovery from burnout. Because of
+								this, and to protect the depth and integrity of our work, I take
+								on a maximum of two to three new clients per month.
+							</BodyBase>
+							<BodyBase className="font-medium text-primary">
+								This isn't a marketing tactic; it's me practicing
+								sustainability. It ensures you get my focused, present, and
+								highest-quality engagement.
+							</BodyBase>
+						</div>
 					</div>
-				</div>
-			</section>
+				</Container>
+			</Section>
 
 			{/* Founding Client Opportunities */}
-			<section className="py-16 md:py-24">
-				<div id={tierPricingId} className="max-w-5xl mx-auto px-6">
-					<H2 className="text-2xl md:text-3xl font-semibold tracking-tight text-text-primary mb-8 text-center">
-						Founding Client Opportunities: An Invitation to Co-Create
-					</H2>
-
-					<div className="max-w-4xl mx-auto space-y-6 mb-12">
-						<BodyBase className="text-lg leading-relaxed font-semibold">
-							My fees are out in the open. Nothing I hate more than finding
-							someone I want to work with to then find myself back to the wall
-							with fees I didn't expect. So let me spare you this.
+			<Section className="py-20" id={tierPricingId}>
+				<Container>
+					<div className="text-center max-w-3xl mx-auto mb-16">
+						<H2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
+							Founding Client Opportunities
+						</H2>
+						<BodyBase className="text-lg text-text-secondary mb-4">
+							My fees are out in the open. Nothing I hate more than hidden fees.
+							This framework has been my lifeline, and I'm inviting a small
+							group to partner with me as I refine it.
 						</BodyBase>
-						<BodyBase className="text-lg leading-relaxed">
-							This framework has been my lifeline. Now, I'm inviting a small
-							group of founding clients to partner with me as I refine it to
-							serve our community more deeply. This is a genuine value exchange:
-							a significantly reduced investment in exchange for your
-							partnership.
-						</BodyBase>
-
-						<BodyBase className="text-lg leading-relaxed font-medium text-center">
+						<BodySmall className="bg-surface-alt inline-block px-4 py-2 rounded-full font-medium text-primary">
 							Applications are reviewed in the order they are received.
-						</BodyBase>
+						</BodySmall>
 					</div>
 
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
 						{/* Co-Creator Tier */}
-						<div className="bg-surface border-2 border-primary rounded-xl p-8 relative">
-							<div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-								<span className="bg-primary w-full text-center text-white px-4 py-1 rounded-full text-sm font-medium">
+						<div className="bg-surface border-2 border-primary rounded-2xl p-8 relative shadow-lg transform md:-translate-y-4 z-10 transition-transform duration-300 ease-in-out">
+							<div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+								<span className="bg-primary text-white px-6 py-1.5 rounded-full text-sm font-bold shadow-md tracking-wide whitespace-nowrap">
 									Current Tier
 								</span>
 							</div>
-							<H3 className="text-xl font-semibold text-text-primary mb-4 text-center">
-								Co-Creator Tier
-							</H3>
-							<div className="text-center mb-6">
-								<div className="text-3xl font-bold text-primary mb-2">
-									$1,500
+							<div className="text-center pb-6 border-b border-border/50 mb-6">
+								<H3 className="text-2xl font-bold text-primary mb-2">
+									Co-Creator
+								</H3>
+								<div className="flex items-baseline justify-center gap-1 mb-2">
+									<span className="text-4xl font-bold text-text-primary">
+										$1,500
+									</span>
+									<span className="text-text-tertiary">/ total</span>
 								</div>
-								<BodySmall className="text-text-secondary">
-									Full Program Value: $4,000
-								</BodySmall>
-								<BodySmall className="text-text-primary">
+								<BodySmall className="text-primary font-medium">
 									1 Spot Left
 								</BodySmall>
+								<BodySmall className="text-text-tertiary line-through mt-1">
+									Full Value: $4,000
+								</BodySmall>
 							</div>
-							<BodySmall className="text-text-secondary mb-6">
-								You'll be the very first to experience this coaching container.
-								Your detailed feedback throughout our journey will directly
-								shape the program's final form. This tier is for you if you find
-								the iterative process of building something new energizing, and
-								you want to be a part of creating a resource that doesn't yet
-								exist in the neurodivergent support landscape.
-							</BodySmall>
-							<div className="text-center">
+							<ul className="space-y-4 mb-8">
+								<li className="flex gap-3 text-sm text-text-secondary">
+									<CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
+									<span>First to experience the container</span>
+								</li>
+								<li className="flex gap-3 text-sm text-text-secondary">
+									<CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
+									<span>Detailed feedback shapes the program</span>
+								</li>
+								<li className="flex gap-3 text-sm text-text-secondary">
+									<CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
+									<span>Best value exchange</span>
+								</li>
+							</ul>
+							<div className="text-center pt-4 border-t border-border/50">
 								<BodySmall className="text-text-tertiary">
-									Payment plan: 3 monthly payments of $550
+									Payment plan: 3 x $550
 								</BodySmall>
 							</div>
 						</div>
 
 						{/* Founder's Tier */}
-						<div className="bg-surface border border-border rounded-xl p-8">
-							<H3 className="text-xl font-semibold text-text-primary mb-4 text-center">
-								Founder's Tier
-							</H3>
-							<div className="text-center mb-6">
-								<div className="text-3xl font-bold text-primary mb-2">
-									$2,400
+						<div className="bg-surface border border-border rounded-2xl p-8 relative opacity-90 hover:opacity-100 transition-all duration-300 ease-in-out">
+							<div className="text-center pb-6 border-b border-border/50 mb-6">
+								<H3 className="text-2xl font-bold text-text-primary mb-2">
+									Founder's
+								</H3>
+								<div className="flex items-baseline justify-center gap-1 mb-2">
+									<span className="text-4xl font-bold text-text-secondary">
+										$2,400
+									</span>
+									<span className="text-text-tertiary">/ total</span>
 								</div>
-								<BodySmall className="text-text-secondary">
-									Full Program Value: $4,000
-								</BodySmall>
 								<BodySmall className="text-text-secondary">
 									6 Spots Available
 								</BodySmall>
+								<BodySmall className="text-text-tertiary line-through mt-1">
+									Full Value: $4,000
+								</BodySmall>
 							</div>
-							<BodySmall className="text-text-secondary mb-6">
-								The core container is set, refined by Co-Creator feedback.
-								You'll experience a more established version of the journey
-								while still having meaningful opportunities to share input. This
-								tier is for you if you value a balance between a proven
+							<BodySmall className="text-text-secondary mb-6 text-center leading-relaxed">
+								Refined by Co-Creator feedback. A balance between a proven
 								framework and collaborative refinement.
 							</BodySmall>
-							<div className="text-center">
+							<div className="text-center pt-4 border-t border-border/50">
 								<BodySmall className="text-text-tertiary">
-									Payment plan: 3 monthly payments of $850
+									Payment plan: 3 x $850
 								</BodySmall>
 							</div>
 						</div>
 
 						{/* Standard Investment */}
-						<div className="bg-surface border border-border rounded-xl p-8">
-							<H3 className="text-xl font-semibold text-text-primary mb-4 text-center">
-								Standard Investment
-							</H3>
-							<div className="text-center mb-6">
-								<div className="text-3xl font-bold text-primary mb-2">
-									$4,000
+						<div className="bg-surface border border-border rounded-2xl p-8 relative opacity-75 hover:opacity-100 transition-all duration-300 ease-in-out">
+							<div className="text-center pb-6 border-b border-border/50 mb-6">
+								<H3 className="text-2xl font-bold text-text-primary mb-2">
+									Standard
+								</H3>
+								<div className="flex items-baseline justify-center gap-1 mb-2">
+									<span className="text-4xl font-bold text-text-secondary">
+										$4,000
+									</span>
+									<span className="text-text-tertiary">/ total</span>
 								</div>
 								<BodySmall className="text-text-secondary">
-									After founding spots are filled
+									Future Pricing
 								</BodySmall>
 							</div>
-							<BodySmall className="text-text-secondary mb-6">
+							<BodySmall className="text-text-secondary mb-6 text-center leading-relaxed">
 								The established program rate after all founding spots are
 								filled.
 							</BodySmall>
-							<div className="text-center">
+							<div className="text-center pt-4 border-t border-border/50">
 								<BodySmall className="text-text-tertiary">
-									Payment plan: 3 monthly payments of $1,350
+									Payment plan: 3 x $1,350
 								</BodySmall>
 							</div>
 						</div>
 					</div>
-				</div>
-			</section>
+				</Container>
+			</Section>
 
-			{/* This Journey is For You If */}
-			<section className="py-16 md:py-24 bg-surface-alt">
-				<div className="max-w-5xl mx-auto px-6">
+			{/* Filtering Section (For You / Not For You) */}
+			<Section background="alt" className="py-20">
+				<Container>
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-						{/* This is for you if */}
-						<div className="bg-surface border border-border rounded-xl p-8">
-							<H3 className="text-xl font-semibold text-primary mb-6">
-								This Journey is For You If:
-							</H3>
+						{/* This is for you */}
+						<div className="bg-surface border border-primary/20 rounded-2xl p-8 shadow-sm">
+							<div className="flex items-center gap-3 mb-8">
+								<div className="p-2 bg-primary/10 rounded-lg">
+									<CheckCircle2 className="w-6 h-6 text-primary" />
+								</div>
+								<H3 className="text-2xl font-bold text-primary m-0">
+									This Journey is For You If:
+								</H3>
+							</div>
 							<ul className="space-y-4">
-								<li className="flex items-start space-x-3">
-									<span className="text-primary mt-1">•</span>
-									<BodySmall>
-										You're late-diagnosed or self-discovered—we welcome and
-										validate all paths to understanding your AuDHD—and are ready
-										to move from the chaos of discovery to the clarity of
-										intentional design.
-									</BodySmall>
-								</li>
-								<li className="flex items-start space-x-3">
-									<span className="text-primary mt-1">•</span>
-									<BodySmall>
-										You crave a coach who deeply understands the exhaustion of
-										high-masking and the internal war between the need for
-										structure and the craving for novelty.
-									</BodySmall>
-								</li>
-								<li className="flex items-start space-x-3">
-									<span className="text-primary mt-1">•</span>
-									<BodySmall>
-										You believe, or want to believe, that there is profound joy
-										to be found in being autistic, even when it's hard.
-									</BodySmall>
-								</li>
-								<li className="flex items-start space-x-3">
-									<span className="text-primary mt-1">•</span>
-									<BodySmall>
-										You're curious about what's possible beyond quick fixes and
-										are open to a process of gradual, meaningful change.
-									</BodySmall>
-								</li>
-								<li className="flex items-start space-x-3">
-									<span className="text-primary mt-1">•</span>
-									<BodySmall>
-										You bring a willingness to show up as you are, honoring your
-										capacity while being a partner in your own growth.
-									</BodySmall>
-								</li>
+								{[
+									"You're late-diagnosed or self-discovered and ready to move from chaos to clarity.",
+									"You crave a coach who understands the exhaustion of high-masking.",
+									"You believe (or want to believe) there is profound joy in being autistic.",
+									"You're curious about what's possible beyond quick fixes.",
+									"You bring a willingness to show up as you are, honoring your capacity.",
+								].map((item, i) => (
+									<li key={i} className="flex gap-4 items-start">
+										<div className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
+										<BodySmall className="text-base text-text-secondary leading-relaxed">
+											{item}
+										</BodySmall>
+									</li>
+								))}
 							</ul>
 						</div>
 
-						{/* This is NOT for you if */}
-						<div className="bg-surface border border-border rounded-xl p-8">
-							<H3 className="text-xl font-semibold text-text-primary mb-6">
-								This is NOT The Right Path If:
-							</H3>
+						{/* This is NOT for you */}
+						<div className="bg-surface border border-border rounded-2xl p-8">
+							<div className="flex items-center gap-3 mb-8">
+								<div className="p-2 bg-text-tertiary/10 rounded-lg">
+									<XCircle className="w-6 h-6 text-text-tertiary" />
+								</div>
+								<H3 className="text-2xl font-bold text-text-secondary m-0">
+									This is NOT The Right Path If:
+								</H3>
+							</div>
 							<ul className="space-y-4">
-								<li className="flex items-start space-x-3">
-									<span className="text-text-tertiary mt-1">•</span>
-									<BodySmall>
-										You need clinical therapy, crisis intervention, or
-										diagnostic services. This is forward-focused coaching, not
-										mental healthcare.
-									</BodySmall>
-								</li>
-								<li className="flex items-start space-x-3">
-									<span className="text-text-tertiary mt-1">•</span>
-									<BodySmall>
-										You're seeking a magic bullet or a pre-packaged
-										"productivity system" to "fix" you.
-									</BodySmall>
-								</li>
-								<li className="flex items-start space-x-3">
-									<span className="text-text-tertiary mt-1">•</span>
-									<BodySmall>
-										You want group support—this is intimate, focused 1-on-1
-										work.
-									</BodySmall>
-								</li>
-								<li className="flex items-start space-x-3">
-									<span className="text-text-tertiary mt-1">•</span>
-									<BodySmall>
-										You're not ready to examine your patterns honestly or try
-										new approaches.
-									</BodySmall>
-								</li>
-								<li className="flex items-start space-x-3">
-									<span className="text-text-tertiary mt-1">•</span>
-									<BodySmall>
-										You need a fully polished, corporate-style program. This is
-										a human-first space, built on authenticity, not perfection.
-									</BodySmall>
-								</li>
+								{[
+									"You need clinical therapy or crisis intervention.",
+									"You're seeking a magic bullet to 'fix' you.",
+									"You want group support (this is intimate 1-on-1 work).",
+									"You're not ready to examine your patterns honestly.",
+									"You need a fully polished, corporate-style program.",
+								].map((item, i) => (
+									<li key={i} className="flex gap-4 items-start">
+										<div className="w-1.5 h-1.5 rounded-full bg-text-tertiary mt-2.5 flex-shrink-0" />
+										<BodySmall className="text-base text-text-secondary leading-relaxed">
+											{item}
+										</BodySmall>
+									</li>
+								))}
 							</ul>
 						</div>
 					</div>
 
-					<div className="bg-surface border border-border rounded-xl p-8 mt-12">
-						<H3 className="text-xl font-semibold text-text-primary mb-6">
+					<div className="mt-12 p-8 border-l-4 border-primary bg-surface shadow-sm rounded-r-xl">
+						<H4 className="font-bold text-primary mb-2">
 							This Journey is Coaching Work
-						</H3>
-						<BodyBase className="text-lg leading-relaxed mb-4">
-							<strong>What i will validate:</strong> Your emotions and
+						</H4>
+						<p className="text-text-secondary mb-2">
+							<strong>What I will validate:</strong> Your emotions and
 							experience, always.
-						</BodyBase>
-						<BodyBase className="text-lg leading-relaxed mb-4">
-							<strong>What i will question:</strong> Your reactions and the
+						</p>
+						<p className="text-text-secondary">
+							<strong>What I will question:</strong> Your reactions and the
 							stories these emotions come from. Not to judge, but for the sake
-							of curious exploration. For your sake. So you can get what you
-							expect from our collaboration. So be prepared, it
-							<strong> will</strong> be annoying sometimes.
-						</BodyBase>
+							of curious exploration. It <strong>will</strong> be annoying
+							sometimes.
+						</p>
 					</div>
 
 					<div className="mt-12 text-center">
-						<BodyBase className="text-lg leading-relaxed max-w-4xl mx-auto">
+						<p className="text-lg text-text-secondary max-w-3xl mx-auto">
 							From my Substack,{" "}
 							<Link
 								to="https://dabii.substack.com/"
 								target="_blank"
-								className="underline hover:text-primary"
+								className="text-primary font-medium hover:underline underline-offset-4 decoration-2"
 							>
 								"But you don't look autistic,"
 							</Link>{" "}
 							to this program, my mission is the same: to help us feel seen,
-							understood, and empowered to build lives that truly fit. If you're
-							ready to start rebuilding, I invite you to have a conversation
-							with me.
-						</BodyBase>
+							understood, and empowered.
+						</p>
 					</div>
-				</div>
-			</section>
+				</Container>
+			</Section>
 
 			{/* How to Get Started */}
-			<section className="py-16 md:py-24">
-				<div className="max-w-3xl mx-auto px-6">
-					<H2 className="text-2xl md:text-3xl font-semibold tracking-tight text-text-primary mb-12 text-center">
+			<Section className="py-20">
+				<Container>
+					<H2 className="text-3xl md:text-4xl font-bold text-primary mb-16 text-center">
 						How to Get Started
 					</H2>
 
-					{/* Step 1 - The Vibe Check */}
-					<div className="mb-12">
-						<H3 className="text-xl font-semibold text-primary mb-4">
-							Step 1 — The Vibe Check (Free — 30 to 40 minutes)
-						</H3>
-						<div className="space-y-4">
-							<BodyBase className="text-lg leading-relaxed">
-								Before anything else, let's simply meet as humans.
-							</BodyBase>
-							<BodyBase className="text-lg leading-relaxed">
-								This is a relaxed conversation to see if we click, and to make
-								sure that what you're looking for matches what I offer.
-							</BodyBase>
-							<BodyBase className="text-lg leading-relaxed">
-								You can ask questions, share a bit of what brings you here, and
-								sense whether my approach feels right to you.
-							</BodyBase>
-							<BodyBase className="text-lg leading-relaxed">
-								No coaching, no pitch, no pressure — just space to feel it out
-								together.
-							</BodyBase>
-							<div className="bg-surface border border-border rounded-lg p-6 mt-6">
-								<ul className="space-y-2">
-									<li className="flex items-start space-x-3">
-										<span className="text-primary mt-1 font-semibold">•</span>
-										<BodyBase>
-											<strong>Goal:</strong> mutual clarity and comfort.
-										</BodyBase>
-									</li>
-									<li className="flex items-start space-x-3">
-										<span className="text-primary mt-1 font-semibold">•</span>
-										<BodyBase>
-											<strong>Format:</strong> video call, 30–40 minutes.
-										</BodyBase>
-									</li>
-									<li className="flex items-start space-x-3">
-										<span className="text-primary mt-1 font-semibold">•</span>
-										<BodyBase>
-											<strong>Cost:</strong> free.
-										</BodyBase>
-									</li>
-								</ul>
+					<div className="relative">
+						{/* Vertical line connecting steps */}
+						<div className="hidden md:block absolute left-8 top-8 bottom-8 w-0.5 bg-border z-0" />
+
+						<div className="space-y-12 relative z-10">
+							{/* Step 1 */}
+							<div className="flex flex-col md:flex-row gap-8">
+								<div className="flex-shrink-0 w-16 h-16 bg-surface border-2 border-primary rounded-full flex items-center justify-center text-2xl font-bold text-primary shadow-sm mx-auto md:mx-0">
+									1
+								</div>
+								<div className="flex-1 bg-surface border border-border p-8 rounded-2xl hover:shadow-md transition-shadow">
+									<div className="flex flex-col sm:flex-row justify-between sm:items-center mb-4 gap-2">
+										<H3 className="text-xl font-bold text-primary m-0">
+											The Vibe Check
+										</H3>
+										<span className="inline-block px-3 py-1 bg-primary-soft text-primary text-xs font-bold uppercase tracking-wider rounded-full w-fit">
+											Free • 30-40 min
+										</span>
+									</div>
+									<p className="text-text-secondary mb-4 text-lg">
+										Before anything else, let's simply meet as humans. No
+										pitch, no pressure. Just space to feel it out together.
+									</p>
+									<p className="text-sm text-text-tertiary">
+										<strong>Goal:</strong> mutual clarity and comfort.
+									</p>
+								</div>
+							</div>
+
+							{/* Step 2 */}
+							<div className="flex flex-col md:flex-row gap-8">
+								<div className="flex-shrink-0 w-16 h-16 bg-surface border-2 border-border rounded-full flex items-center justify-center text-2xl font-bold text-text-tertiary shadow-sm mx-auto md:mx-0">
+									2
+								</div>
+								<div className="flex-1 bg-surface border border-border p-8 rounded-2xl hover:shadow-md transition-shadow">
+									<div className="flex flex-col sm:flex-row justify-between sm:items-center mb-4 gap-2">
+										<H3 className="text-xl font-bold text-text-primary m-0">
+											Trial Coaching Session
+										</H3>
+										<span className="inline-block px-3 py-1 bg-surface-alt text-text-secondary text-xs font-bold uppercase tracking-wider rounded-full w-fit">
+											$90 • Up to 90 min
+										</span>
+									</div>
+									<p className="text-text-secondary mb-4 text-lg">
+										Experience what it's like to be coached in this space. A
+										deep, practical taste of the work. If we continue, this
+										fee is subtracted from the total.
+									</p>
+									<p className="text-sm text-text-tertiary">
+										<strong>Goal:</strong> experience the process, not just
+										the promise.
+									</p>
+								</div>
+							</div>
+
+							{/* Step 3 */}
+							<div className="flex flex-col md:flex-row gap-8">
+								<div className="flex-shrink-0 w-16 h-16 bg-surface border-2 border-border rounded-full flex items-center justify-center text-2xl font-bold text-text-tertiary shadow-sm mx-auto md:mx-0">
+									3
+								</div>
+								<div className="flex-1 bg-surface border border-border p-8 rounded-2xl hover:shadow-md transition-shadow">
+									<div className="flex flex-col sm:flex-row justify-between sm:items-center mb-4 gap-2">
+										<H3 className="text-xl font-bold text-text-primary m-0">
+											The Re-Architect's Journey
+										</H3>
+										<span className="inline-block px-3 py-1 bg-surface-alt text-text-secondary text-xs font-bold uppercase tracking-wider rounded-full w-fit">
+											4 Month Container
+										</span>
+									</div>
+									<p className="text-text-secondary mb-4 text-lg">
+										We begin. A steady, flexibly structured space for real
+										change: less chaos, more clarity, and the freedom to move
+										at your own rhythm.
+									</p>
+									<p className="text-sm text-text-tertiary">
+										<strong>Goal:</strong> long-term integration and
+										transformation.
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
 
-					{/* Step 2 - Trial Coaching Session */}
-					<div className="mb-12">
-						<H3 className="text-xl font-semibold text-primary mb-4">
-							Step 2 — Trial Coaching Session ($90 — up to 90 minutes)
-						</H3>
-						<div className="space-y-4">
-							<BodyBase className="text-lg leading-relaxed">
-								If the vibe feels good, we'll move into a real session.
-							</BodyBase>
-							<BodyBase className="text-lg leading-relaxed">
-								(Or, if you already have enough trust and are eager to see what
-								works look like, you can chose to start here)
-							</BodyBase>
-							<BodyBase className="text-lg leading-relaxed">
-								This is where you get to experience what it's like to be coached
-								in this space — to explore something that's alive for you right
-								now and see what unfolds.
-							</BodyBase>
-							<BodyBase className="text-lg leading-relaxed">
-								It's a deep, practical taste of the work we'd be doing together
-								in The Re-Architect's Journey.
-							</BodyBase>
-							<BodyBase className="text-lg leading-relaxed">
-								At the end, if it feels aligned, we'll discuss whether
-								continuing together makes sense — and what that would look like.
-							</BodyBase>
-							<BodyBase className="text-lg leading-relaxed">
-								If we decide to continue together, the price of this session
-								will be substracted from the total price of the Re-Architect's
-								Journey.
-							</BodyBase>
-							<div className="bg-surface border border-border rounded-lg p-6 mt-6">
-								<ul className="space-y-2">
-									<li className="flex items-start space-x-3">
-										<span className="text-primary mt-1 font-semibold">•</span>
-										<BodyBase>
-											<strong>Goal:</strong> experience the process, not the
-											promise.
-										</BodyBase>
-									</li>
-									<li className="flex items-start space-x-3">
-										<span className="text-primary mt-1 font-semibold">•</span>
-										<BodyBase>
-											<strong>Format:</strong> 60–90 minute coaching session.
-										</BodyBase>
-									</li>
-									<li className="flex items-start space-x-3">
-										<span className="text-primary mt-1 font-semibold">•</span>
-										<BodyBase>
-											<strong>Cost:</strong> $90.
-										</BodyBase>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					{/* Step 3 - The Re-Architect's Journey */}
-					<div className="mb-12">
-						<H3 className="text-xl font-semibold text-primary mb-4">
-							Step 3 — The Re-Architect's Journey (4-month container)
-						</H3>
-						<div className="space-y-4">
-							<BodyBase className="text-lg leading-relaxed">
-								When we both feel a full-bodied yes, we begin.
-							</BodyBase>
-							<BodyBase className="text-lg leading-relaxed">
-								This is a four-month commitment to rethinking your internal
-								architecture — building a life that works with your neurotype,
-								not against it.
-							</BodyBase>
-							<BodyBase className="text-lg leading-relaxed">
-								It's a steady, flexibly structured space for real change: less
-								chaos, more clarity, and the freedom to move at your own rhythm.
-							</BodyBase>
-							<div className="bg-surface border border-border rounded-lg p-6 mt-6">
-								<ul className="space-y-2">
-									<li className="flex items-start space-x-3">
-										<span className="text-primary mt-1 font-semibold">•</span>
-										<BodyBase>
-											<strong>Goal:</strong> long-term integration and
-											transformation.
-										</BodyBase>
-									</li>
-									<li className="flex items-start space-x-3">
-										<span className="text-primary mt-1 font-semibold">•</span>
-										<BodyBase>
-											<strong>Format:</strong> one-on-one coaching over four
-											months.
-										</BodyBase>
-									</li>
-									<li className="flex items-start space-x-3">
-										<span className="text-primary mt-1 font-semibold">•</span>
-										<BodyBase>
-											<strong>Cost:</strong>{" "}
-											<a href={`#${tierPricingId}`}>
-												depending on the tier we currently are on
-											</a>
-										</BodyBase>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					{/* Why This Flow */}
-					<div className="bg-primary-soft rounded-xl p-8">
-						<H3 className="text-xl font-semibold text-text-primary mb-4">
-							Why This Flow
-						</H3>
-						<BodyBase className="text-lg leading-relaxed">
-							Because most of us — especially those with AuDHD — need safety
-							before structure, clarity before commitment, and experience before
+					{/* Logic behind flow */}
+					<div className="mt-16 bg-primary-soft/30 p-8 rounded-2xl text-center border border-primary/5">
+						<H4 className="text-lg font-bold text-primary mb-3">
+							Why This Flow?
+						</H4>
+						<p className="text-text-secondary max-w-3xl mx-auto">
+							Because most of us—especially those with AuDHD—need safety before
+							structure, clarity before commitment, and experience before
 							investment.
-						</BodyBase>
-						<BodyBase className="text-lg leading-relaxed mt-4">
-							This way, we both know we're stepping into something that feels
-							genuinely right — not rushed, not forced, and not guesswork.
-						</BodyBase>
+						</p>
 					</div>
 
-					{/* CTA Buttons */}
-					<div className="text-center mt-12">
-						<div className="mb-6">
-							<BodyBase className="text-lg font-medium">
+					{/* CTA Area */}
+					<div className="mt-16 text-center space-y-8">
+						<div>
+							<p className="text-lg font-medium text-text-primary mb-4">
 								Ready to start with Step 1?
-							</BodyBase>
-						</div>
-						<div className="flex flex-col gap-2 sm:gap-4 justify-center mb-4">
+							</p>
 							<Link
 								to="https://calendar.app.google/DzX2xMDgSeyRDGhU7"
 								target="_blank"
-								className="items-center px-8 py-4 bg-primary text-white rounded-lg font-medium text-lg transition-colors duration-200 hover:bg-primary-hover focus:outline-none focus:ring-4 focus:ring-primary/20 mb-4"
+								className="inline-flex items-center px-8 py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20"
 							>
-								Book Your (up to) 40min Connection Call HERE →
+								Book Your Vibe Check Call <ArrowRight className="ml-2 w-5 h-5" />
 							</Link>
 						</div>
-						<div className="mb-6">
-							<BodyBase className="text-lg font-medium">
-								Already feeling the vibe and wanting to get into work directly ?
-							</BodyBase>
-						</div>
-						<div className="flex flex-col gap-2 sm:gap-4 justify-center mb-4">
+
+						<div className="pt-8 border-t border-border w-full max-w-md mx-auto">
+							<p className="text-text-secondary mb-4 text-sm">
+								Already trust the vibe and want to start working?
+							</p>
 							<Link
 								to="https://buy.stripe.com/14A7sK1IH4K8bY56OMgrS00"
 								target="_blank"
-								className="items-center px-8 py-4 bg-primary text-white rounded-lg font-medium text-lg transition-colors duration-200 hover:bg-primary-hover focus:outline-none focus:ring-4 focus:ring-primary/20 mb-4"
+								className="inline-flex items-center px-6 py-3 bg-white border border-primary/20 text-primary rounded-lg font-medium hover:bg-primary-soft transition-colors"
 							>
-								Book Your 90min First Session HERE →
+								Book Your 90min First Session
 							</Link>
 						</div>
-						<div className="mt-6 space-y-2">
-							<BodySmall className="text-text-tertiary hover:underline">
-								<Link to="/faq">Frequently Asked Questions →</Link>
-							</BodySmall>
+
+						<div className="pt-4">
+							<Link
+								to="/faq"
+								className="text-text-tertiary text-sm hover:text-primary transition-colors underline underline-offset-4"
+							>
+								Frequently Asked Questions
+							</Link>
 						</div>
 					</div>
-				</div>
-			</section>
+				</Container>
+			</Section>
 		</>
 	);
 }

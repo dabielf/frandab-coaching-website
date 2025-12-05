@@ -1,5 +1,13 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router";
+import {
+	Sheet,
+	SheetContent,
+	SheetDescription,
+	SheetHeader,
+	SheetTitle,
+	SheetTrigger,
+} from "~/components/ui/sheet";
 
 export function MobileMenu() {
 	const [isOpen, setIsOpen] = useState(false);
@@ -16,60 +24,44 @@ export function MobileMenu() {
 		{ path: "/services", label: "Work With Me" },
 	];
 
-	const toggleMenu = () => setIsOpen(!isOpen);
-	const closeMenu = () => setIsOpen(false);
-
 	return (
-		<>
-			{/* Mobile Menu Button */}
-			<button
-				type="button"
-				onClick={toggleMenu}
-				className="p-2 -mr-2 rounded-lg hover:bg-surface-alt transition-colors md:hidden cursor-pointer"
-				aria-label={isOpen ? "Close menu" : "Open menu"}
-				aria-expanded={isOpen}
-			>
-				{isOpen ? (
-					<CloseIcon className="w-6 h-6" />
-				) : (
+		<Sheet open={isOpen} onOpenChange={setIsOpen}>
+			<SheetTrigger asChild>
+				<button
+					type="button"
+					className="p-2 -mr-2 rounded-lg hover:bg-surface-alt transition-colors md:hidden cursor-pointer"
+					aria-label={isOpen ? "Close menu" : "Open menu"}
+				>
 					<MenuIcon className="w-6 h-6" />
-				)}
-			</button>
+				</button>
+			</SheetTrigger>
 
-			{/* Mobile Menu Overlay */}
-			{isOpen && (
-				<div
-					className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 md:hidden"
-					onClick={closeMenu}
-				/>
-			)}
-
-			{/* Mobile Menu Panel */}
-			<div
-				className={`fixed top-0 right-0 h-full w-80 max-w-[80vw] bg-surface border-l border-border z-50 transition-transform duration-300 ease-in-out md:hidden ${
-					isOpen ? "translate-x-0" : "translate-x-full"
-				}`}
+			{/* We override bg-background with bg-surface to match your theme preference.
+        The Sheet component automatically handles the portal/overlay behavior.
+      */}
+			<SheetContent
+				side="right"
+				className="w-80 bg-surface border-l border-border p-0"
 			>
-				<div className="p-6 z-50 bg-surface">
-					{/* Close Button */}
+				<SheetHeader className="sr-only">
+					<SheetTitle>Mobile Navigation</SheetTitle>
+					<SheetDescription>Main site navigation</SheetDescription>
+				</SheetHeader>
+
+				<div className="flex flex-col h-full py-6 px-6 overflow-y-auto">
+					{/* Custom Close Button Area (optional, Sheet has a default one too, but this matches your layout) */}
 					<div className="flex justify-end mb-8">
-						<button
-							onClick={closeMenu}
-							className="p-2 rounded-lg hover:bg-background-alt transition-colors cursor-pointer"
-							aria-label="Close menu"
-						>
-							<CloseIcon className="w-6 h-6" />
-						</button>
+						{/* The default Sheet close button is absolute positioned, 
+                so we can just use spacing here or rely on the default X */}
 					</div>
 
-					{/* Navigation Links */}
-					<nav className="space-y-4">
+					<nav className="flex flex-col space-y-4 mt-8">
 						{navItems.map((item) => (
 							<Link
 								key={item.path}
 								to={item.path}
 								target={item.path.startsWith("http") ? "_blank" : "_self"}
-								onClick={closeMenu}
+								onClick={() => setIsOpen(false)}
 								className={`block py-3 px-4 rounded-lg text-lg font-medium transition-colors ${
 									location.pathname === item.path
 										? "bg-primary-soft text-primary"
@@ -81,8 +73,8 @@ export function MobileMenu() {
 						))}
 					</nav>
 				</div>
-			</div>
-		</>
+			</SheetContent>
+		</Sheet>
 	);
 }
 
@@ -99,24 +91,6 @@ function MenuIcon({ className }: { className?: string }) {
 				strokeLinejoin="round"
 				strokeWidth={2}
 				d="M4 6h16M4 12h16M4 18h16"
-			/>
-		</svg>
-	);
-}
-
-function CloseIcon({ className }: { className?: string }) {
-	return (
-		<svg
-			className={className}
-			fill="none"
-			viewBox="0 0 24 24"
-			stroke="currentColor"
-		>
-			<path
-				strokeLinecap="round"
-				strokeLinejoin="round"
-				strokeWidth={2}
-				d="M6 18L18 6M6 6l12 12"
 			/>
 		</svg>
 	);

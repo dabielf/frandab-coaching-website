@@ -196,6 +196,11 @@ body {
 	--color-secondary-foreground: var(--secondary-foreground);
 	--color-secondary-hover: var(--color-secondary-hover);
 	--color-secondary-soft: var(--color-secondary-soft);
+	
+	/* Added missing surface colors */
+	--color-surface: var(--color-surface);
+	--color-surface-alt: var(--color-surface-alt);
+
 	--color-muted: var(--muted);
 	--color-muted-foreground: var(--muted-foreground);
 	--color-accent: var(--accent);

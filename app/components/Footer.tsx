@@ -102,7 +102,7 @@ export function Footer() {
 						<p className="text-text-tertiary text-sm leading-relaxed">
 							© 2025 Francois Dab. All rights reserved.
 						</p>
-						<p className="text-text-tertiary text-sm leading-relaxed mt-2 md:mt-0">
+						<p className="text-text-tertiary text-sm text-center leading-relaxed mt-2 md:mt-0">
 							Made with understanding for neurodivergent minds ❤️
 						</p>
 					</div>
