@@ -54,6 +54,16 @@ export function Footer() {
 									FAQ
 								</a>
 							</li>
+							<li>
+								<a
+									href="https://dabii.substack.com"
+									target="_blank"
+									rel="noopener noreferrer"
+									className="text-text-secondary hover:text-primary transition-colors duration-200 text-sm leading-relaxed"
+								>
+									Blog
+								</a>
+							</li>
 						</ul>
 					</div>
 

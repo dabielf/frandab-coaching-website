@@ -18,14 +18,14 @@ function ContactEmailLink({
 				<a
 					href="mailto:hello@frandab.com?subject=I have a question&body=Hi Francois,%0D%0A%0D%0AI have a question !%0D%0A%0D%0AThanks!"
 					className={cn(
-						"text-text-secondary hover:text-primary transition-colors duration-200 text-sm leading-relaxed",
+						"text-primary hover:text-primary transition-colors duration-200 text-sm leading-relaxed",
 						className,
 					)}
 				>
 					{children || "hello@frandab.com"}
 				</a>
 			</TooltipTrigger>
-			<TooltipContent className="text-text-secondary">
+			<TooltipContent className="text-primary-foreground">
 				<p>This email will be already pre-filled to make your life simpler</p>
 			</TooltipContent>
 		</Tooltip>
@@ -45,14 +45,14 @@ function SessionEmailLink({
 				<a
 					href="mailto:hello@frandab.com?subject=Blueprint Call Request&body=Hi Francois,%0D%0A%0D%0AI'd like to schedule a blueprint call. Here are a few times that might work for me:%0D%0A%0D%0A[Please list 2-3 time options with your timezone]%0D%0A%0D%0AThanks!"
 					className={cn(
-						"text-text-secondary hover:text-primary transition-colors duration-200 text-base leading-relaxed",
+						"text-primary hover:text-primary transition-colors duration-200 text-base leading-relaxed",
 						className,
 					)}
 				>
 					{children || "hello@frandab.com"}
 				</a>
 			</TooltipTrigger>
-			<TooltipContent className="text-text-secondary">
+			<TooltipContent className="text-primary-foreground">
 				<p>This email will be already pre-filled to make your life simpler</p>
 			</TooltipContent>
 		</Tooltip>

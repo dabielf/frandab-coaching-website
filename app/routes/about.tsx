@@ -4,7 +4,6 @@ import {
 	BodyLarge,
 	Container,
 	H2,
-	H3,
 	H4,
 	Section,
 } from "~/components/ui";

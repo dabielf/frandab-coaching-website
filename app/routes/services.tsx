@@ -1,3 +1,4 @@
+import { useId } from "react";
 import { Link } from "react-router";
 import {
 	BodyBase,
@@ -27,6 +28,7 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Services() {
+	const tierPricingId = useId();
 	return (
 		<>
 			{/* Hero Section - Personal Story */}
@@ -243,7 +245,7 @@ export default function Services() {
 
 			{/* Founding Client Opportunities */}
 			<section className="py-16 md:py-24">
-				<div className="max-w-5xl mx-auto px-6">
+				<div id={tierPricingId} className="max-w-5xl mx-auto px-6">
 					<H2 className="text-2xl md:text-3xl font-semibold tracking-tight text-text-primary mb-8 text-center">
 						Founding Client Opportunities: An Invitation to Co-Create
 					</H2>
@@ -271,8 +273,8 @@ export default function Services() {
 						{/* Co-Creator Tier */}
 						<div className="bg-surface border-2 border-primary rounded-xl p-8 relative">
 							<div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-								<span className="bg-primary text-white px-4 py-1 rounded-full text-sm font-medium">
-									Most Value
+								<span className="bg-primary w-full text-center text-white px-4 py-1 rounded-full text-sm font-medium">
+									Current Tier
 								</span>
 							</div>
 							<H3 className="text-xl font-semibold text-text-primary mb-4 text-center">
@@ -285,8 +287,8 @@ export default function Services() {
 								<BodySmall className="text-text-secondary">
 									Full Program Value: $4,000
 								</BodySmall>
-								<BodySmall className="text-text-secondary">
-									3 Spots Available
+								<BodySmall className="text-text-primary">
+									1 Spot Left
 								</BodySmall>
 							</div>
 							<BodySmall className="text-text-secondary mb-6">
@@ -494,82 +496,211 @@ export default function Services() {
 				</div>
 			</section>
 
-			{/* Blueprint Session CTA */}
+			{/* How to Get Started */}
 			<section className="py-16 md:py-24">
 				<div className="max-w-3xl mx-auto px-6">
-					<H2 className="text-2xl md:text-3xl font-semibold tracking-tight text-text-primary mb-8 text-center">
-						The Final Step: Our Blueprint Session
+					<H2 className="text-2xl md:text-3xl font-semibold tracking-tight text-text-primary mb-12 text-center">
+						How to Get Started
 					</H2>
 
-					<div className="max-w-4xl mx-auto space-y-6 mb-12">
-						<BodyBase className="text-lg leading-relaxed">
-							The information on this page is designed to give you everything
-							you need to decide if this journey feels right. If it does, our
-							final step is a 30-minute or 90-minute Blueprint Session.
-						</BodyBase>
+					{/* Step 1 - The Vibe Check */}
+					<div className="mb-12">
+						<H3 className="text-xl font-semibold text-primary mb-4">
+							Step 1 — The Vibe Check (Free — 30 to 40 minutes)
+						</H3>
+						<div className="space-y-4">
+							<BodyBase className="text-lg leading-relaxed">
+								Before anything else, let's simply meet as humans.
+							</BodyBase>
+							<BodyBase className="text-lg leading-relaxed">
+								This is a relaxed conversation to see if we click, and to make
+								sure that what you're looking for matches what I offer.
+							</BodyBase>
+							<BodyBase className="text-lg leading-relaxed">
+								You can ask questions, share a bit of what brings you here, and
+								sense whether my approach feels right to you.
+							</BodyBase>
+							<BodyBase className="text-lg leading-relaxed">
+								No coaching, no pitch, no pressure — just space to feel it out
+								together.
+							</BodyBase>
+							<div className="bg-surface border border-border rounded-lg p-6 mt-6">
+								<ul className="space-y-2">
+									<li className="flex items-start space-x-3">
+										<span className="text-primary mt-1 font-semibold">•</span>
+										<BodyBase>
+											<strong>Goal:</strong> mutual clarity and comfort.
+										</BodyBase>
+									</li>
+									<li className="flex items-start space-x-3">
+										<span className="text-primary mt-1 font-semibold">•</span>
+										<BodyBase>
+											<strong>Format:</strong> video call, 30–40 minutes.
+										</BodyBase>
+									</li>
+									<li className="flex items-start space-x-3">
+										<span className="text-primary mt-1 font-semibold">•</span>
+										<BodyBase>
+											<strong>Cost:</strong> free.
+										</BodyBase>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
 
-						<BodyBase className="text-lg leading-relaxed">
-							Those two options are designed to give you the choices that goes
-							with your preferences. You're the "straight and to the point" type
-							of person? Go for the 30min session. You want this to be a deep
-							conversation where we wil mutually overshare? Go for the 90min
-							session.
-						</BodyBase>
+					{/* Step 2 - Trial Coaching Session */}
+					<div className="mb-12">
+						<H3 className="text-xl font-semibold text-primary mb-4">
+							Step 2 — Trial Coaching Session ($90 — up to 90 minutes)
+						</H3>
+						<div className="space-y-4">
+							<BodyBase className="text-lg leading-relaxed">
+								If the vibe feels good, we'll move into a real session.
+							</BodyBase>
+							<BodyBase className="text-lg leading-relaxed">
+								(Or, if you already have enough trust and are eager to see what
+								works look like, you can chose to start here)
+							</BodyBase>
+							<BodyBase className="text-lg leading-relaxed">
+								This is where you get to experience what it's like to be coached
+								in this space — to explore something that's alive for you right
+								now and see what unfolds.
+							</BodyBase>
+							<BodyBase className="text-lg leading-relaxed">
+								It's a deep, practical taste of the work we'd be doing together
+								in The Re-Architect's Journey.
+							</BodyBase>
+							<BodyBase className="text-lg leading-relaxed">
+								At the end, if it feels aligned, we'll discuss whether
+								continuing together makes sense — and what that would look like.
+							</BodyBase>
+							<BodyBase className="text-lg leading-relaxed">
+								If we decide to continue together, the price of this session
+								will be substracted from the total price of the Re-Architect's
+								Journey.
+							</BodyBase>
+							<div className="bg-surface border border-border rounded-lg p-6 mt-6">
+								<ul className="space-y-2">
+									<li className="flex items-start space-x-3">
+										<span className="text-primary mt-1 font-semibold">•</span>
+										<BodyBase>
+											<strong>Goal:</strong> experience the process, not the
+											promise.
+										</BodyBase>
+									</li>
+									<li className="flex items-start space-x-3">
+										<span className="text-primary mt-1 font-semibold">•</span>
+										<BodyBase>
+											<strong>Format:</strong> 60–90 minute coaching session.
+										</BodyBase>
+									</li>
+									<li className="flex items-start space-x-3">
+										<span className="text-primary mt-1 font-semibold">•</span>
+										<BodyBase>
+											<strong>Cost:</strong> $90.
+										</BodyBase>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
 
-						<BodyBase className="text-lg leading-relaxed">
-							<strong>
-								This is not a sales call. It is a mutual exploration of fit.
-								It's our chance to connect, ask questions, and ensure we're both
-								genuinely excited to build together.
-							</strong>
-						</BodyBase>
+					{/* Step 3 - The Re-Architect's Journey */}
+					<div className="mb-12">
+						<H3 className="text-xl font-semibold text-primary mb-4">
+							Step 3 — The Re-Architect's Journey (4-month container)
+						</H3>
+						<div className="space-y-4">
+							<BodyBase className="text-lg leading-relaxed">
+								When we both feel a full-bodied yes, we begin.
+							</BodyBase>
+							<BodyBase className="text-lg leading-relaxed">
+								This is a four-month commitment to rethinking your internal
+								architecture — building a life that works with your neurotype,
+								not against it.
+							</BodyBase>
+							<BodyBase className="text-lg leading-relaxed">
+								It's a steady, flexibly structured space for real change: less
+								chaos, more clarity, and the freedom to move at your own rhythm.
+							</BodyBase>
+							<div className="bg-surface border border-border rounded-lg p-6 mt-6">
+								<ul className="space-y-2">
+									<li className="flex items-start space-x-3">
+										<span className="text-primary mt-1 font-semibold">•</span>
+										<BodyBase>
+											<strong>Goal:</strong> long-term integration and
+											transformation.
+										</BodyBase>
+									</li>
+									<li className="flex items-start space-x-3">
+										<span className="text-primary mt-1 font-semibold">•</span>
+										<BodyBase>
+											<strong>Format:</strong> one-on-one coaching over four
+											months.
+										</BodyBase>
+									</li>
+									<li className="flex items-start space-x-3">
+										<span className="text-primary mt-1 font-semibold">•</span>
+										<BodyBase>
+											<strong>Cost:</strong>{" "}
+											<a href={`#${tierPricingId}`}>
+												depending on the tier we currently are on
+											</a>
+										</BodyBase>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
 
+					{/* Why This Flow */}
+					<div className="bg-primary-soft rounded-xl p-8">
+						<H3 className="text-xl font-semibold text-text-primary mb-4">
+							Why This Flow
+						</H3>
 						<BodyBase className="text-lg leading-relaxed">
-							This work is deep and requires trust, so it's essential that we
-							both feel this partnership is a "<strong>HECK YES</strong>" At the
-							end of our conversation, either of us can decide it's not the
-							right fit, and that's perfectly okay.
+							Because most of us — especially those with AuDHD — need safety
+							before structure, clarity before commitment, and experience before
+							investment.
 						</BodyBase>
-
-						<BodyBase className="text-lg leading-relaxed">
-							If we both decide to move forward, I will send you a private link
-							to confirm your spot. To honor the commitment and manage my own
-							energy and capacity, this link will be active for 24 hours. This
-							isn't a pressure tactic; it's a practice in clear boundaries and
-							decisive action for both of us. If the link expires, I will
-							understand it wasn't the right time, and the spot will be offered
-							to the next person.
+						<BodyBase className="text-lg leading-relaxed mt-4">
+							This way, we both know we're stepping into something that feels
+							genuinely right — not rushed, not forced, and not guesswork.
 						</BodyBase>
 					</div>
 
-					<div className="text-center">
-						<div className="mt-6 mb-4">
-							<BodySmall className="text-text-tertiary">
-								Ready to see if we're a fit?
-							</BodySmall>
+					{/* CTA Buttons */}
+					<div className="text-center mt-12">
+						<div className="mb-6">
+							<BodyBase className="text-lg font-medium">
+								Ready to start with Step 1?
+							</BodyBase>
 						</div>
-						<div className="flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center mb-4">
+						<div className="flex flex-col gap-2 sm:gap-4 justify-center mb-4">
 							<Link
 								to="https://calendar.app.google/DzX2xMDgSeyRDGhU7"
 								target="_blank"
-								className="inline-flex items-center px-8 py-4 bg-primary text-white rounded-lg font-medium text-lg transition-colors duration-200 hover:bg-primary-hover focus:outline-none focus:ring-4 focus:ring-primary/20 mb-4"
+								className="items-center px-8 py-4 bg-primary text-white rounded-lg font-medium text-lg transition-colors duration-200 hover:bg-primary-hover focus:outline-none focus:ring-4 focus:ring-primary/20 mb-4"
 							>
-								Book Your 30min Blueprint Session HERE →
-							</Link>
-							<Link
-								to="https://calendar.app.google/WCB77cGccLVLPp7S9"
-								target="_blank"
-								className="inline-flex items-center px-8 py-4 bg-primary text-white rounded-lg font-medium text-lg transition-colors duration-200 hover:bg-primary-hover focus:outline-none focus:ring-4 focus:ring-primary/20 mb-4"
-							>
-								Book Your 90min Blueprint Session HERE →
+								Book Your (up to) 40min Connection Call HERE →
 							</Link>
 						</div>
-						<div className="mt-6 mb-1 space-y-2">
-							<BodySmall className="text-text-tertiary hover:underline">
-								<Link to="/book-call">
-									Learn more about how booking works →
-								</Link>
-							</BodySmall>
+						<div className="mb-6">
+							<BodyBase className="text-lg font-medium">
+								Already feeling the vibe and wanting to get into work directly ?
+							</BodyBase>
+						</div>
+						<div className="flex flex-col gap-2 sm:gap-4 justify-center mb-4">
+							<Link
+								to="https://buy.stripe.com/14A7sK1IH4K8bY56OMgrS00"
+								target="_blank"
+								className="items-center px-8 py-4 bg-primary text-white rounded-lg font-medium text-lg transition-colors duration-200 hover:bg-primary-hover focus:outline-none focus:ring-4 focus:ring-primary/20 mb-4"
+							>
+								Book Your 90min First Session HERE →
+							</Link>
+						</div>
+						<div className="mt-6 space-y-2">
 							<BodySmall className="text-text-tertiary hover:underline">
 								<Link to="/faq">Frequently Asked Questions →</Link>
 							</BodySmall>
