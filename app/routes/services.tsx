@@ -46,6 +46,32 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Services() {
 	const tierPricingId = useId();
+
+	// Pricing (3 total payments) — pay-in-full is discounted
+	const tiers = {
+		coCreator: {
+			payInFull: 1500,
+			installment: 550, // total 1650
+		},
+		founders: {
+			payInFull: 2400,
+			installment: 850, // total 2550
+		},
+		standard: {
+			payInFull: 4000,
+			installment: 1450, // total 4350
+		},
+	};
+
+	const formatUSD = (amount: number) =>
+		amount.toLocaleString("en-US", {
+			style: "currency",
+			currency: "USD",
+			maximumFractionDigits: 0,
+		});
+
+	const installmentTotal = (installment: number) => installment * 3;
+
 	return (
 		<>
 			{/* Hero Section - Client Centered Value Prop */}
@@ -59,6 +85,7 @@ export default function Services() {
 							<Sparkles className="w-4 h-4" />
 							<span>A Personal Invitation to you</span>
 						</div>
+
 						<H1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary mb-8 leading-tight">
 							The Re-Architect's Journey
 						</H1>
@@ -68,6 +95,58 @@ export default function Services() {
 							unique blueprint, recover from burnout, and build a life that
 							actually works for your brain.
 						</p>
+
+						{/* Felt-experience mirror (resonance) */}
+						<div className="mt-10 max-w-2xl mx-auto text-left bg-surface/70 border border-primary/10 rounded-2xl p-6 md:p-7 shadow-sm">
+							<ul className="space-y-3 text-text-secondary">
+								<li className="flex gap-3 items-start">
+									<div className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
+									<span>You look functional. You’re running on overdrive.</span>
+								</li>
+								<li className="flex gap-3 items-start">
+									<div className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
+									<span>You can do hard things… until you hit the wall.</span>
+								</li>
+								<li className="flex gap-3 items-start">
+									<div className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
+									<span>
+										You don’t need more discipline. You need a life that fits
+										your wiring.
+									</span>
+								</li>
+							</ul>
+						</div>
+
+						{/* Primary CTAs up top */}
+						<div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+							<Link
+								to="https://calendar.app.google/DzX2xMDgSeyRDGhU7"
+								target="_blank"
+								className="inline-flex items-center justify-center px-8 py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-primary-hover transition-all shadow-lg shadow-primary/20"
+							>
+								Book Your Vibe Check (Free){" "}
+								<ArrowRight className="ml-2 w-5 h-5" />
+							</Link>
+
+							<Link
+								to="https://buy.stripe.com/14A7sK1IH4K8bY56OMgrS00"
+								target="_blank"
+								className="inline-flex items-center justify-center px-8 py-4 bg-white border border-primary/20 text-primary rounded-xl font-bold text-lg hover:bg-primary-soft transition-colors shadow-sm"
+							>
+								Book a 90-min Trial Session ($90)
+							</Link>
+						</div>
+
+						{/* Strong line moved up (safety framing) */}
+						<div className="mt-8 max-w-3xl mx-auto bg-primary-soft/40 border border-primary/10 rounded-2xl p-6 flex gap-4 items-start text-left">
+							<Shield className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
+							<BodyBase className="text-text-secondary">
+								Because most of us—especially those with AuDHD—need{" "}
+								<strong>safety before structure</strong>,{" "}
+								<strong>clarity before commitment</strong>, and{" "}
+								<strong>experience before investment</strong>.
+							</BodyBase>
+						</div>
 					</div>
 				</Container>
 			</section>
@@ -170,7 +249,7 @@ export default function Services() {
 						</BodyLarge>
 					</div>
 
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
 						<div className="bg-surface border border-border rounded-2xl p-8 relative overflow-hidden group transition-all duration-300 ease-in-out shadow-sm hover:shadow-md transform">
 							<div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity duration-500 ease-in-out">
 								<Calendar className="w-24 h-24" />
@@ -179,7 +258,9 @@ export default function Services() {
 								16
 							</div>
 							<div className="relative z-10">
-								<H3 className="text-xl font-bold text-primary mb-3">Duration</H3>
+								<H3 className="text-xl font-bold text-primary mb-3">
+									Duration
+								</H3>
 								<BodyBase className="text-text-secondary">
 									A 4-month (16-week) deep dive to allow for real, sustainable
 									change.
@@ -217,11 +298,47 @@ export default function Services() {
 									Responsive Support
 								</H3>
 								<BodyBase className="text-text-secondary">
-									Up to 2 weekly, 20-minute "Spotlight Sessions" on demand for
-									real-time implementation support.
+									Up to 2 weekly, 20-minute “Spotlight Sessions” for real-time
+									implementation support (scripts, stuck moments, quick decisions).
 								</BodyBase>
+								<BodySmall className="text-text-tertiary mt-3">
+									Request by message/email. I aim to respond within 1–2 business
+									days (weekdays).
+								</BodySmall>
 							</div>
 						</div>
+					</div>
+
+					{/* What sessions feel like */}
+					<div className="max-w-4xl mx-auto bg-surface border border-border rounded-2xl p-8 md:p-10 mb-12">
+						<H3 className="text-xl font-bold text-primary mb-4">
+							What sessions feel like (most weeks)
+						</H3>
+						<ul className="space-y-3 text-text-secondary">
+							<li className="flex gap-3 items-start">
+								<CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+								<span>
+									We start with a quick capacity check (deep dive vs stabilize).
+								</span>
+							</li>
+							<li className="flex gap-3 items-start">
+								<CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+								<span>
+									We pick one focus and make it smaller than your brain expects.
+								</span>
+							</li>
+							<li className="flex gap-3 items-start">
+								<CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+								<span>We leave with a Plan A and a low-spoons Plan B.</span>
+							</li>
+							<li className="flex gap-3 items-start">
+								<CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+								<span>
+									We do a friction forecast (“what might derail this?”) and
+									adjust.
+								</span>
+							</li>
+						</ul>
 					</div>
 
 					<div className="bg-surface border border-border rounded-2xl p-8 md:p-10 max-w-4xl mx-auto flex gap-6 items-start">
@@ -241,6 +358,33 @@ export default function Services() {
 								highest-quality engagement.
 							</BodyBase>
 						</div>
+					</div>
+
+					{/* ✅ NEW: Overwhelmed → start here (right before pricing) */}
+					<div className="mt-12 max-w-4xl mx-auto bg-primary-soft/35 border border-primary/15 rounded-2xl p-7 md:p-8 flex flex-col md:flex-row gap-5 items-start md:items-center justify-between">
+						<div className="flex gap-4 items-start">
+							<div className="p-3 bg-white rounded-xl shadow-sm">
+								<Shield className="w-6 h-6 text-primary" />
+							</div>
+							<div>
+								<H4 className="text-primary mb-1">
+									If you’re overwhelmed, start here.
+								</H4>
+								<BodySmall className="text-text-secondary">
+									You don’t have to decide everything today. Book the free Vibe
+									Check, and we’ll find the next tiny step together—without
+									pressure.
+								</BodySmall>
+							</div>
+						</div>
+
+						<Link
+							to="https://calendar.app.google/DzX2xMDgSeyRDGhU7"
+							target="_blank"
+							className="inline-flex items-center justify-center px-7 py-3 bg-primary text-white rounded-xl font-bold hover:bg-primary-hover transition-all shadow-md shadow-primary/20 w-full md:w-auto"
+						>
+							Book Vibe Check <ArrowRight className="ml-2 w-5 h-5" />
+						</Link>
 					</div>
 				</Container>
 			</Section>
@@ -274,19 +418,34 @@ export default function Services() {
 								<H3 className="text-2xl font-bold text-primary mb-2">
 									Co-Creator
 								</H3>
-								<div className="flex items-baseline justify-center gap-1 mb-2">
+
+								<div className="flex items-baseline justify-center gap-1 mb-1">
 									<span className="text-4xl font-bold text-text-primary">
-										$1,500
+										{formatUSD(tiers.coCreator.payInFull)}
 									</span>
-									<span className="text-text-tertiary">/ total</span>
+									<span className="text-text-tertiary">/ pay in full</span>
 								</div>
-								<BodySmall className="text-primary font-medium">
+
+								<BodySmall className="text-text-tertiary">
+									or 3 payments of{" "}
+									<span className="font-medium text-text-secondary">
+										{formatUSD(tiers.coCreator.installment)}
+									</span>{" "}
+									(total{" "}
+									<span className="font-medium text-text-secondary">
+										{formatUSD(installmentTotal(tiers.coCreator.installment))}
+									</span>
+									)
+								</BodySmall>
+
+								<BodySmall className="text-primary font-medium mt-3">
 									1 Spot Left
 								</BodySmall>
 								<BodySmall className="text-text-tertiary line-through mt-1">
-									Full Value: $4,000
+									Full Value: {formatUSD(tiers.standard.payInFull)}
 								</BodySmall>
 							</div>
+
 							<ul className="space-y-4 mb-8">
 								<li className="flex gap-3 text-sm text-text-secondary">
 									<CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
@@ -294,18 +453,16 @@ export default function Services() {
 								</li>
 								<li className="flex gap-3 text-sm text-text-secondary">
 									<CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
-									<span>Detailed feedback shapes the program</span>
+									<span>
+										Feedback is lightweight and optional (2–3 minutes after
+										sessions)
+									</span>
 								</li>
 								<li className="flex gap-3 text-sm text-text-secondary">
 									<CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
 									<span>Best value exchange</span>
 								</li>
 							</ul>
-							<div className="text-center pt-4 border-t border-border/50">
-								<BodySmall className="text-text-tertiary">
-									Payment plan: 3 x $550
-								</BodySmall>
-							</div>
 						</div>
 
 						{/* Founder's Tier */}
@@ -314,28 +471,38 @@ export default function Services() {
 								<H3 className="text-2xl font-bold text-text-primary mb-2">
 									Founder's
 								</H3>
-								<div className="flex items-baseline justify-center gap-1 mb-2">
+
+								<div className="flex items-baseline justify-center gap-1 mb-1">
 									<span className="text-4xl font-bold text-text-secondary">
-										$2,400
+										{formatUSD(tiers.founders.payInFull)}
 									</span>
-									<span className="text-text-tertiary">/ total</span>
+									<span className="text-text-tertiary">/ pay in full</span>
 								</div>
-								<BodySmall className="text-text-secondary">
+
+								<BodySmall className="text-text-tertiary">
+									or 3 payments of{" "}
+									<span className="font-medium text-text-secondary">
+										{formatUSD(tiers.founders.installment)}
+									</span>{" "}
+									(total{" "}
+									<span className="font-medium text-text-secondary">
+										{formatUSD(installmentTotal(tiers.founders.installment))}
+									</span>
+									)
+								</BodySmall>
+
+								<BodySmall className="text-text-secondary mt-3">
 									6 Spots Available
 								</BodySmall>
 								<BodySmall className="text-text-tertiary line-through mt-1">
-									Full Value: $4,000
+									Full Value: {formatUSD(tiers.standard.payInFull)}
 								</BodySmall>
 							</div>
+
 							<BodySmall className="text-text-secondary mb-6 text-center leading-relaxed">
 								Refined by Co-Creator feedback. A balance between a proven
 								framework and collaborative refinement.
 							</BodySmall>
-							<div className="text-center pt-4 border-t border-border/50">
-								<BodySmall className="text-text-tertiary">
-									Payment plan: 3 x $850
-								</BodySmall>
-							</div>
 						</div>
 
 						{/* Standard Investment */}
@@ -344,25 +511,50 @@ export default function Services() {
 								<H3 className="text-2xl font-bold text-text-primary mb-2">
 									Standard
 								</H3>
-								<div className="flex items-baseline justify-center gap-1 mb-2">
+
+								<div className="flex items-baseline justify-center gap-1 mb-1">
 									<span className="text-4xl font-bold text-text-secondary">
-										$4,000
+										{formatUSD(tiers.standard.payInFull)}
 									</span>
-									<span className="text-text-tertiary">/ total</span>
+									<span className="text-text-tertiary">/ pay in full</span>
 								</div>
-								<BodySmall className="text-text-secondary">
+
+								<BodySmall className="text-text-tertiary">
+									or 3 payments of{" "}
+									<span className="font-medium text-text-secondary">
+										{formatUSD(tiers.standard.installment)}
+									</span>{" "}
+									(total{" "}
+									<span className="font-medium text-text-secondary">
+										{formatUSD(installmentTotal(tiers.standard.installment))}
+									</span>
+									)
+								</BodySmall>
+
+								<BodySmall className="text-text-secondary mt-3">
 									Future Pricing
 								</BodySmall>
 							</div>
+
 							<BodySmall className="text-text-secondary mb-6 text-center leading-relaxed">
 								The established program rate after all founding spots are
 								filled.
 							</BodySmall>
-							<div className="text-center pt-4 border-t border-border/50">
-								<BodySmall className="text-text-tertiary">
-									Payment plan: 3 x $1,350
-								</BodySmall>
-							</div>
+						</div>
+					</div>
+
+					{/* Payment explanation (safety + encouragement for pay-in-full) */}
+					<div className="mt-10 max-w-4xl mx-auto bg-primary-soft/30 p-8 rounded-2xl text-left border border-primary/10 flex gap-4 items-start">
+						<Shield className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
+						<div>
+							<H4 className="text-lg font-bold text-primary mb-2">
+								About payment options
+							</H4>
+							<p className="text-text-secondary">
+								<strong>Pay-in-full is discounted.</strong> Payment plans include
+								a small continuity buffer because I reserve a limited number of
+								client spots and protect that capacity over four months.
+							</p>
 						</div>
 					</div>
 				</Container>
@@ -445,6 +637,17 @@ export default function Services() {
 						</p>
 					</div>
 
+					{/* Mid-page CTA (helpful for scroll drop-off) */}
+					<div className="mt-12 text-center">
+						<Link
+							to="https://calendar.app.google/DzX2xMDgSeyRDGhU7"
+							target="_blank"
+							className="inline-flex items-center px-7 py-3 bg-primary text-white rounded-xl font-bold hover:bg-primary-hover transition-all shadow-md shadow-primary/20"
+						>
+							Book Your Vibe Check <ArrowRight className="ml-2 w-5 h-5" />
+						</Link>
+					</div>
+
 					<div className="mt-12 text-center">
 						<p className="text-lg text-text-secondary max-w-3xl mx-auto">
 							From my Substack,{" "}
@@ -453,9 +656,9 @@ export default function Services() {
 								target="_blank"
 								className="text-primary font-medium hover:underline underline-offset-4 decoration-2"
 							>
-								"But you don't look autistic,"
-							</Link>{" "}
-							to this program, my mission is the same: to help us feel seen,
+								"But you don't look autistic"
+							</Link>
+							, to this program, my mission is the same: to help us feel seen,
 							understood, and empowered.
 						</p>
 					</div>
@@ -488,12 +691,45 @@ export default function Services() {
 											Free • 30-40 min
 										</span>
 									</div>
+
 									<p className="text-text-secondary mb-4 text-lg">
-										Before anything else, let's simply meet as humans. No
-										pitch, no pressure. Just space to feel it out together.
+										Before anything else, let's simply meet as humans. No pitch,
+										no pressure. Just space to feel it out together.
 									</p>
+
+									{/* Mini agenda (reduces ambiguity anxiety) */}
+									<div className="bg-surface-alt/60 border border-border rounded-xl p-4 mb-4">
+										<BodySmall className="text-text-secondary font-medium mb-3">
+											What we’ll do:
+										</BodySmall>
+										<ul className="space-y-2 text-sm text-text-secondary">
+											<li className="flex gap-3 items-start">
+												<div className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
+												<span>Quick capacity check + what’s bringing you here</span>
+											</li>
+											<li className="flex gap-3 items-start">
+												<div className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
+												<span>
+													Map the stuck loop (burnout / masking / EF / relationships)
+												</span>
+											</li>
+											<li className="flex gap-3 items-start">
+												<div className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
+												<span>
+													Identify what kind of support would feel safe + workable
+												</span>
+											</li>
+											<li className="flex gap-3 items-start">
+												<div className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
+												<span>Decide next step (trial session or not)</span>
+											</li>
+										</ul>
+									</div>
+
 									<p className="text-sm text-text-tertiary">
-										<strong>Goal:</strong> mutual clarity and comfort.
+										<strong>Goal:</strong> mutual clarity and comfort. You’ll
+										leave with at least one small next step—no matter what you
+										decide.
 									</p>
 								</div>
 							</div>
@@ -514,12 +750,12 @@ export default function Services() {
 									</div>
 									<p className="text-text-secondary mb-4 text-lg">
 										Experience what it's like to be coached in this space. A
-										deep, practical taste of the work. If we continue, this
-										fee is subtracted from the total.
+										deep, practical taste of the work. If we continue, this fee
+										is subtracted from the total.
 									</p>
 									<p className="text-sm text-text-tertiary">
-										<strong>Goal:</strong> experience the process, not just
-										the promise.
+										<strong>Goal:</strong> experience the process, not just the
+										promise.
 									</p>
 								</div>
 							</div>
@@ -540,8 +776,8 @@ export default function Services() {
 									</div>
 									<p className="text-text-secondary mb-4 text-lg">
 										We begin. A steady, flexibly structured space for real
-										change: less chaos, more clarity, and the freedom to move
-										at your own rhythm.
+										change: less chaos, more clarity, and the freedom to move at
+										your own rhythm.
 									</p>
 									<p className="text-sm text-text-tertiary">
 										<strong>Goal:</strong> long-term integration and

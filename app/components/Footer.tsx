@@ -86,7 +86,7 @@ export function Footer() {
 									href="/services"
 									className="text-text-secondary hover:text-primary transition-colors duration-200 text-sm leading-relaxed"
 								>
-									Book a Blueprint Call
+									Book a Vibe Check Call
 								</a>
 							</li>
 							<li>
