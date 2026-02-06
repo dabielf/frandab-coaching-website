@@ -16,7 +16,6 @@ export function MobileMenu() {
 	const navItems = [
 		{ path: "/", label: "Home" },
 		{ path: "/about", label: "About" },
-		// { path: "/services", label: "Work With Me" },
 		{ path: "/who-i-help", label: "Who I Help" },
 		{ path: "https://dabii.substack.com/", label: "Blog" },
 		{ path: "/faq", label: "FAQ" },
@@ -29,19 +28,16 @@ export function MobileMenu() {
 			<SheetTrigger asChild>
 				<button
 					type="button"
-					className="p-2 -mr-2 rounded-lg hover:bg-surface-alt transition-colors md:hidden cursor-pointer"
+					className="p-2 -mr-2 rounded-lg hover:bg-sd-sage/15 transition-colors md:hidden cursor-pointer"
 					aria-label={isOpen ? "Close menu" : "Open menu"}
 				>
-					<MenuIcon className="w-6 h-6" />
+					<MenuIcon className="w-6 h-6 text-sd-dim-text" />
 				</button>
 			</SheetTrigger>
 
-			{/* We override bg-background with bg-surface to match your theme preference.
-        The Sheet component automatically handles the portal/overlay behavior.
-      */}
 			<SheetContent
 				side="right"
-				className="w-80 bg-surface border-l border-border p-0"
+				className="w-80 bg-sd-cream border-l border-sd-sage/20 p-0"
 			>
 				<SheetHeader className="sr-only">
 					<SheetTitle>Mobile Navigation</SheetTitle>
@@ -49,29 +45,36 @@ export function MobileMenu() {
 				</SheetHeader>
 
 				<div className="flex flex-col h-full py-6 px-6 overflow-y-auto">
-					{/* Custom Close Button Area (optional, Sheet has a default one too, but this matches your layout) */}
-					<div className="flex justify-end mb-8">
-						{/* The default Sheet close button is absolute positioned, 
-                so we can just use spacing here or rely on the default X */}
-					</div>
+					<div className="flex justify-end mb-8" />
 
-					<nav className="flex flex-col space-y-4 mt-8">
-						{navItems.map((item) => (
+					<nav className="flex flex-col space-y-2 mt-8 flex-1">
+						{navItems.slice(0, -1).map((item) => (
 							<Link
 								key={item.path}
 								to={item.path}
 								target={item.path.startsWith("http") ? "_blank" : "_self"}
 								onClick={() => setIsOpen(false)}
-								className={`block py-3 px-4 rounded-lg text-lg font-medium transition-colors ${
+								className={`block py-3 px-4 rounded-lg font-body text-lg font-medium transition-colors ${
 									location.pathname === item.path
-										? "bg-primary-soft text-primary"
-										: "text-secondary hover:bg-surface-alt hover:text-primary"
+										? "bg-sd-sage/15 text-sd-emerald"
+										: "text-sd-dim-text hover:bg-sd-sage/10 hover:text-sd-emerald"
 								}`}
 							>
 								{item.label}
 							</Link>
 						))}
 					</nav>
+
+					{/* CTA button at bottom */}
+					<div className="pt-4 pb-2">
+						<Link
+							to="/services"
+							onClick={() => setIsOpen(false)}
+							className="block w-full text-center py-3 px-6 rounded-full bg-sd-deep-green text-white font-body font-bold text-lg hover:opacity-90 transition-opacity"
+						>
+							Work With Me
+						</Link>
+					</div>
 				</div>
 			</SheetContent>
 		</Sheet>

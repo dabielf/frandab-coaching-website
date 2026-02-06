@@ -12,8 +12,8 @@ interface TextProps extends React.HTMLAttributes<HTMLParagraphElement> {
 
 export function H1({ children, className, ...props }: HeadingProps) {
   return (
-    <h1 
-      className={cn("text-3xl md:text-4xl font-semibold tracking-tight text-text-primary", className)} 
+    <h1
+      className={cn("font-heading text-3xl md:text-4xl font-semibold tracking-tight text-sd-heading", className)}
       {...props}
     >
       {children}
@@ -23,8 +23,8 @@ export function H1({ children, className, ...props }: HeadingProps) {
 
 export function H2({ children, className, ...props }: HeadingProps) {
   return (
-    <h2 
-      className={cn("text-2xl md:text-3xl font-semibold tracking-tight text-text-primary", className)} 
+    <h2
+      className={cn("font-heading text-2xl md:text-3xl font-semibold tracking-tight text-sd-heading", className)}
       {...props}
     >
       {children}
@@ -34,8 +34,8 @@ export function H2({ children, className, ...props }: HeadingProps) {
 
 export function H3({ children, className, ...props }: HeadingProps) {
   return (
-    <h3 
-      className={cn("text-xl md:text-2xl font-semibold text-text-primary", className)} 
+    <h3
+      className={cn("font-heading text-xl md:text-2xl font-semibold text-sd-heading", className)}
       {...props}
     >
       {children}
@@ -45,8 +45,8 @@ export function H3({ children, className, ...props }: HeadingProps) {
 
 export function H4({ children, className, ...props }: HeadingProps) {
   return (
-    <h4 
-      className={cn("text-lg md:text-xl font-semibold text-text-primary", className)} 
+    <h4
+      className={cn("font-heading text-lg md:text-xl font-semibold text-sd-heading", className)}
       {...props}
     >
       {children}
@@ -56,8 +56,8 @@ export function H4({ children, className, ...props }: HeadingProps) {
 
 export function BodyLarge({ children, className, ...props }: TextProps) {
   return (
-    <p 
-      className={cn("text-lg leading-relaxed text-text-primary", className)} 
+    <p
+      className={cn("font-body text-lg leading-[2] text-sd-dim-text", className)}
       {...props}
     >
       {children}
@@ -67,8 +67,8 @@ export function BodyLarge({ children, className, ...props }: TextProps) {
 
 export function BodyBase({ children, className, ...props }: TextProps) {
   return (
-    <p 
-      className={cn("text-base leading-relaxed text-text-primary", className)} 
+    <p
+      className={cn("font-body text-base leading-[2] text-sd-dim-text", className)}
       {...props}
     >
       {children}
@@ -78,8 +78,8 @@ export function BodyBase({ children, className, ...props }: TextProps) {
 
 export function BodySmall({ children, className, ...props }: TextProps) {
   return (
-    <p 
-      className={cn("text-sm leading-relaxed text-text-primary", className)} 
+    <p
+      className={cn("font-body text-sm leading-[2] text-sd-dim-text", className)}
       {...props}
     >
       {children}
@@ -89,8 +89,19 @@ export function BodySmall({ children, className, ...props }: TextProps) {
 
 export function Caption({ children, className, ...props }: TextProps) {
   return (
-    <p 
-      className={cn("text-xs uppercase tracking-wider font-medium text-text-tertiary", className)} 
+    <p
+      className={cn("font-body text-xs uppercase tracking-wider font-medium text-sd-dim-text", className)}
+      {...props}
+    >
+      {children}
+    </p>
+  );
+}
+
+export function Handwritten({ children, className, ...props }: TextProps) {
+  return (
+    <p
+      className={cn("font-handwritten text-sd-gold", className)}
       {...props}
     >
       {children}
