@@ -43,14 +43,14 @@ export default function BookCall() {
 				<AmbientBlob color="mist" position="bottom-[-15%] left-[-10%]" size="35vw" />
 
 				<div className="max-w-3xl mx-auto px-6 relative z-10 text-center">
-					<p className="font-hand text-gs-ink text-2xl mb-6 rotate-[-3deg]">
+					<p className="font-hand text-gs-ink text-3xl mb-6 rotate-[-3deg]">
 						let's do this!
 					</p>
 
-					<h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-8 font-semibold leading-[1.2] text-gs-heading tracking-[-0.01em]">
+					<h1 className="font-serif text-4xl md:text-6xl mb-8 font-semibold leading-[1.2] text-gs-heading tracking-[-0.01em]">
 						Book Your Free{" "}
 						<br />
-						<span className="text-gs-ink">Connection Call</span>
+						<span className="text-gs-ink">Vibe Check Call</span>
 					</h1>
 
 					<PillDivider className="mb-8" />
@@ -73,7 +73,6 @@ export default function BookCall() {
 						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							What to Expect
 						</h2>
-						<PillDivider className="mb-6" />
 						<p className="font-hand text-gs-ink text-2xl">
 							no scripts, just real talk
 						</p>
@@ -125,7 +124,6 @@ export default function BookCall() {
 						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							Booking Details
 						</h2>
-						<PillDivider className="mb-6" />
 						<p className="font-hand text-gs-ink text-2xl">
 							the practical stuff
 						</p>
@@ -204,7 +202,6 @@ export default function BookCall() {
 						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							After You Book
 						</h2>
-						<PillDivider className="mb-6" />
 						<p className="font-hand text-gs-ink text-2xl">
 							three easy steps
 						</p>
@@ -241,7 +238,6 @@ export default function BookCall() {
 						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							Common Concerns
 						</h2>
-						<PillDivider className="mb-6" />
 						<p className="font-hand text-gs-ink text-2xl">
 							your brain is probably saying...
 						</p>
@@ -268,12 +264,12 @@ export default function BookCall() {
 				<AmbientBlob color="mist" position="bottom-[-10%] left-[-5%]" size="30vw" />
 
 				<div className="max-w-2xl mx-auto px-6 relative z-10 text-center">
-					<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
+					<h2 className="font-serif text-4xl md:text-5xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 						Ready? Choose your time and let's start this journey
 					</h2>
 					<PillDivider className="mb-8" />
 
-					<p className="font-hand text-gs-ink text-2xl mb-12 rotate-[-1deg]">
+					<p className="font-hand text-gs-ink text-3xl mb-12 rotate-[-1deg]">
 						just a conversation, no commitments
 					</p>
 
@@ -282,7 +278,7 @@ export default function BookCall() {
 						target="_blank"
 						className="group inline-flex items-center gap-3 bg-gs-ink text-white rounded-2xl px-10 py-5 font-sans font-medium text-xl shadow-[0_4px_12px_rgba(67,91,114,0.15)] hover:-translate-y-0.5 hover:bg-gs-ink-hover hover:shadow-[0_6px_16px_rgba(67,91,114,0.2)] transition-all duration-300 gs-press"
 					>
-						Let's work together
+						Book Your Free Vibe Check
 						<ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
 					</Link>
 				</div>

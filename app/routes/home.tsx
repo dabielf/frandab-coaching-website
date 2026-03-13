@@ -107,24 +107,19 @@ export default function Home() {
 			{/* ═══════════════════════════════════════════
 			    HERO
 			    ═══════════════════════════════════════════ */}
-			<section className="relative pt-20 pb-24 md:pt-32 md:pb-40 overflow-hidden bg-gs-cream">
+			<section className="relative pt-14 pb-16 md:pt-32 md:pb-40 overflow-hidden bg-gs-cream">
 				{/* Ambient blobs */}
 				<AmbientBlob color="gold" position="top-[-10%] right-[-10%]" size="50vw" />
 				<AmbientBlob color="mist" position="bottom-[-20%] left-[-10%]" size="40vw" />
 
 				<div className="max-w-3xl mx-auto px-6 relative z-10 text-center">
 					{/* Handwritten welcome */}
-					<p className="font-hand text-gs-ink text-2xl mb-6 rotate-[-2deg] gs-hero-enter gs-hero-delay-1">
+					<p className="font-hand text-gs-ink text-2xl md:text-3xl mb-4 md:mb-6 rotate-[-2deg] gs-hero-enter gs-hero-delay-1">
 						oh hello there!
 					</p>
 
-					{/* Uppercase tagline */}
-					<p className="font-sans text-sm font-medium mb-8 text-gs-ink tracking-[0.35em] uppercase gs-hero-enter gs-hero-delay-2">
-						Neuro-Affirming Coaching for Late-Diagnosed Adults
-					</p>
-
 					{/* Main headline */}
-					<h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-8 font-semibold leading-[1.2] text-gs-heading tracking-[-0.01em] gs-hero-enter gs-hero-delay-3">
+					<h1 className="font-serif text-4xl md:text-6xl mb-6 md:mb-8 font-semibold leading-[1.2] text-gs-heading tracking-[-0.01em] gs-hero-enter gs-hero-delay-3">
 						Your Brain Isn't Too Much.{" "}
 						<br />
 						<span className="text-gs-ink">
@@ -136,11 +131,9 @@ export default function Home() {
 					<PillDivider className="mb-8 gs-hero-enter gs-hero-delay-4" />
 
 					{/* Subtitle */}
-					<p className="font-sans text-xl md:text-2xl max-w-xl mx-auto mb-16 text-gs-body leading-relaxed gs-hero-enter gs-hero-delay-5">
-						<strong className="text-gs-heading">
-							Neuro-affirming coaching for late-diagnosed AuDHD adults who are
-							ready to stop fighting their brain and start working with it.
-						</strong>
+					<p className="font-sans text-lg md:text-2xl max-w-xl mx-auto mb-8 md:mb-16 text-gs-body leading-relaxed gs-hero-enter gs-hero-delay-5">
+						Neuro-affirming coaching for late-diagnosed AuDHD adults who are
+						ready to stop fighting their brain and start working with it.
 					</p>
 
 					{/* Primary CTA */}
@@ -148,7 +141,7 @@ export default function Home() {
 						to="/services"
 						className="group inline-flex items-center gap-3 bg-gs-ink text-white rounded-2xl px-10 py-5 font-sans font-medium text-xl shadow-[0_4px_12px_rgba(67,91,114,0.15)] hover:-translate-y-0.5 hover:bg-gs-ink-hover hover:shadow-[0_6px_16px_rgba(67,91,114,0.2)] transition-all duration-300 gs-press gs-hero-enter gs-hero-delay-5"
 					>
-						Learn about the Re-Architect's Journey
+						Explore the Coaching Program
 						<ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
 					</Link>
 				</div>
@@ -165,8 +158,7 @@ export default function Home() {
 						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							Does This Sound Like Your Brain?
 						</h2>
-						<PillDivider className="mb-6" />
-						<p className="font-hand text-gs-ink text-2xl rotate-[-2deg]">
+						<p className="font-hand text-gs-ink text-3xl rotate-[-2deg]">
 							what if none of these are flaws?
 						</p>
 					</div>
@@ -186,17 +178,15 @@ export default function Home() {
 						))}
 					</div>
 
-					<GentleCard className="max-w-3xl mx-auto">
-						<div className="text-center space-y-4">
-							<p className="font-sans text-lg md:text-xl font-medium text-gs-heading leading-relaxed">
-								You're not broken. You're not failing. You're AuDHD in a world
-								that wasn't designed for your operating system.
-							</p>
-							<p className="font-hand text-gs-ink text-2xl rotate-[2deg]">
-								(yes, YOU. the one reading this right now)
-							</p>
-						</div>
-					</GentleCard>
+					<div className="max-w-3xl mx-auto text-center space-y-5">
+						<p className="font-serif text-2xl md:text-3xl font-semibold text-gs-heading leading-snug tracking-[-0.01em]">
+							You're not broken. You're not failing. You're AuDHD in a world
+							that wasn't designed for your operating system.
+						</p>
+						<p className="font-hand text-gs-ink text-3xl rotate-[2deg]">
+							(yes, YOU. the one reading this right now)
+						</p>
+					</div>
 				</div>
 			</section>
 
@@ -211,7 +201,6 @@ export default function Home() {
 						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							Hi, I'm Francois
 						</h2>
-						<PillDivider />
 					</div>
 
 					<div className="flex flex-col lg:flex-row gap-12 items-center">
@@ -274,8 +263,7 @@ export default function Home() {
 						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							How I Can Help
 						</h2>
-						<PillDivider className="mb-6" />
-						<p className="font-hand text-gs-ink text-2xl rotate-[1deg]">
+						<p className="font-hand text-gs-ink text-3xl rotate-[1deg]">
 							pick your adventure!
 						</p>
 					</div>
@@ -300,7 +288,7 @@ export default function Home() {
 										to="/services"
 										className="group inline-flex items-center gap-2 font-sans font-medium text-gs-ink hover:gap-3 transition-all duration-300"
 									>
-										Learn More
+										See how it works
 										<ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
 									</Link>
 								</div>
@@ -321,8 +309,7 @@ export default function Home() {
 						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							What Clients Say
 						</h2>
-						<PillDivider className="mb-6" />
-						<p className="font-hand text-gs-ink text-2xl rotate-[-1deg]">
+						<p className="font-hand text-gs-ink text-3xl rotate-[-1deg]">
 							in their own words
 						</p>
 					</div>
@@ -330,7 +317,7 @@ export default function Home() {
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 						{testimonials.map((t, i) => (
 							<GentleCard key={i}>
-								<p className="font-sans text-lg md:text-xl italic mb-6 text-gs-heading leading-relaxed">
+								<p className="font-sans text-xl md:text-2xl italic mb-6 text-gs-heading leading-relaxed">
 									"{t.quote}"
 								</p>
 								<div className="flex items-center gap-3">
@@ -353,17 +340,16 @@ export default function Home() {
 				<AmbientBlob color="gold" position="bottom-[-10%] right-[-5%]" size="30vw" />
 
 				<FadeIn className="max-w-2xl mx-auto px-6 relative z-10 text-center">
-					<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
+					<h2 className="font-serif text-4xl md:text-5xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 						Ready to Stop Fighting Your Brain?
 					</h2>
-					<PillDivider className="mb-8" />
 
 					<p className="font-sans text-lg md:text-xl mb-4 text-gs-body leading-relaxed">
 						Your AuDHD brain isn't a bug—it's a feature. Let's figure out how
 						to work with your unique operating system instead of against it.
 					</p>
 
-					<p className="font-hand text-gs-ink text-2xl mb-12 rotate-[-1deg]">
+					<p className="font-hand text-gs-ink text-3xl mb-12 rotate-[-1deg]">
 						with kindness, curiosity, and a little bit of play
 					</p>
 
@@ -371,7 +357,7 @@ export default function Home() {
 						to="/services"
 						className="group inline-flex items-center gap-3 bg-gs-ink text-white rounded-2xl px-10 py-5 font-sans font-medium text-xl shadow-[0_4px_12px_rgba(67,91,114,0.15)] hover:-translate-y-0.5 hover:bg-gs-ink-hover hover:shadow-[0_6px_16px_rgba(67,91,114,0.2)] transition-all duration-300 gs-press"
 					>
-						Learn about the Re-Architect's Journey
+						Explore the Coaching Program
 						<ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
 					</Link>
 				</FadeIn>

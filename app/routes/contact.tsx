@@ -47,11 +47,11 @@ export default function Contact() {
 				<AmbientBlob color="mist" position="bottom-[-15%] left-[-10%]" size="35vw" />
 
 				<div className="max-w-3xl mx-auto px-6 relative z-10 text-center">
-					<p className="font-hand text-gs-ink text-2xl mb-6 rotate-[-2deg]">
+					<p className="font-hand text-gs-ink text-3xl mb-6 rotate-[-2deg]">
 						no perfect prose required
 					</p>
 
-					<h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-8 font-semibold leading-[1.2] text-gs-heading tracking-[-0.01em]">
+					<h1 className="font-serif text-4xl md:text-6xl mb-8 font-semibold leading-[1.2] text-gs-heading tracking-[-0.01em]">
 						Let's Connect{" "}
 						<br />
 						<span className="text-gs-ink">(On Your Terms)</span>
@@ -74,7 +74,6 @@ export default function Contact() {
 						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							Reaching Out Is Hard (I Get It)
 						</h2>
-						<PillDivider className="mb-6" />
 						<p className="font-hand text-gs-ink text-2xl">
 							just start wherever you are
 						</p>
@@ -184,7 +183,6 @@ export default function Contact() {
 						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							What Happens Next?
 						</h2>
-						<PillDivider className="mb-6" />
 						<p className="font-hand text-gs-ink text-2xl">
 							spoiler: nothing scary
 						</p>
@@ -223,7 +221,6 @@ export default function Contact() {
 						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							Still Overthinking It?
 						</h2>
-						<PillDivider className="mb-6" />
 						<p className="font-hand text-gs-ink text-2xl">
 							tap one and hit send — done
 						</p>
@@ -262,7 +259,6 @@ export default function Contact() {
 						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							My Promise to You
 						</h2>
-						<PillDivider className="mb-6" />
 						<p className="font-hand text-gs-ink text-2xl rotate-[-1deg]">
 							pinky promise
 						</p>
@@ -293,7 +289,7 @@ export default function Contact() {
 				<AmbientBlob color="gold" position="bottom-[-10%] right-[-5%]" size="30vw" />
 
 				<div className="max-w-2xl mx-auto px-6 relative z-10 text-center">
-					<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
+					<h2 className="font-serif text-4xl md:text-5xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 						Ready? Take a Deep Breath.
 					</h2>
 					<PillDivider className="mb-8" />
@@ -302,7 +298,7 @@ export default function Contact() {
 						The email is pre-filled — just hit send.
 					</p>
 
-					<p className="font-hand text-gs-ink text-2xl mb-12 rotate-[-1deg]">
+					<p className="font-hand text-gs-ink text-3xl mb-12 rotate-[-1deg]">
 						you've got this
 					</p>
 

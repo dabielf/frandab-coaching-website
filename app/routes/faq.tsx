@@ -249,11 +249,11 @@ export default function FAQ() {
 				<AmbientBlob color="mist" position="bottom-[-15%] left-[-10%]" size="35vw" />
 
 				<div className="max-w-3xl mx-auto px-6 text-center relative z-10">
-					<p className="font-hand text-gs-ink text-2xl mb-6 rotate-[-2deg]">
+					<p className="font-hand text-gs-ink text-3xl mb-6 rotate-[-2deg]">
 						we love a thorough question around here
 					</p>
 
-					<h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-gs-heading mb-8 leading-[1.2] tracking-[-0.01em]">
+					<h1 className="font-serif text-4xl md:text-6xl font-semibold text-gs-heading mb-8 leading-[1.2] tracking-[-0.01em]">
 						Questions from Fellow{" "}
 						<span className="text-gs-ink">Overthinkers</span>
 					</h1>
@@ -276,7 +276,6 @@ export default function FAQ() {
 						<h2 className="font-serif text-3xl md:text-4xl font-semibold text-gs-heading mb-4 tracking-[-0.01em]">
 							The Big Ones
 						</h2>
-						<PillDivider className="mb-6" />
 						<p className="font-hand text-gs-ink text-2xl rotate-[1deg]">
 							(the questions everyone asks first)
 						</p>
@@ -304,7 +303,6 @@ export default function FAQ() {
 						<h2 className="font-serif text-3xl md:text-4xl font-semibold text-gs-heading mb-4 tracking-[-0.01em]">
 							The Practical Stuff
 						</h2>
-						<PillDivider className="mb-6" />
 						<p className="font-hand text-gs-ink text-2xl rotate-[-2deg]">
 							equally important, just different vibes
 						</p>
@@ -329,12 +327,12 @@ export default function FAQ() {
 				<AmbientBlob color="gold" position="bottom-[-10%] right-[-5%]" size="30vw" />
 
 				<div className="max-w-2xl mx-auto px-6 text-center relative z-10">
-					<h2 className="font-serif text-3xl md:text-4xl font-semibold text-gs-heading mb-4 tracking-[-0.01em]">
+					<h2 className="font-serif text-4xl md:text-5xl font-semibold text-gs-heading mb-4 tracking-[-0.01em]">
 						Still Have Questions?
 					</h2>
 					<PillDivider className="mb-8" />
 
-					<p className="font-hand text-gs-ink text-2xl rotate-[-1deg] mb-6">
+					<p className="font-hand text-gs-ink text-3xl rotate-[-1deg] mb-6">
 						my inbox loves a good info-dump
 					</p>
 
@@ -352,7 +350,7 @@ export default function FAQ() {
 							to="/services"
 							className="group inline-flex items-center gap-3 bg-gs-surface border border-gs-mist text-gs-ink rounded-2xl px-10 py-5 font-sans font-medium text-lg md:text-xl shadow-[0_20px_40px_rgba(0,0,0,0.03)] hover:-translate-y-0.5 transition-all duration-300"
 						>
-							Learn about the Re-Architect's Journey
+							Explore the Coaching Program
 							<ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
 						</Link>
 					</div>

@@ -69,11 +69,11 @@ export default function About() {
 				<AmbientBlob color="mist" position="bottom-[-15%] left-[-10%]" size="35vw" />
 
 				<div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-					<p className="font-hand text-gs-ink text-2xl mb-6 rotate-[-2deg]">
+					<p className="font-hand text-gs-ink text-3xl mb-6 rotate-[-2deg]">
 						the origin story
 					</p>
 
-					<h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.2] text-gs-heading mb-8 tracking-[-0.01em]">
+					<h1 className="font-serif text-4xl md:text-6xl font-semibold leading-[1.2] text-gs-heading mb-8 tracking-[-0.01em]">
 						From "What's Wrong With Me?" <br className="hidden md:block" />
 						<span className="text-gs-ink">
 							to "Oh, That Explains Everything"
@@ -115,8 +115,7 @@ export default function About() {
 							<h2 className="font-serif text-3xl md:text-4xl font-semibold mb-4 text-gs-heading tracking-[-0.01em]">
 								My Late Diagnosis Story
 							</h2>
-							<PillDivider className="!mx-0 mb-4 !w-16" />
-							<p className="font-hand text-gs-ink text-2xl rotate-[-1deg]">
+							<p className="font-hand text-gs-ink text-3xl rotate-[-1deg]">
 								buckle up, it's a ride
 							</p>
 
@@ -129,11 +128,9 @@ export default function About() {
 								at once?
 							</p>
 
-							<GentleCard className="max-w-xl">
-								<p className="font-sans text-xl font-medium text-gs-ink leading-relaxed">
-									At 40, I finally got my answer: I'm AuDHD.
-								</p>
-							</GentleCard>
+							<p className="font-serif text-2xl md:text-3xl font-semibold text-gs-ink tracking-[-0.01em] leading-relaxed">
+								At 40, I finally got my answer: I'm AuDHD.
+							</p>
 
 							<p className="font-sans text-lg md:text-xl text-gs-body leading-relaxed">
 								The diagnosis didn't change who I am. It gave me the language to
@@ -183,8 +180,7 @@ export default function About() {
 						<h2 className="font-serif text-3xl md:text-4xl font-semibold mb-4 text-gs-heading tracking-[-0.01em]">
 							The Plot Twist That Changed Everything
 						</h2>
-						<PillDivider className="mb-4" />
-						<p className="font-hand text-gs-ink text-2xl rotate-[-1deg]">
+						<p className="font-hand text-gs-ink text-3xl rotate-[-1deg]">
 							plot twist of a lifetime
 						</p>
 
@@ -229,7 +225,6 @@ export default function About() {
 						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							What I Bring to Our Work
 						</h2>
-						<PillDivider className="mb-6" />
 						<p className="font-hand text-gs-ink text-2xl rotate-[-1deg]">
 							a whole toolkit of lived experience
 						</p>
@@ -267,7 +262,6 @@ export default function About() {
 							<h2 className="font-serif text-3xl md:text-4xl font-semibold mb-4 text-gs-heading tracking-[-0.01em]">
 								My Approach
 							</h2>
-							<PillDivider className="!mx-0 mb-6 !w-16" />
 							<p className="font-hand text-gs-ink text-2xl mb-8 rotate-[-2deg]">
 								no neurotypical playbooks here
 							</p>
@@ -328,7 +322,6 @@ export default function About() {
 					<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 						Beyond the Coaching
 					</h2>
-					<PillDivider className="mb-6" />
 					<p className="font-hand text-gs-ink text-2xl mb-12 rotate-[1deg]">
 						the nerdy stuff behind the scenes
 					</p>
@@ -363,11 +356,11 @@ export default function About() {
 				<AmbientBlob color="gold" position="bottom-[-10%] right-[-5%]" size="30vw" />
 
 				<div className="max-w-2xl mx-auto px-6 relative z-10 text-center">
-					<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
+					<h2 className="font-serif text-4xl md:text-5xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 						Ready to Connect?
 					</h2>
 					<PillDivider className="mb-8" />
-					<p className="font-hand text-gs-ink text-2xl mb-8 rotate-[-1deg]">
+					<p className="font-hand text-gs-ink text-3xl mb-8 rotate-[-1deg]">
 						let's figure this out together
 					</p>
 
@@ -382,7 +375,7 @@ export default function About() {
 						to="/services"
 						className="group inline-flex items-center gap-3 bg-gs-ink text-white rounded-2xl px-10 py-5 font-sans font-medium text-xl shadow-[0_4px_12px_rgba(67,91,114,0.15)] hover:-translate-y-0.5 hover:bg-gs-ink-hover hover:shadow-[0_6px_16px_rgba(67,91,114,0.2)] transition-all duration-300 gs-press"
 					>
-						Learn about the Re-Architect's Journey
+						Explore the Coaching Program
 						<ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
 					</Link>
 				</div>

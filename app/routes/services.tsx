@@ -89,11 +89,11 @@ export default function Services() {
 				<AmbientBlob color="mist" position="bottom-[-15%] left-[-10%]" size="35vw" />
 
 				<div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-					<p className="font-hand text-gs-ink text-2xl mb-6 rotate-[-2deg]">
+					<p className="font-hand text-gs-ink text-3xl mb-6 rotate-[-2deg]">
 						a personal invitation to you
 					</p>
 
-					<h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.2] text-gs-heading mb-8 tracking-[-0.01em]">
+					<h1 className="font-serif text-4xl md:text-6xl font-semibold leading-[1.2] text-gs-heading mb-8 tracking-[-0.01em]">
 						The Re-Architect's Journey
 					</h1>
 
@@ -167,7 +167,6 @@ export default function Services() {
 						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							A Radically Responsive, Client-Led Journey
 						</h2>
-						<PillDivider className="mb-6" />
 						<p className="font-hand text-gs-ink text-2xl">
 							you lead, i consult
 						</p>
@@ -229,7 +228,6 @@ export default function Services() {
 						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							The Coaching Container
 						</h2>
-						<PillDivider className="mb-6" />
 						<p className="font-hand text-gs-ink text-2xl">
 							the scaffolding for deep work
 						</p>
@@ -385,7 +383,6 @@ export default function Services() {
 						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							Founding Client Opportunities
 						</h2>
-						<PillDivider className="mb-6" />
 						<p className="font-hand text-gs-ink text-2xl rotate-[-1deg]">
 							transparent pricing, pinky promise
 						</p>
@@ -398,7 +395,7 @@ export default function Services() {
 					</p>
 					<div className="text-center mb-16">
 						<span className="font-sans text-sm font-medium text-gs-ink bg-gs-gold/40 inline-block px-4 py-2 rounded-full">
-							Applications are reviewed in the order they are received.
+							I review requests in the order I hear from folks.
 						</span>
 					</div>
 
@@ -568,7 +565,6 @@ export default function Services() {
 						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							How to Get Started
 						</h2>
-						<PillDivider className="mb-6" />
 						<p className="font-hand text-gs-ink text-2xl rotate-[1deg]">
 							three gentle steps
 						</p>
@@ -701,7 +697,7 @@ export default function Services() {
 								target="_blank"
 								className="inline-flex items-center px-6 py-3 bg-gs-surface border border-gs-mist text-gs-ink rounded-2xl font-sans font-medium hover:bg-gs-cream transition-all duration-300 shadow-[0_20px_40px_rgba(0,0,0,0.03)]"
 							>
-								Book Your 90min First Session
+								Book a 90-min Trial Session
 							</Link>
 						</div>
 

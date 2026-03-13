@@ -91,11 +91,11 @@ export default function WhoIHelp() {
 				<AmbientBlob color="mist" position="bottom-[-15%] left-[-10%]" size="35vw" />
 
 				<div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-					<p className="font-hand text-gs-ink text-2xl mb-6 rotate-[-2deg]">
+					<p className="font-hand text-gs-ink text-3xl mb-6 rotate-[-2deg]">
 						the late-diagnosed experience
 					</p>
 
-					<h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.2] text-gs-heading mb-8 tracking-[-0.01em]">
+					<h1 className="font-serif text-4xl md:text-6xl font-semibold leading-[1.2] text-gs-heading mb-8 tracking-[-0.01em]">
 						You've Been Playing Life on Expert Mode Without the Manual
 					</h1>
 
@@ -116,7 +116,6 @@ export default function WhoIHelp() {
 						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							The Invisible Struggle
 						</h2>
-						<PillDivider className="mb-6" />
 						<p className="font-hand text-gs-ink text-2xl">
 							it was never about "trying harder"
 						</p>
@@ -150,7 +149,7 @@ export default function WhoIHelp() {
 								human.
 							</p>
 							<div className="text-center pt-4">
-								<span className="inline-block px-8 py-4 bg-gs-gold/40 rounded-full text-gs-heading font-sans font-semibold text-2xl tracking-wide">
+								<span className="inline-block px-8 py-4 bg-gs-gold/40 rounded-full text-gs-heading font-sans font-semibold text-3xl tracking-wide">
 									Autistic. ADHD. AuDHD.
 								</span>
 							</div>
@@ -169,7 +168,6 @@ export default function WhoIHelp() {
 						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							The Late Diagnosis Rollercoaster
 						</h2>
-						<PillDivider className="mb-6" />
 						<p className="font-hand text-gs-ink text-2xl">
 							buckle up, it's a wild ride
 						</p>
@@ -207,7 +205,6 @@ export default function WhoIHelp() {
 						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							If You're AuDHD, Welcome to the Beautiful Chaos
 						</h2>
-						<PillDivider className="mb-6" />
 						<p className="font-hand text-gs-ink text-2xl">
 							two operating systems, one beautiful brain
 						</p>
@@ -233,18 +230,16 @@ export default function WhoIHelp() {
 						))}
 					</div>
 
-					<GentleCard className="max-w-3xl mx-auto">
-						<div className="text-center space-y-4">
-							<p className="font-sans text-lg md:text-xl font-medium text-gs-heading leading-relaxed">
-								This isn't indecisiveness. This isn't being "difficult." This is
-								your brain trying to balance two competing operating systems, and
-								it's exhausting.
-							</p>
-							<p className="font-hand text-gs-ink text-2xl rotate-[2deg]">
-								(and it's also kind of amazing)
-							</p>
-						</div>
-					</GentleCard>
+					<div className="max-w-3xl mx-auto text-center space-y-4">
+						<p className="font-serif text-2xl md:text-3xl font-semibold text-gs-heading leading-snug tracking-[-0.01em]">
+							This isn't indecisiveness. This isn't being "difficult." This is
+							your brain trying to balance two competing operating systems, and
+							it's exhausting.
+						</p>
+						<p className="font-hand text-gs-ink text-3xl rotate-[2deg]">
+							(and it's also kind of amazing)
+						</p>
+					</div>
 				</div>
 			</section>
 
@@ -257,7 +252,6 @@ export default function WhoIHelp() {
 						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							What You're Really Looking For
 						</h2>
-						<PillDivider className="mb-6" />
 						<p className="font-hand text-gs-ink text-2xl">
 							spoiler: it's not someone to "fix" you
 						</p>
@@ -318,7 +312,6 @@ export default function WhoIHelp() {
 						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							Why This Matters Now
 						</h2>
-						<PillDivider className="mb-6" />
 						<p className="font-hand text-gs-ink text-2xl">
 							because you've waited long enough
 						</p>
@@ -349,11 +342,10 @@ export default function WhoIHelp() {
 
 				<div className="max-w-2xl mx-auto px-6 relative z-10">
 					<div className="text-center mb-16">
-						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
+						<h2 className="font-serif text-4xl md:text-5xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							This Is Your Permission Slip
 						</h2>
-						<PillDivider className="mb-6" />
-						<p className="font-hand text-gs-ink text-2xl">
+						<p className="font-hand text-gs-ink text-3xl">
 							tear along the dotted line
 						</p>
 					</div>
@@ -374,7 +366,7 @@ export default function WhoIHelp() {
 							<p className="font-sans text-xl md:text-2xl font-semibold text-gs-heading">
 								To be brilliantly, chaotically, authentically you.
 							</p>
-							<p className="font-hand text-gs-ink text-2xl mt-3 rotate-[2deg]">
+							<p className="font-hand text-gs-ink text-4xl mt-4 rotate-[2deg]">
 								signed: the universe
 							</p>
 						</div>
@@ -388,7 +380,7 @@ export default function WhoIHelp() {
 				<AmbientBlob color="gold" position="bottom-[-10%] right-[-5%]" size="30vw" />
 
 				<div className="max-w-2xl mx-auto px-6 relative z-10 text-center">
-					<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
+					<h2 className="font-serif text-4xl md:text-5xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 						Ready to Stop Fighting Alone?
 					</h2>
 					<PillDivider className="mb-8" />
@@ -403,7 +395,7 @@ export default function WhoIHelp() {
 						Let's talk.
 					</p>
 
-					<p className="font-hand text-gs-ink text-2xl mb-12 rotate-[-1deg]">
+					<p className="font-hand text-gs-ink text-3xl mb-12 rotate-[-1deg]">
 						forty years of masking is enough
 					</p>
 
@@ -411,7 +403,7 @@ export default function WhoIHelp() {
 						to="/services"
 						className="group inline-flex items-center gap-3 bg-gs-ink text-white rounded-2xl px-10 py-5 font-sans font-medium text-xl shadow-[0_4px_12px_rgba(67,91,114,0.15)] hover:-translate-y-0.5 hover:bg-gs-ink-hover hover:shadow-[0_6px_16px_rgba(67,91,114,0.2)] transition-all duration-300 gs-press"
 					>
-						Learn about the Re-Architect's Journey
+						Explore the Coaching Program
 						<ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
 					</Link>
 
