@@ -43,7 +43,7 @@ function SessionEmailLink({
 		<Tooltip>
 			<TooltipTrigger>
 				<a
-					href="mailto:hello@frandab.com?subject=Blueprint Call Request&body=Hi Francois,%0D%0A%0D%0AI'd like to schedule a blueprint call. Here are a few times that might work for me:%0D%0A%0D%0A[Please list 2-3 time options with your timezone]%0D%0A%0D%0AThanks!"
+					href="mailto:hello@frandab.com?subject=Vibe Check Call Request&body=Hi Francois,%0D%0A%0D%0AI'd like to schedule a Vibe Check call. Here are a few times that might work for me:%0D%0A%0D%0A[Please list 2-3 time options with your timezone]%0D%0A%0D%0AThanks!"
 					className={cn(
 						"text-base leading-relaxed",
 						className,

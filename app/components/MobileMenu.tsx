@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router";
+import { ExternalLink } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 import {
 	Sheet,
 	SheetContent,
@@ -9,35 +11,33 @@ import {
 	SheetTrigger,
 } from "~/components/ui/sheet";
 
+const navItems = [
+	{ path: "/about", label: "About" },
+	{ path: "/who-i-help", label: "Who I Help" },
+	{ path: "/services", label: "Services" },
+	{ path: "/faq", label: "FAQ" },
+	{ path: "/contact", label: "Contact" },
+];
+
 export function MobileMenu() {
 	const [isOpen, setIsOpen] = useState(false);
 	const location = useLocation();
-
-	const navItems = [
-		{ path: "/", label: "Home" },
-		{ path: "/about", label: "About" },
-		{ path: "/who-i-help", label: "Who I Help" },
-		{ path: "https://dabii.substack.com/", label: "Blog" },
-		{ path: "/faq", label: "FAQ" },
-		{ path: "/contact", label: "Contact" },
-		{ path: "/services", label: "Work With Me" },
-	];
 
 	return (
 		<Sheet open={isOpen} onOpenChange={setIsOpen}>
 			<SheetTrigger asChild>
 				<button
 					type="button"
-					className="p-2 -mr-2 rounded-lg hover:bg-sd-sage/15 transition-colors md:hidden cursor-pointer"
+					className="p-2 -mr-2 rounded-2xl hover:bg-gs-gold/40 transition-all duration-200 md:hidden cursor-pointer"
 					aria-label={isOpen ? "Close menu" : "Open menu"}
 				>
-					<MenuIcon className="w-6 h-6 text-sd-dim-text" />
+					<MenuIcon className="w-6 h-6 text-gs-body" />
 				</button>
 			</SheetTrigger>
 
 			<SheetContent
 				side="right"
-				className="w-80 bg-sd-cream border-l border-sd-sage/20 p-0"
+				className="w-80 bg-gs-cream border-l border-gs-mist/30 p-0"
 			>
 				<SheetHeader className="sr-only">
 					<SheetTitle>Mobile Navigation</SheetTitle>
@@ -47,32 +47,49 @@ export function MobileMenu() {
 				<div className="flex flex-col h-full py-6 px-6 overflow-y-auto">
 					<div className="flex justify-end mb-8" />
 
-					<nav className="flex flex-col space-y-2 mt-8 flex-1">
-						{navItems.slice(0, -1).map((item) => (
+					<nav className="flex flex-col space-y-1 mt-8 flex-1">
+						{navItems.map((item) => (
 							<Link
 								key={item.path}
 								to={item.path}
-								target={item.path.startsWith("http") ? "_blank" : "_self"}
 								onClick={() => setIsOpen(false)}
-								className={`block py-3 px-4 rounded-lg font-body text-lg font-medium transition-colors ${
+								className={`block py-3 px-4 rounded-2xl font-sans text-lg font-medium transition-all duration-200 tracking-[-0.01em] ${
 									location.pathname === item.path
-										? "bg-sd-sage/15 text-sd-emerald"
-										: "text-sd-dim-text hover:bg-sd-sage/10 hover:text-sd-emerald"
+										? "bg-gs-gold/30 text-gs-ink"
+										: "text-gs-body hover:bg-gs-gold/30 hover:text-gs-ink"
 								}`}
 							>
 								{item.label}
 							</Link>
 						))}
+
+						{/* Blog — separated with subtle divider */}
+						<div className="pt-2 mt-2 border-t border-gs-mist/30">
+							<a
+								href="https://dabii.substack.com/"
+								target="_blank"
+								rel="noopener noreferrer"
+								onClick={() => setIsOpen(false)}
+								className="flex items-center justify-between py-3 px-4 rounded-2xl font-sans text-lg font-medium text-gs-body hover:bg-gs-gold/30 hover:text-gs-ink transition-all duration-200 tracking-[-0.01em]"
+							>
+								Blog
+								<ExternalLink className="w-4 h-4 opacity-40" />
+							</a>
+						</div>
 					</nav>
 
-					{/* CTA button at bottom */}
-					<div className="pt-4 pb-2">
+					{/* Theme toggle + CTA at bottom */}
+					<div className="pt-4 pb-2 space-y-4">
+						<div className="flex items-center justify-between px-4">
+							<span className="font-sans text-sm text-gs-body">Theme</span>
+							<ThemeToggle />
+						</div>
 						<Link
-							to="/services"
+							to="/book-call"
 							onClick={() => setIsOpen(false)}
-							className="block w-full text-center py-3 px-6 rounded-full bg-sd-deep-green text-white font-body font-bold text-lg hover:opacity-90 transition-opacity"
+							className="block w-full text-center py-4 px-6 rounded-2xl bg-gs-ink text-white font-sans font-medium text-lg shadow-[0_4px_12px_rgba(67,91,114,0.15)] hover:bg-gs-ink-hover transition-all duration-200 gs-press"
 						>
-							Work With Me
+							Book a Vibe Check
 						</Link>
 					</div>
 				</div>

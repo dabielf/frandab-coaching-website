@@ -1,16 +1,7 @@
-import { useEffect, useRef } from "react";
-import { Link, useFetcher } from "react-router";
-import { ArrowRight } from "lucide-react";
-import {
-	BigDoodleLeaf,
-	DoodleCard,
-	ScribblyUnderline,
-	SparkleCluster,
-	SunburstSVG,
-	WavyDivider,
-} from "~/components/doodles";
-import { ContactEmailLink, SessionEmailLink } from "~/components/ui/EmailLink";
-import { sendContactEmail } from "~/lib/email";
+import { Link } from "react-router";
+import { ArrowRight, Mail } from "lucide-react";
+import { AmbientBlob, GentleCard, PillDivider } from "~/components/doodles";
+import { SessionEmailLink } from "~/components/ui/EmailLink";
 import type { Route } from "./+types/contact";
 
 export function meta({}: Route.MetaArgs) {
@@ -24,584 +15,315 @@ export function meta({}: Route.MetaArgs) {
 	];
 }
 
-export async function action({ request, context }: Route.ActionArgs) {
-	const formData = await request.formData();
-	const name = String(formData.get("name") || "").trim();
-	const email = String(formData.get("email") || "").trim();
-	const message = String(formData.get("message") || "").trim();
-
-	// Validation
-	const errors: Record<string, string> = {};
-	if (!name) errors.name = "Name is required";
-	if (!email) {
-		errors.email = "Email is required";
-	} else if (!email.includes("@") || !email.includes(".")) {
-		errors.email = "Please enter a valid email address";
-	}
-	if (!message) errors.message = "Message is required";
-
-	if (Object.keys(errors).length > 0) {
-		return { success: false, errors };
-	}
-
-	try {
-		// Send email using Resend API
-		await sendContactEmail({ name, email, message }, context.cloudflare.env);
-
-		return {
-			success: true,
-			message:
-				"Thank you for reaching out! I'll get back to you within 48 hours (unless I'm in executive dysfunction jail, in which case I'll respond as soon as I escape).",
-		};
-	} catch (error) {
-		console.error("Error sending contact form:", error);
-		return {
-			success: false,
-			error: "Something went wrong sending your message",
-		};
-	}
-}
-
-function ContactForm() {
-	const fetcher = useFetcher();
-	const formRef = useRef<HTMLFormElement>(null);
-	const isSubmitting = fetcher.state === "submitting";
-	const isSuccess = fetcher.data?.success;
-	const errors = fetcher.data?.errors;
-	const errorMessage = fetcher.data?.error;
-	const successMessage = fetcher.data?.message;
-	const isFormDisabled = isSubmitting || isSuccess;
-
-	// Reset form after successful submission
-	useEffect(() => {
-		if (isSuccess && formRef.current) {
-			formRef.current.reset();
-		}
-	}, [isSuccess]);
-
-	return (
-		<div>
-			<h3 className="font-heading text-2xl mb-4 font-semibold text-sd-heading">
-				Option 1: Send a Message
-			</h3>
-			<p className="font-body text-lg md:text-xl text-sd-dim-text leading-[2] mb-6">
-				Use the form below or email me directly at{" "}
-				<ContactEmailLink className="text-sd-emerald hover:underline text-lg" />
-			</p>
-
-			{/* Success Message */}
-			{isSuccess && (
-				<div className="mb-6 p-4 bg-sd-sage/15 border border-sd-sage/30 rounded-lg">
-					<div className="flex items-start space-x-3">
-						<div className="flex-shrink-0">
-							<svg
-								className="w-5 h-5 text-sd-emerald mt-0.5"
-								fill="currentColor"
-								viewBox="0 0 20 20"
-							>
-								<path
-									fillRule="evenodd"
-									d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-									clipRule="evenodd"
-								/>
-							</svg>
-						</div>
-						<div>
-							<p className="font-body text-lg text-sd-emerald leading-[2]">{successMessage}</p>
-						</div>
-					</div>
-				</div>
-			)}
-
-			{/* Error Message */}
-			{errorMessage && (
-				<div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-					<div className="flex items-start space-x-3">
-						<div className="flex-shrink-0">
-							<svg
-								className="w-5 h-5 text-red-600 mt-0.5"
-								fill="currentColor"
-								viewBox="0 0 20 20"
-							>
-								<path
-									fillRule="evenodd"
-									d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-									clipRule="evenodd"
-								/>
-							</svg>
-						</div>
-						<div>
-							<p className="font-body text-lg text-red-800 leading-[2]">
-								{errorMessage}{" "}
-								<span>
-									Please try again or email me directly at <ContactEmailLink />
-								</span>
-							</p>
-						</div>
-					</div>
-				</div>
-			)}
-
-			<fetcher.Form
-				ref={formRef}
-				method="post"
-				action="/contact"
-				className="space-y-6"
-			>
-				<div>
-					<label
-						htmlFor="name"
-						className="block mb-2 font-body text-base font-medium text-sd-dim-text"
-					>
-						Name (whatever you want me to call you)
-					</label>
-					<input
-						type="text"
-						id="name"
-						name="name"
-						disabled={isFormDisabled}
-						className={`w-full px-4 py-3 bg-sd-cream border rounded-lg font-body text-lg text-sd-text transition-colors duration-200 placeholder:text-sd-dim-text/50 focus:outline-none focus:ring-4 focus:ring-sd-emerald/20 focus:border-sd-emerald disabled:opacity-50 disabled:cursor-not-allowed ${
-							errors?.name
-								? "border-red-300 focus:border-red-500 focus:ring-red-500/20"
-								: "border-sd-sage/30"
-						}`}
-						placeholder="Your name"
-					/>
-					{errors?.name && (
-						<p className="mt-1 text-sm font-body text-red-600">{errors.name}</p>
-					)}
-				</div>
-
-				<div>
-					<label
-						htmlFor="email"
-						className="block mb-2 font-body text-base font-medium text-sd-dim-text"
-					>
-						Email
-					</label>
-					<input
-						type="email"
-						id="email"
-						name="email"
-						disabled={isFormDisabled}
-						className={`w-full px-4 py-3 bg-sd-cream border rounded-lg font-body text-lg text-sd-text transition-colors duration-200 placeholder:text-sd-dim-text/50 focus:outline-none focus:ring-4 focus:ring-sd-emerald/20 focus:border-sd-emerald disabled:opacity-50 disabled:cursor-not-allowed ${
-							errors?.email
-								? "border-red-300 focus:border-red-500 focus:ring-red-500/20"
-								: "border-sd-sage/30"
-						}`}
-						placeholder="your.email@example.com"
-					/>
-					{errors?.email && (
-						<p className="mt-1 text-sm font-body text-red-600">{errors.email}</p>
-					)}
-				</div>
-
-				<div>
-					<label
-						htmlFor="message"
-						className="block mb-2 font-body text-base font-medium text-sd-dim-text"
-					>
-						Message (Can be as short as "Help. AuDHD. Drowning." I'll
-						understand.)
-					</label>
-					<textarea
-						id="message"
-						name="message"
-						rows={6}
-						disabled={isFormDisabled}
-						className={`w-full px-4 py-3 bg-sd-cream border rounded-lg font-body text-lg text-sd-text transition-colors duration-200 placeholder:text-sd-dim-text/50 focus:outline-none focus:ring-4 focus:ring-sd-emerald/20 focus:border-sd-emerald disabled:opacity-50 disabled:cursor-not-allowed ${
-							errors?.message
-								? "border-red-300 focus:border-red-500 focus:ring-red-500/20"
-								: "border-sd-sage/30"
-						}`}
-						placeholder="Tell me what's bringing you here..."
-					></textarea>
-					{errors?.message && (
-						<p className="mt-1 text-sm font-body text-red-600">{errors.message}</p>
-					)}
-				</div>
-
-				<button
-					type="submit"
-					disabled={isFormDisabled}
-					className="w-full inline-flex items-center justify-center px-6 py-4 bg-sd-deep-green text-white rounded-full font-body font-bold text-xl transition-transform duration-200 ease-out hover:-translate-y-1 hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-sd-emerald/20 disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_8px_25px_var(--sd-deep-green)/0.2]"
-				>
-					{isSubmitting ? (
-						<>
-							<svg
-								className="animate-spin -ml-1 mr-3 h-4 w-4 text-white"
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-							>
-								<circle
-									className="opacity-25"
-									cx="12"
-									cy="12"
-									r="10"
-									stroke="currentColor"
-									strokeWidth="4"
-								></circle>
-								<path
-									className="opacity-75"
-									fill="currentColor"
-									d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-								></path>
-							</svg>
-							Sending...
-						</>
-					) : isSuccess ? (
-						<>
-							<svg
-								className="w-4 h-4 mr-2"
-								fill="currentColor"
-								viewBox="0 0 20 20"
-							>
-								<path
-									fillRule="evenodd"
-									d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-									clipRule="evenodd"
-								/>
-							</svg>
-							Message Sent!
-						</>
-					) : (
-						"Send Message"
-					)}
-				</button>
-
-				{isSuccess && (
-					<p className="text-center font-body text-base text-sd-dim-text mt-3">
-						Want to send another message?{" "}
-						<button
-							type="button"
-							onClick={() => window.location.reload()}
-							className="text-sd-emerald hover:underline font-medium"
-						>
-							Refresh the page
-						</button>
-					</p>
-				)}
-			</fetcher.Form>
-		</div>
-	);
-}
+const conversationStarters = [
+	{
+		text: "Hi Francois, I just got diagnosed and I have no idea what to do next.",
+		subject: "Just diagnosed",
+		body: "Hi Francois,%0D%0A%0D%0AI just got diagnosed and I have no idea what to do next.%0D%0A%0D%0A",
+	},
+	{
+		text: "I think I might be AuDHD but I'm drowning in imposter syndrome.",
+		subject: "Might be AuDHD",
+		body: "Hi Francois,%0D%0A%0D%0AI think I might be AuDHD but I'm drowning in imposter syndrome.%0D%0A%0D%0A",
+	},
+	{
+		text: "I need help with [specific thing] and traditional advice isn't working.",
+		subject: "Need help",
+		body: "Hi Francois,%0D%0A%0D%0AI need help with [specific thing] and traditional advice isn't working.%0D%0A%0D%0A",
+	},
+	{
+		text: "Your website made me cry (in a good way). When can we talk?",
+		subject: "When can we talk?",
+		body: "Hi Francois,%0D%0A%0D%0AYour website made me cry (in a good way). When can we talk?%0D%0A%0D%0A",
+	},
+];
 
 export default function Contact() {
 	return (
 		<>
-			{/* ═══════════════════════════════════════════
-			    HERO — cream background
-			    ═══════════════════════════════════════════ */}
-			<section className="relative pt-18 pb-20 md:pt-28 md:pb-32 overflow-hidden bg-sd-cream">
-				<SparkleCluster className="absolute top-12 right-12 w-10 h-10 twinkle-1" />
-				<BigDoodleLeaf className="absolute top-8 left-4 w-16 h-24 float-b1" />
+			{/* ═══ HERO ═══ */}
+			<section className="relative pt-20 pb-24 md:pt-32 md:pb-40 overflow-hidden bg-gs-cream">
+				<AmbientBlob color="gold" position="top-[-10%] right-[-10%]" size="45vw" />
+				<AmbientBlob color="mist" position="bottom-[-15%] left-[-10%]" size="35vw" />
 
 				<div className="max-w-3xl mx-auto px-6 relative z-10 text-center">
-					<p className="font-handwritten text-sd-gold text-3xl mb-6" style={{ transform: "rotate(-3deg)" }}>
+					<p className="font-hand text-gs-ink text-2xl mb-6 rotate-[-2deg]">
 						no perfect prose required
 					</p>
 
-					<h1 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 font-semibold leading-[1.25] text-sd-heading">
+					<h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-8 font-semibold leading-[1.2] text-gs-heading tracking-[-0.01em]">
 						Let's Connect{" "}
 						<br />
-						<em className="text-sd-emerald">
-							(On Your Terms)
-						</em>
+						<span className="text-gs-ink">(On Your Terms)</span>
 					</h1>
 
-					<ScribblyUnderline colorVar="--sd-gold" className="w-48 md:w-64 mb-8" />
+					<PillDivider className="mb-8" />
 
-					<p className="font-body text-xl md:text-2xl max-w-xl mx-auto text-sd-dim-text leading-[2]">
+					<p className="font-sans text-xl md:text-2xl max-w-xl mx-auto text-gs-body leading-relaxed">
 						Taking the first step is hard. Let's make it easier.
 					</p>
 				</div>
 			</section>
 
-			{/* ═══ Divider ═══ */}
-			<WavyDivider bgClass="bg-sd-linen" />
-
-			{/* ═══════════════════════════════════════════
-			    INTRO + FORM — linen background
-			    ═══════════════════════════════════════════ */}
-			<section className="py-20 md:py-28 relative overflow-hidden bg-sd-linen">
-				<SparkleCluster className="absolute top-16 left-8 w-10 h-10 twinkle-2" />
+			{/* ═══ INTRO + OPTIONS ═══ */}
+			<section className="py-24 md:py-32 relative overflow-hidden bg-gs-cream">
+				<AmbientBlob color="mist" position="top-[5%] right-[-15%]" size="30vw" />
 
 				<div className="max-w-5xl mx-auto px-6 relative z-10">
-					<div className="text-center mb-14">
-						<h2 className="font-heading text-3xl md:text-4xl mb-4 font-normal text-sd-heading">
+					<div className="text-center mb-16">
+						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							Reaching Out Is Hard (I Get It)
 						</h2>
-						<ScribblyUnderline colorVar="--sd-emerald" className="w-56 md:w-72 mb-4" />
-						<p className="font-handwritten text-sd-emerald text-2xl">
+						<PillDivider className="mb-6" />
+						<p className="font-hand text-gs-ink text-2xl">
 							just start wherever you are
 						</p>
 					</div>
 
-					<div className="max-w-3xl mx-auto space-y-5 mb-14">
-						<p className="font-body text-lg md:text-xl text-sd-dim-text leading-[2]">
+					<div className="max-w-3xl mx-auto space-y-5 mb-16">
+						<p className="font-sans text-lg md:text-xl text-gs-body leading-relaxed">
 							I know reaching out can feel overwhelming. The executive function
 							required to write an email, the vulnerability of asking for help,
-							the fear of being "too much" or "not autistic enough"---I get it.
+							the fear of being "too much" or "not autistic enough"—I get it.
 						</p>
-						<p className="font-body text-lg md:text-xl text-sd-dim-text leading-[2]">
+						<p className="font-sans text-lg md:text-xl text-gs-body leading-relaxed">
 							So let's keep this simple. No need for perfect prose or explaining
-							your entire life story. Just reach out however feels manageable
-							today.
+							your entire life story. Just reach out however feels manageable today.
 						</p>
 					</div>
 
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-						{/* Option 1: Send a Message */}
-						<ContactForm />
-
-						{/* Option 2: Book a Call */}
+						{/* Option 1: Email */}
 						<div>
-							<h3 className="font-heading text-2xl mb-4 font-semibold text-sd-heading">
+							<h3 className="font-serif text-2xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
+								Option 1: Send an Email
+							</h3>
+							<p className="font-sans text-lg md:text-xl text-gs-body leading-relaxed mb-6">
+								Click the button and your email app opens with everything
+								pre-filled. Just hit send — or edit it first, up to you.
+							</p>
+
+							<GentleCard>
+								<div className="flex items-start gap-4 mb-6">
+									<div className="w-12 h-12 rounded-2xl bg-gs-gold/60 text-gs-ink flex items-center justify-center flex-shrink-0">
+										<Mail className="w-6 h-6" />
+									</div>
+									<div>
+										<p className="font-sans text-lg font-medium text-gs-heading mb-1">
+											hello@frandab.com
+										</p>
+										<p className="font-sans text-sm text-gs-body">
+											Subject and body are pre-written — one less thing
+											for your executive function to deal with
+										</p>
+									</div>
+								</div>
+
+								<a
+									href="mailto:hello@frandab.com?subject=Hi%20Francois&body=Hi%20Francois%2C%0D%0A%0D%0AI%20found%20your%20website%20and%20I%E2%80%99d%20like%20to%20learn%20more%20about%20coaching.%0D%0A%0D%0AHere%E2%80%99s%20a%20little%20about%20what%E2%80%99s%20bringing%20me%20here%3A%0D%0A%0D%0A%5BFeel%20free%20to%20write%20as%20much%20or%20as%20little%20as%20you%20want%20%E2%80%94%20even%20%22Help.%20AuDHD.%20Drowning.%22%20works.%5D%0D%0A%0D%0AThanks!"
+									className="group w-full inline-flex items-center justify-center gap-3 bg-gs-ink text-white rounded-2xl px-8 py-4 font-sans font-medium text-lg shadow-[0_4px_12px_rgba(67,91,114,0.15)] hover:-translate-y-0.5 hover:bg-gs-ink-hover hover:shadow-[0_6px_16px_rgba(67,91,114,0.2)] transition-all duration-200 gs-press"
+								>
+									Open Pre-Filled Email
+									<ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+								</a>
+
+								<p className="font-hand text-gs-ink text-lg mt-4 text-center rotate-[-1deg]">
+									the email practically writes itself
+								</p>
+							</GentleCard>
+						</div>
+
+						{/* Option 2: Book a Vibe Check */}
+						<div>
+							<h3 className="font-serif text-2xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 								Option 2: Book a Vibe Check
 							</h3>
-							<p className="font-body text-lg md:text-xl text-sd-dim-text leading-[2] mb-6">
+							<p className="font-sans text-lg md:text-xl text-gs-body leading-relaxed mb-6">
 								Skip the email anxiety and jump straight to a conversation.
 							</p>
 
-							<DoodleCard>
-								<h4 className="font-heading text-xl mb-4 font-semibold text-sd-heading">
+							<GentleCard>
+								<h4 className="font-serif text-xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 									Free 40 Minute Vibe Check
 								</h4>
 								<ul className="space-y-3 mb-6">
-									<li className="flex items-start space-x-3">
-										<span className="text-sd-emerald mt-1 text-lg">*</span>
-										<p className="font-body text-base text-sd-dim-text leading-[2]">
-											No pressure, no sales pitch
-										</p>
-									</li>
-									<li className="flex items-start space-x-3">
-										<span className="text-sd-emerald mt-1 text-lg">*</span>
-										<p className="font-body text-base text-sd-dim-text leading-[2]">
-											Camera optional, pajamas encouraged
-										</p>
-									</li>
-									<li className="flex items-start space-x-3">
-										<span className="text-sd-emerald mt-1 text-lg">*</span>
-										<p className="font-body text-base text-sd-dim-text leading-[2]">
-											Stimming welcome
-										</p>
-									</li>
-									<li className="flex items-start space-x-3">
-										<span className="text-sd-emerald mt-1 text-lg">*</span>
-										<p className="font-body text-base text-sd-dim-text leading-[2]">
-											Just two brains figuring out if we're a good match
-										</p>
-									</li>
+									{[
+										"No pressure, no sales pitch",
+										"Camera optional, pajamas encouraged",
+										"Stimming welcome",
+										"Just two brains figuring out if we're a good match",
+									].map((item, i) => (
+										<li key={i} className="flex items-start gap-3">
+											<div className="w-1.5 h-1.5 rounded-full bg-gs-ink mt-3 flex-shrink-0" />
+											<p className="font-sans text-base text-gs-body leading-relaxed">{item}</p>
+										</li>
+									))}
 								</ul>
-								<p className="font-handwritten text-sd-gold text-xl mb-4" style={{ transform: "rotate(-2deg)" }}>
+								<p className="font-hand text-gs-ink text-xl mb-6 rotate-[-2deg]">
 									pajamas strongly encouraged
 								</p>
 								<Link
 									to="/book-call"
-									className="group w-full inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full text-white font-body font-bold text-lg transition-transform duration-200 ease-out hover:-translate-y-1 hover:scale-[1.02] bg-sd-deep-green shadow-[0_8px_25px_var(--sd-deep-green)/0.2]"
+									className="group w-full inline-flex items-center justify-center gap-3 bg-gs-ink text-white rounded-2xl px-8 py-4 font-sans font-medium text-lg shadow-[0_4px_12px_rgba(67,91,114,0.15)] hover:-translate-y-0.5 hover:bg-gs-ink-hover hover:shadow-[0_6px_16px_rgba(67,91,114,0.2)] transition-all duration-200 gs-press"
 								>
-									Book Your Vibe Check
-									<ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+									Book Your Vibe Check Call
+									<ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
 								</Link>
-							</DoodleCard>
+							</GentleCard>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			{/* ═══ Divider ═══ */}
-			<WavyDivider bgClass="bg-sd-cream" />
-
-			{/* ═══════════════════════════════════════════
-			    WHAT HAPPENS NEXT — cream background
-			    ═══════════════════════════════════════════ */}
-			<section className="py-20 md:py-28 relative overflow-hidden bg-sd-cream">
-				<SparkleCluster className="absolute top-12 right-16 w-10 h-10 twinkle-1" />
+			{/* ═══ WHAT HAPPENS NEXT ═══ */}
+			<section className="py-24 md:py-32 relative overflow-hidden bg-gs-cream">
+				<AmbientBlob color="gold" position="top-[-5%] left-[-10%]" size="35vw" />
 
 				<div className="max-w-5xl mx-auto px-6 relative z-10">
-					<div className="text-center mb-14">
-						<h2 className="font-heading text-3xl md:text-4xl mb-4 font-normal text-sd-heading">
+					<div className="text-center mb-16">
+						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							What Happens Next?
 						</h2>
-						<ScribblyUnderline colorVar="--sd-sage" className="w-48 md:w-64 mb-4" />
-						<p className="font-handwritten text-sd-emerald text-2xl">
+						<PillDivider className="mb-6" />
+						<p className="font-hand text-gs-ink text-2xl">
 							spoiler: nothing scary
 						</p>
 					</div>
 
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-						<DoodleCard>
-							<h4 className="font-heading text-xl mb-4 font-semibold text-sd-heading">
-								If you message:
+						<GentleCard>
+							<h4 className="font-serif text-xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
+								If you email:
 							</h4>
-							<p className="font-body text-lg md:text-xl text-sd-dim-text leading-[2]">
+							<p className="font-sans text-lg md:text-xl text-gs-body leading-relaxed">
 								I'll respond within 48 hours (unless I'm in executive
 								dysfunction jail, in which case I'll respond as soon as I
 								escape). We'll figure out next steps together.
 							</p>
-						</DoodleCard>
-						<DoodleCard>
-							<h4 className="font-heading text-xl mb-4 font-semibold text-sd-heading">
+						</GentleCard>
+						<GentleCard>
+							<h4 className="font-serif text-xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 								If you book a call:
 							</h4>
-							<p className="font-body text-lg md:text-xl text-sd-dim-text leading-[2]">
+							<p className="font-sans text-lg md:text-xl text-gs-body leading-relaxed">
 								You'll get a confirmation email with our meeting link. Camera
 								optional. Pajamas encouraged. Stimming welcome.
 							</p>
-						</DoodleCard>
+						</GentleCard>
 					</div>
 				</div>
 			</section>
 
-			{/* ═══ Divider ═══ */}
-			<WavyDivider bgClass="bg-sd-on-dark-bg" />
-
-			{/* ═══════════════════════════════════════════
-			    STILL OVERTHINKING — dark section
-			    ═══════════════════════════════════════════ */}
-			<section className="py-20 md:py-28 relative overflow-hidden bg-sd-on-dark-bg">
-				<SparkleCluster className="absolute top-12 right-16 w-10 h-10 twinkle-1" />
+			{/* ═══ STILL OVERTHINKING ═══ */}
+			<section className="py-24 md:py-32 relative overflow-hidden bg-gs-cream">
+				<AmbientBlob color="mist" position="top-[-10%] right-[-10%]" size="40vw" />
 
 				<div className="max-w-5xl mx-auto px-6 relative z-10">
-					<div className="text-center mb-14">
-						<h2 className="font-heading text-3xl md:text-4xl mb-4 font-normal text-sd-on-dark-heading">
+					<div className="text-center mb-16">
+						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							Still Overthinking It?
 						</h2>
-						<ScribblyUnderline colorVar="--sd-gold" className="w-48 md:w-64 mb-4" />
-						<p className="font-handwritten text-sd-on-dark-dim text-2xl">
-							copy-paste is a valid life strategy
+						<PillDivider className="mb-6" />
+						<p className="font-hand text-gs-ink text-2xl">
+							tap one and hit send — done
 						</p>
 					</div>
 
-					<p className="font-body text-lg md:text-xl text-sd-on-dark-text/80 leading-[2] text-center mb-10 max-w-3xl mx-auto">
-						Here are some conversation starters you can copy/paste:
+					<p className="font-sans text-lg md:text-xl text-gs-body leading-relaxed text-center mb-12 max-w-3xl mx-auto">
+						Pick a conversation starter. It opens your email app with the message
+						already written. Just hit send.
 					</p>
 
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-						<div className="doodle-hover rounded-2xl border-2 border-dashed border-sd-on-dark-dim/15 bg-sd-on-dark-text/5 p-6">
-							<p className="font-body text-[17px] text-sd-on-dark-text/75 leading-[2] font-mono">
-								"Hi Francois, I just got diagnosed and I have no idea what to do
-								next."
-							</p>
-						</div>
-						<div className="doodle-hover rounded-2xl border-2 border-dashed border-sd-on-dark-dim/15 bg-sd-on-dark-text/5 p-6">
-							<p className="font-body text-[17px] text-sd-on-dark-text/75 leading-[2] font-mono">
-								"I think I might be AuDHD but I'm drowning in imposter
-								syndrome."
-							</p>
-						</div>
-						<div className="doodle-hover rounded-2xl border-2 border-dashed border-sd-on-dark-dim/15 bg-sd-on-dark-text/5 p-6">
-							<p className="font-body text-[17px] text-sd-on-dark-text/75 leading-[2] font-mono">
-								"I need help with [specific thing] and traditional advice isn't
-								working."
-							</p>
-						</div>
-						<div className="doodle-hover rounded-2xl border-2 border-dashed border-sd-on-dark-dim/15 bg-sd-on-dark-text/5 p-6">
-							<p className="font-body text-[17px] text-sd-on-dark-text/75 leading-[2] font-mono">
-								"Your website made me cry (in a good way). When can we talk?"
-							</p>
-						</div>
+						{conversationStarters.map((starter, i) => (
+							<a
+								key={i}
+								href={`mailto:hello@frandab.com?subject=${encodeURIComponent(starter.subject)}&body=${starter.body}`}
+								className="block group"
+							>
+								<GentleCard className="h-full flex items-center gap-4 !p-6">
+									<p className="font-sans text-[17px] text-gs-body leading-relaxed flex-1">
+										"{starter.text}"
+									</p>
+									<Mail className="w-5 h-5 text-gs-ink/40 group-hover:text-gs-ink flex-shrink-0 transition-colors duration-200" />
+								</GentleCard>
+							</a>
+						))}
 					</div>
 				</div>
 			</section>
 
-			{/* ═══ Divider ═══ */}
-			<WavyDivider bgClass="bg-sd-linen" />
-
-			{/* ═══════════════════════════════════════════
-			    MY PROMISE — linen background
-			    ═══════════════════════════════════════════ */}
-			<section className="py-20 md:py-28 relative overflow-hidden bg-sd-linen">
-				<SparkleCluster className="absolute top-10 left-12 w-10 h-10 twinkle-1" />
+			{/* ═══ MY PROMISE ═══ */}
+			<section className="py-24 md:py-32 relative overflow-hidden bg-gs-cream">
+				<AmbientBlob color="gold" position="top-[-5%] left-[-10%]" size="35vw" />
 
 				<div className="max-w-3xl mx-auto px-6 relative z-10">
-					<div className="text-center mb-14">
-						<h2 className="font-heading text-3xl md:text-4xl mb-4 font-normal text-sd-heading">
+					<div className="text-center mb-16">
+						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							My Promise to You
 						</h2>
-						<ScribblyUnderline colorVar="--sd-gold" className="w-48 md:w-64 mb-4" />
-						<p className="font-handwritten text-sd-gold text-2xl" style={{ transform: "rotate(-1deg)" }}>
+						<PillDivider className="mb-6" />
+						<p className="font-hand text-gs-ink text-2xl rotate-[-1deg]">
 							pinky promise
 						</p>
 					</div>
 
-					<DoodleCard className="max-w-2xl mx-auto">
+					<GentleCard className="max-w-2xl mx-auto">
 						<ul className="space-y-5">
-							<li className="flex items-start space-x-3">
-								<span className="text-sd-emerald mt-1 text-lg">*</span>
-								<p className="font-body text-lg md:text-xl text-sd-dim-text leading-[2]">
-									No judgment about how long it took you to reach out
-								</p>
-							</li>
-							<li className="flex items-start space-x-3">
-								<span className="text-sd-emerald mt-1 text-lg">*</span>
-								<p className="font-body text-lg md:text-xl text-sd-dim-text leading-[2]">
-									No shame about what you're struggling with
-								</p>
-							</li>
-							<li className="flex items-start space-x-3">
-								<span className="text-sd-emerald mt-1 text-lg">*</span>
-								<p className="font-body text-lg md:text-xl text-sd-dim-text leading-[2]">
-									No neurotypical "solutions" that don't actually work
-								</p>
-							</li>
-							<li className="flex items-start space-x-3">
-								<span className="text-sd-emerald mt-1 text-lg">*</span>
-								<p className="font-body text-lg md:text-xl text-sd-dim-text leading-[2]">
-									Complete confidentiality
-								</p>
-							</li>
-							<li className="flex items-start space-x-3">
-								<span className="text-sd-emerald mt-1 text-lg">*</span>
-								<p className="font-body text-lg md:text-xl text-sd-dim-text leading-[2]">
-									Genuine understanding from someone who's been there
-								</p>
-							</li>
+							{[
+								"No judgment about how long it took you to reach out",
+								"No shame about what you're struggling with",
+								'No neurotypical "solutions" that don\'t actually work',
+								"Complete confidentiality",
+								"Genuine understanding from someone who's been there",
+							].map((item, i) => (
+								<li key={i} className="flex items-start gap-3">
+									<div className="w-1.5 h-1.5 rounded-full bg-gs-ink mt-3 flex-shrink-0" />
+									<p className="font-sans text-lg md:text-xl text-gs-body leading-relaxed">{item}</p>
+								</li>
+							))}
 						</ul>
-					</DoodleCard>
+					</GentleCard>
 				</div>
 			</section>
 
-			{/* ═══ Divider ═══ */}
-			<WavyDivider bgClass="bg-sd-cream" />
-
-			{/* ═══════════════════════════════════════════
-			    FINAL CTA — cream background
-			    ═══════════════════════════════════════════ */}
-			<section className="py-24 md:py-32 relative overflow-hidden bg-sd-cream">
-				<SparkleCluster className="absolute top-12 right-16 w-10 h-10 twinkle-2" />
-				<SunburstSVG className="absolute bottom-12 right-[8%] w-16 h-16 spin-lazy" />
+			{/* ═══ FINAL CTA ═══ */}
+			<section className="py-28 md:py-36 relative overflow-hidden bg-gs-cream">
+				<AmbientBlob color="mist" position="top-[-10%] left-[-10%]" size="40vw" />
+				<AmbientBlob color="gold" position="bottom-[-10%] right-[-5%]" size="30vw" />
 
 				<div className="max-w-2xl mx-auto px-6 relative z-10 text-center">
-					<h2 className="font-heading text-3xl md:text-4xl mb-4 font-normal text-sd-heading">
+					<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 						Ready? Take a Deep Breath.
 					</h2>
-					<ScribblyUnderline colorVar="--sd-gold" className="w-56 md:w-72 mb-6" />
+					<PillDivider className="mb-8" />
 
-					<p className="font-body text-lg md:text-xl mb-4 text-sd-dim-text leading-[2]">
-						Choose your path:
+					<p className="font-sans text-lg md:text-xl mb-4 text-gs-body leading-relaxed">
+						The email is pre-filled — just hit send.
 					</p>
 
-					<p className="font-handwritten text-sd-emerald text-2xl mb-10" style={{ transform: "rotate(-1deg)" }}>
+					<p className="font-hand text-gs-ink text-2xl mb-12 rotate-[-1deg]">
 						you've got this
 					</p>
 
-					<div className="flex flex-col sm:flex-row gap-6 justify-center mb-10">
-						<SessionEmailLink className="group inline-flex items-center gap-2 font-body font-bold text-lg hover:gap-3 transition-all text-sd-emerald">
-							Send an Email
-							<ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-						</SessionEmailLink>
-						<Link
-							to="/services"
-							className="group inline-flex items-center gap-3 px-10 py-5 rounded-full text-white font-body font-bold text-xl transition-transform duration-200 ease-out hover:-translate-y-2 hover:scale-105 bg-sd-deep-green shadow-[0_12px_35px_var(--sd-deep-green)/0.3]"
+					<div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+						<a
+							href="mailto:hello@frandab.com?subject=Hi%20Francois&body=Hi%20Francois%2C%0D%0A%0D%0AI%20found%20your%20website%20and%20I%E2%80%99d%20like%20to%20learn%20more%20about%20coaching.%0D%0A%0D%0A"
+							className="group inline-flex items-center justify-center gap-3 border-2 border-gs-ink text-gs-ink rounded-2xl px-10 py-5 font-sans font-medium text-xl hover:-translate-y-0.5 hover:bg-gs-ink hover:text-white dark:hover:bg-gs-ink/15 dark:hover:text-gs-heading transition-all duration-200"
 						>
-							Learn about the Re-Architect's Journey
-							<ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+							Send an Email
+							<Mail className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+						</a>
+						<Link
+							to="/book-call"
+							className="group inline-flex items-center justify-center gap-3 bg-gs-ink text-white rounded-2xl px-10 py-5 font-sans font-medium text-xl shadow-[0_4px_12px_rgba(67,91,114,0.15)] hover:-translate-y-0.5 hover:bg-gs-ink-hover hover:shadow-[0_6px_16px_rgba(67,91,114,0.2)] transition-all duration-200 gs-press"
+						>
+							Book Your Vibe Check Call
+							<ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
 						</Link>
 					</div>
 
-					<p className="font-body text-base text-sd-dim-text/70">
+					<p className="font-sans text-base text-gs-body/70">
 						<em>
 							Remember: Asking for help isn't weakness. It's the first step
 							toward building a life that actually fits your brain.

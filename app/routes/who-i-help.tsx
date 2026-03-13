@@ -5,7 +5,6 @@ import {
 	Brain,
 	CheckCircle2,
 	Cloud,
-	CloudRain,
 	Compass,
 	FileText,
 	HelpCircle,
@@ -14,15 +13,7 @@ import {
 	Sun,
 	Zap,
 } from "lucide-react";
-import {
-	BigDoodleLeaf,
-	BigDoodleStar,
-	DoodleCard,
-	ScribblyUnderline,
-	SparkleCluster,
-	SunburstSVG,
-	WavyDivider,
-} from "~/components/doodles";
+import { AmbientBlob, GentleCard, PillDivider } from "~/components/doodles";
 import type { Route } from "./+types/who-i-help";
 
 export function meta({}: Route.MetaArgs) {
@@ -42,64 +33,36 @@ export default function WhoIHelp() {
 			title: "The Relief",
 			text: '"Oh my god, I\'m not broken. I\'m not lazy. I\'m not a failure. I\'m just autistic."',
 			icon: Sun,
-			color: "text-amber-500",
-			bg: "bg-amber-500/10",
 		},
 		{
 			title: "The Grief",
 			text: '"What would my life have been if I\'d known? How much pain could I have avoided? Who would I be if I hadn\'t spent 40 years trying to be someone else?"',
-			icon: CloudRain,
-			color: "text-blue-500",
-			bg: "bg-blue-500/10",
+			icon: Cloud,
 		},
 		{
 			title: "The Anger",
 			text: '"Why did nobody see this? Why was I blamed for struggles that were neurological? Why did I have to break myself to fit their world?"',
 			icon: Zap,
-			color: "text-red-500",
-			bg: "bg-red-500/10",
 		},
 		{
 			title: "The Confusion",
 			text: '"Who am I without the mask? What\'s authentic and what\'s performance? How do I even begin to untangle four decades of compensatory strategies?"',
 			icon: HelpCircle,
-			color: "text-purple-500",
-			bg: "bg-purple-500/10",
 		},
 		{
 			title: "The Hope",
 			text: '"Maybe I can finally stop fighting myself. Maybe there\'s a way to live that doesn\'t require constant exhaustion. Maybe I can actually thrive."',
 			icon: Sparkles,
-			color: "text-emerald-500",
-			bg: "bg-emerald-500/10",
 		},
 	];
 
 	const chaosItems = [
-		{
-			text: "You desperately need routine... but your ADHD brain stages a revolt after day three.",
-			icon: Brain,
-		},
-		{
-			text: "You crave predictability... while simultaneously dying of boredom.",
-			icon: Compass,
-		},
-		{
-			text: "You want deep, meaningful connections... but socializing drains your battery in minutes.",
-			icon: Battery,
-		},
-		{
-			text: "You can hyperfocus for 14 hours on organizing your spreadsheets... but can't remember to eat lunch.",
-			icon: Zap,
-		},
-		{
-			text: "You need complete silence to think... except when you need death metal to concentrate.",
-			icon: Cloud,
-		},
-		{
-			text: "You make detailed plans with color-coded schedules... then immediately ignore them.",
-			icon: FileText,
-		},
+		{ text: "You desperately need routine... but your ADHD brain stages a revolt after day three.", icon: Brain },
+		{ text: "You crave predictability... while simultaneously dying of boredom.", icon: Compass },
+		{ text: "You want deep, meaningful connections... but socializing drains your battery in minutes.", icon: Battery },
+		{ text: "You can hyperfocus for 14 hours on organizing your spreadsheets... but can't remember to eat lunch.", icon: Zap },
+		{ text: "You need complete silence to think... except when you need death metal to concentrate.", icon: Cloud },
+		{ text: "You make detailed plans with color-coded schedules... then immediately ignore them.", icon: FileText },
 	];
 
 	const lookingForItems = [
@@ -122,60 +85,45 @@ export default function WhoIHelp() {
 
 	return (
 		<>
-			{/* ═══════════════════════════════════════════
-			    HERO — cream background, maximum decoration
-			    ═══════════════════════════════════════════ */}
-			<section className="relative pt-18 pb-20 md:pt-28 md:pb-32 overflow-hidden bg-sd-cream">
-				{/* Background decorations */}
-				<BigDoodleLeaf className="absolute top-20 left-4 w-20 h-28 float-b1" />
-				<SparkleCluster className="absolute top-[20%] right-8 w-10 h-10 twinkle-2" />
-				<SunburstSVG className="absolute bottom-16 right-[20%] w-20 h-20 spin-lazy" />
+			{/* ═══ HERO ═══ */}
+			<section className="relative pt-20 pb-24 md:pt-32 md:pb-40 overflow-hidden bg-gs-cream">
+				<AmbientBlob color="gold" position="top-[-10%] right-[-10%]" size="50vw" />
+				<AmbientBlob color="mist" position="bottom-[-15%] left-[-10%]" size="35vw" />
 
 				<div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-					{/* Handwritten welcome */}
-					<p
-						className="font-handwritten text-sd-gold text-3xl mb-6"
-						style={{ transform: "rotate(-3deg)" }}
-					>
+					<p className="font-hand text-gs-ink text-2xl mb-6 rotate-[-2deg]">
 						the late-diagnosed experience
 					</p>
 
-						{/* Main headline */}
-					<h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.25] text-sd-heading mb-6">
+					<h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.2] text-gs-heading mb-8 tracking-[-0.01em]">
 						You've Been Playing Life on Expert Mode Without the Manual
 					</h1>
 
-					<ScribblyUnderline colorVar="--sd-gold" className="w-48 md:w-64 mb-8" />
+					<PillDivider className="mb-8" />
 
-					{/* Subtitle */}
-					<p className="font-body text-xl md:text-2xl text-sd-dim-text leading-[2] max-w-2xl mx-auto font-medium">
+					<p className="font-sans text-xl md:text-2xl text-gs-body leading-relaxed max-w-2xl mx-auto font-medium">
 						And you just found out everyone else got cheat codes.
 					</p>
 				</div>
 			</section>
 
-			{/* ═══ Divider ═══ */}
-			<WavyDivider bgClass="bg-sd-linen" />
-
-			{/* ═══════════════════════════════════════════
-			    THE "INVISIBLE STRUGGLE" CONTEXT — linen background
-			    ═══════════════════════════════════════════ */}
-			<section className="py-20 md:py-28 relative overflow-hidden bg-sd-linen">
-				<SparkleCluster className="absolute top-12 right-12 w-10 h-10 twinkle-1" />
+			{/* ═══ THE INVISIBLE STRUGGLE ═══ */}
+			<section className="py-24 md:py-32 relative overflow-hidden bg-gs-cream">
+				<AmbientBlob color="mist" position="top-[5%] left-[-15%]" size="30vw" />
 
 				<div className="max-w-3xl mx-auto px-6 relative z-10">
-					<div className="text-center mb-14">
-						<h2 className="font-heading text-3xl md:text-4xl mb-4 font-normal text-sd-heading">
+					<div className="text-center mb-16">
+						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							The Invisible Struggle
 						</h2>
-						<ScribblyUnderline colorVar="--sd-emerald" className="w-56 md:w-72 mb-4" />
-						<p className="font-handwritten text-sd-emerald text-2xl">
+						<PillDivider className="mb-6" />
+						<p className="font-hand text-gs-ink text-2xl">
 							it was never about "trying harder"
 						</p>
 					</div>
 
-					<DoodleCard className="max-w-3xl mx-auto">
-						<div className="space-y-6 font-body text-lg md:text-xl text-sd-dim-text leading-[2]">
+					<GentleCard className="max-w-3xl mx-auto">
+						<div className="space-y-6 font-sans text-lg md:text-xl text-gs-body leading-relaxed">
 							<p>
 								For forty-something years, you've been navigating life with an
 								invisible disability in a world that told you that you were just
@@ -183,7 +131,7 @@ export default function WhoIHelp() {
 								were too bright, to pretend you understood social rules that made
 								no sense, to push through exhaustion that went bone-deep.
 							</p>
-							<p className="font-semibold text-sd-emerald">
+							<p className="font-medium text-gs-ink">
 								You got good at it. So good that nobody knew you were drowning.
 							</p>
 							<p>
@@ -202,155 +150,128 @@ export default function WhoIHelp() {
 								human.
 							</p>
 							<div className="text-center pt-4">
-								<span className="inline-block px-8 py-4 bg-sd-emerald/10 rounded-full text-sd-heading font-heading font-bold text-2xl tracking-wide">
+								<span className="inline-block px-8 py-4 bg-gs-gold/40 rounded-full text-gs-heading font-sans font-semibold text-2xl tracking-wide">
 									Autistic. ADHD. AuDHD.
 								</span>
 							</div>
 						</div>
-					</DoodleCard>
+					</GentleCard>
 				</div>
 			</section>
 
-			{/* ═══ Divider ═══ */}
-			<WavyDivider bgClass="bg-sd-on-dark-bg" />
-
-			{/* ═══════════════════════════════════════════
-			    THE LATE DIAGNOSIS ROLLERCOASTER — deepGreen dark section
-			    ═══════════════════════════════════════════ */}
-			<section className="py-20 md:py-28 relative overflow-hidden bg-sd-on-dark-bg">
-				<SparkleCluster className="absolute top-12 right-16 w-10 h-10 twinkle-1" />
+			{/* ═══ THE LATE DIAGNOSIS ROLLERCOASTER ═══ */}
+			<section className="py-24 md:py-32 relative overflow-hidden bg-gs-cream">
+				<AmbientBlob color="gold" position="top-[-10%] right-[-10%]" size="40vw" />
+				<AmbientBlob color="mist" position="bottom-[-10%] left-[-15%]" size="35vw" />
 
 				<div className="max-w-5xl mx-auto px-6 relative z-10">
-					<div className="text-center mb-14">
-						<h2 className="font-heading text-3xl md:text-4xl mb-4 font-normal text-sd-on-dark-heading">
+					<div className="text-center mb-16">
+						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							The Late Diagnosis Rollercoaster
 						</h2>
-						<ScribblyUnderline colorVar="--sd-gold" className="w-56 md:w-72 mb-4" />
-						<p className="font-handwritten text-sd-on-dark-dim text-2xl">
+						<PillDivider className="mb-6" />
+						<p className="font-hand text-gs-ink text-2xl">
 							buckle up, it's a wild ride
 						</p>
 					</div>
 
-					<p className="font-body text-lg md:text-xl text-sd-on-dark-text/75 leading-[2] text-center max-w-3xl mx-auto mb-14">
+					<p className="font-sans text-lg md:text-xl text-gs-body leading-relaxed text-center max-w-3xl mx-auto mb-16">
 						Now you're on the wildest ride of your life, and nobody prepared
 						you for these loops.
 					</p>
 
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 						{emotionCards.map((item, i) => (
-							<div
-								key={i}
-								className="doodle-hover rounded-2xl flex flex-col h-full border-2 border-dashed border-sd-on-dark-dim/15 bg-sd-on-dark-text/5"
-							>
-								<div className="p-8 md:p-10 flex flex-col h-full">
-									<div
-										className={`w-12 h-12 ${item.bg} rounded-xl flex items-center justify-center mb-6 ${item.color}`}
-									>
-										<item.icon className="w-6 h-6" />
-									</div>
-									<h4 className="font-heading text-xl font-semibold text-sd-on-dark-heading mb-3">
-										{item.title}
-									</h4>
-									<p className="font-body text-lg text-sd-on-dark-text/75 leading-[2] italic">
-										{item.text}
-									</p>
+							<GentleCard key={i}>
+								<div className="w-12 h-12 bg-gs-gold/60 rounded-2xl flex items-center justify-center mb-6 text-gs-ink">
+									<item.icon className="w-6 h-6" />
 								</div>
-							</div>
+								<h4 className="font-serif text-xl font-semibold text-gs-heading mb-3 tracking-[-0.01em]">
+									{item.title}
+								</h4>
+								<p className="font-sans text-lg text-gs-body leading-relaxed italic">
+									{item.text}
+								</p>
+							</GentleCard>
 						))}
 					</div>
 				</div>
 			</section>
 
-			{/* ═══ Divider ═══ */}
-			<WavyDivider bgClass="bg-sd-cream" />
-
-			{/* ═══════════════════════════════════════════
-			    AUDHD BEAUTIFUL CHAOS — cream background
-			    ═══════════════════════════════════════════ */}
-			<section className="py-20 md:py-28 relative overflow-hidden bg-sd-cream">
-				<SparkleCluster className="absolute top-16 left-8 w-10 h-10 twinkle-2" />
+			{/* ═══ AUDHD BEAUTIFUL CHAOS ═══ */}
+			<section className="py-24 md:py-32 relative overflow-hidden bg-gs-cream">
+				<AmbientBlob color="mist" position="top-[-5%] left-[-10%]" size="35vw" />
 
 				<div className="max-w-5xl mx-auto px-6 relative z-10">
-					<div className="text-center mb-14">
-						<h2 className="font-heading text-3xl md:text-4xl mb-4 font-normal text-sd-heading">
+					<div className="text-center mb-16">
+						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							If You're AuDHD, Welcome to the Beautiful Chaos
 						</h2>
-						<ScribblyUnderline colorVar="--sd-sage" className="w-64 md:w-80 mb-4" />
-						<p className="font-handwritten text-sd-emerald text-2xl">
+						<PillDivider className="mb-6" />
+						<p className="font-hand text-gs-ink text-2xl">
 							two operating systems, one beautiful brain
 						</p>
 					</div>
 
-					<p className="font-body text-lg md:text-xl text-sd-dim-text leading-[2] text-center max-w-3xl mx-auto mb-14">
+					<p className="font-sans text-lg md:text-xl text-gs-body leading-relaxed text-center max-w-3xl mx-auto mb-16">
 						Your brain is a special kind of complicated. You live in the space
 						between spaces, where autism and ADHD dance a complex tango.
 					</p>
 
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
 						{chaosItems.map((item, i) => (
-							<DoodleCard key={i}>
+							<GentleCard key={i}>
 								<div className="flex gap-5 items-start">
-									<div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 bg-sd-sage/15 text-sd-emerald">
+									<div className="w-14 h-14 rounded-2xl bg-gs-gold/60 text-gs-ink flex items-center justify-center flex-shrink-0">
 										<item.icon className="w-7 h-7" />
 									</div>
-									<p className="font-body text-lg md:text-xl text-sd-dim-text leading-[2]">
+									<p className="font-sans text-lg md:text-xl text-gs-body leading-relaxed">
 										{item.text}
 									</p>
 								</div>
-							</DoodleCard>
+							</GentleCard>
 						))}
 					</div>
 
-					<DoodleCard className="max-w-3xl mx-auto">
-						<div className="text-center space-y-3">
-							<p className="font-body text-lg md:text-xl font-semibold text-sd-text leading-[2]">
-								<strong>
-									This isn't indecisiveness. This isn't being "difficult." This is
-									your brain trying to balance two competing operating systems, and
-									it's exhausting.
-								</strong>
+					<GentleCard className="max-w-3xl mx-auto">
+						<div className="text-center space-y-4">
+							<p className="font-sans text-lg md:text-xl font-medium text-gs-heading leading-relaxed">
+								This isn't indecisiveness. This isn't being "difficult." This is
+								your brain trying to balance two competing operating systems, and
+								it's exhausting.
 							</p>
-							<p
-								className="font-handwritten text-sd-gold text-2xl"
-								style={{ transform: "rotate(2deg)" }}
-							>
+							<p className="font-hand text-gs-ink text-2xl rotate-[2deg]">
 								(and it's also kind of amazing)
 							</p>
 						</div>
-					</DoodleCard>
+					</GentleCard>
 				</div>
 			</section>
 
-			{/* ═══ Divider ═══ */}
-			<WavyDivider bgClass="bg-sd-linen" />
-
-			{/* ═══════════════════════════════════════════
-			    WHAT YOU'RE REALLY LOOKING FOR — linen background
-			    ═══════════════════════════════════════════ */}
-			<section className="py-20 md:py-28 relative overflow-hidden bg-sd-linen">
-				<SparkleCluster className="absolute top-12 right-12 w-10 h-10 twinkle-1" />
-				<BigDoodleStar className="absolute top-20 left-[8%] w-14 h-14 twinkle-2" />
+			{/* ═══ WHAT YOU'RE REALLY LOOKING FOR ═══ */}
+			<section className="py-24 md:py-32 relative overflow-hidden bg-gs-cream">
+				<AmbientBlob color="gold" position="top-[-5%] right-[-15%]" size="35vw" />
 
 				<div className="max-w-5xl mx-auto px-6 relative z-10">
-					<div className="text-center mb-14">
-						<h2 className="font-heading text-3xl md:text-4xl mb-4 font-normal text-sd-heading">
+					<div className="text-center mb-16">
+						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							What You're Really Looking For
 						</h2>
-						<ScribblyUnderline colorVar="--sd-gold" className="w-56 md:w-72 mb-4" />
-						<p className="font-handwritten text-sd-emerald text-2xl">
+						<PillDivider className="mb-6" />
+						<p className="font-hand text-gs-ink text-2xl">
 							spoiler: it's not someone to "fix" you
 						</p>
 					</div>
 
-					<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+					<div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 						<div>
-							<div className="space-y-6 font-body text-lg md:text-xl text-sd-dim-text leading-[2] mb-10">
+							<div className="space-y-6 font-sans text-lg md:text-xl text-gs-body leading-relaxed mb-10">
 								<p>
 									You don't need someone to fix you. You're not broken. You
 									don't need someone to teach you to be more neurotypical.
 									You've mastered that performance, and it nearly killed you.
 								</p>
-								<p className="font-bold text-sd-text">
+								<p className="font-medium text-gs-heading">
 									What you need is someone who:
 								</p>
 							</div>
@@ -358,8 +279,8 @@ export default function WhoIHelp() {
 							<ul className="space-y-5">
 								{lookingForItems.map((item, i) => (
 									<li key={i} className="flex gap-4 items-start">
-										<div className="w-2 h-2 rounded-full bg-sd-emerald mt-3 flex-shrink-0" />
-										<p className="font-body text-lg md:text-xl text-sd-dim-text leading-[2]">
+										<div className="w-2 h-2 rounded-full bg-gs-ink mt-3 flex-shrink-0" />
+										<p className="font-sans text-lg md:text-xl text-gs-body leading-relaxed">
 											{item}
 										</p>
 									</li>
@@ -368,50 +289,42 @@ export default function WhoIHelp() {
 						</div>
 
 						<div className="relative">
-							<DoodleCard>
-								<Lightbulb className="w-12 h-12 text-sd-emerald mb-6" />
-								<h3 className="font-heading text-2xl font-semibold text-sd-heading mb-4">
+							<GentleCard>
+								<Lightbulb className="w-12 h-12 text-gs-ink mb-6 opacity-60" />
+								<h3 className="font-serif text-2xl font-semibold text-gs-heading mb-4 tracking-[-0.01em]">
 									The Path Forward
 								</h3>
-								<p className="font-body text-lg md:text-xl text-sd-dim-text leading-[2]">
+								<p className="font-sans text-lg md:text-xl text-gs-body leading-relaxed">
 									You need someone who's walked this path and can shine a light
 									on the way forward. Someone who doesn't just see the struggle,
 									but sees the incredible potential waiting on the other side of
 									burnout.
 								</p>
-								<p
-									className="font-handwritten text-sd-gold text-xl mt-4"
-									style={{ transform: "rotate(-2deg)" }}
-								>
+								<p className="font-hand text-gs-ink text-xl mt-4 rotate-[-2deg]">
 									there's so much on the other side
 								</p>
-							</DoodleCard>
+							</GentleCard>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			{/* ═══ Divider ═══ */}
-			<WavyDivider bgClass="bg-sd-cream" />
-
-			{/* ═══════════════════════════════════════════
-			    WHY THIS MATTERS NOW — cream background
-			    ═══════════════════════════════════════════ */}
-			<section className="py-20 md:py-28 relative overflow-hidden bg-sd-cream">
-				<SparkleCluster className="absolute top-16 left-8 w-10 h-10 twinkle-2" />
+			{/* ═══ WHY THIS MATTERS NOW ═══ */}
+			<section className="py-24 md:py-32 relative overflow-hidden bg-gs-cream">
+				<AmbientBlob color="mist" position="top-[-10%] left-[-10%]" size="40vw" />
 
 				<div className="max-w-3xl mx-auto px-6 relative z-10">
-					<div className="text-center mb-14">
-						<h2 className="font-heading text-3xl md:text-4xl mb-4 font-normal text-sd-heading">
+					<div className="text-center mb-16">
+						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							Why This Matters Now
 						</h2>
-						<ScribblyUnderline colorVar="--sd-emerald" className="w-48 md:w-64 mb-4" />
-						<p className="font-handwritten text-sd-gold text-2xl">
+						<PillDivider className="mb-6" />
+						<p className="font-hand text-gs-ink text-2xl">
 							because you've waited long enough
 						</p>
 					</div>
 
-					<div className="space-y-6 font-body text-lg md:text-xl text-sd-dim-text leading-[2]">
+					<div className="space-y-6 font-sans text-lg md:text-xl text-gs-body leading-relaxed">
 						<p>
 							The world is changing, but not fast enough. You're still expected
 							to function in systems designed for neurotypical brains. You still
@@ -422,7 +335,7 @@ export default function WhoIHelp() {
 							But here's what's different now: You know why it's hard. You have
 							language for your experience. You're not alone in this anymore.
 						</p>
-						<p className="font-medium text-sd-text">
+						<p className="font-medium text-gs-heading">
 							And maybe, just maybe, you're ready to stop apologizing for your
 							brain and start building a life that actually fits.
 						</p>
@@ -430,104 +343,79 @@ export default function WhoIHelp() {
 				</div>
 			</section>
 
-			{/* ═══ Divider ═══ */}
-			<WavyDivider bgClass="bg-sd-linen" />
-
-			{/* ═══════════════════════════════════════════
-			    PERMISSION SLIP — linen background, gold border DoodleCard
-			    ═══════════════════════════════════════════ */}
-			<section className="py-20 md:py-28 relative overflow-hidden bg-sd-linen">
-				<SparkleCluster className="absolute top-12 right-16 w-10 h-10 twinkle-1" />
+			{/* ═══ PERMISSION SLIP ═══ */}
+			<section className="py-24 md:py-32 relative overflow-hidden bg-gs-cream">
+				<AmbientBlob color="gold" position="top-[-5%] right-[-10%]" size="35vw" />
 
 				<div className="max-w-2xl mx-auto px-6 relative z-10">
-					<div className="text-center mb-14">
-						<h2 className="font-heading text-3xl md:text-4xl mb-4 font-normal text-sd-heading">
+					<div className="text-center mb-16">
+						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							This Is Your Permission Slip
 						</h2>
-						<ScribblyUnderline colorVar="--sd-gold" className="w-56 md:w-72 mb-4" />
-						<p className="font-handwritten text-sd-emerald text-2xl">
+						<PillDivider className="mb-6" />
+						<p className="font-hand text-gs-ink text-2xl">
 							tear along the dotted line
 						</p>
 					</div>
 
-					{/* Gold-bordered permission card */}
-					<div className="relative">
-						<div
-							className="relative doodle-hover"
-						>
-							{/* Gold dashed border overlay */}
-							<div className="absolute inset-[-3px] rounded-2xl pointer-events-none border-2 border-dashed border-sd-gold/50" />
-							{/* Card body */}
-							<div className="p-8 md:p-12 rounded-2xl relative bg-sd-cream text-center">
-								<ul className="space-y-5 text-left inline-block max-w-lg mx-auto mb-8">
-									{permissionItems.map((item, i) => (
-										<li key={i} className="flex gap-3 items-center">
-											<CheckCircle2 className="w-6 h-6 text-sd-emerald flex-shrink-0" />
-											<span className="font-body text-lg md:text-xl text-sd-dim-text leading-[2]">
-												{item}
-											</span>
-										</li>
-									))}
-								</ul>
+					<GentleCard className="border-2 border-gs-gold">
+						<ul className="space-y-5 text-left max-w-lg mx-auto mb-8">
+							{permissionItems.map((item, i) => (
+								<li key={i} className="flex gap-3 items-center">
+									<CheckCircle2 className="w-6 h-6 text-gs-ink flex-shrink-0" />
+									<span className="font-sans text-lg md:text-xl text-gs-body leading-relaxed">
+										{item}
+									</span>
+								</li>
+							))}
+						</ul>
 
-								<div className="pt-6 border-t border-sd-sage/20">
-									<p className="font-heading text-xl md:text-2xl font-semibold text-sd-heading">
-										To be brilliantly, chaotically, authentically you.
-									</p>
-									<p
-										className="font-handwritten text-sd-gold text-2xl mt-3"
-										style={{ transform: "rotate(2deg)" }}
-									>
-										signed: the universe
-									</p>
-								</div>
-							</div>
+						<div className="pt-6 border-t border-gs-mist/50 text-center">
+							<p className="font-sans text-xl md:text-2xl font-semibold text-gs-heading">
+								To be brilliantly, chaotically, authentically you.
+							</p>
+							<p className="font-hand text-gs-ink text-2xl mt-3 rotate-[2deg]">
+								signed: the universe
+							</p>
 						</div>
-					</div>
+					</GentleCard>
 				</div>
 			</section>
 
-			{/* ═══ Divider ═══ */}
-			<WavyDivider bgClass="bg-sd-cream" />
-
-			{/* ═══════════════════════════════════════════
-			    FINAL CTA — cream background
-			    ═══════════════════════════════════════════ */}
-			<section className="py-24 md:py-32 relative overflow-hidden bg-sd-cream">
-				<SparkleCluster className="absolute top-12 right-16 w-10 h-10 twinkle-2" />
+			{/* ═══ FINAL CTA ═══ */}
+			<section className="py-28 md:py-36 relative overflow-hidden bg-gs-cream">
+				<AmbientBlob color="mist" position="top-[-10%] left-[-10%]" size="40vw" />
+				<AmbientBlob color="gold" position="bottom-[-10%] right-[-5%]" size="30vw" />
 
 				<div className="max-w-2xl mx-auto px-6 relative z-10 text-center">
-					<h2 className="font-heading text-3xl md:text-4xl mb-4 font-normal text-sd-heading">
+					<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 						Ready to Stop Fighting Alone?
 					</h2>
-					<ScribblyUnderline colorVar="--sd-gold" className="w-56 md:w-72 mb-6" />
+					<PillDivider className="mb-8" />
 
-					<p className="font-body text-lg md:text-xl mb-4 text-sd-dim-text leading-[2]">
+					<p className="font-sans text-lg md:text-xl mb-4 text-gs-body leading-relaxed">
 						If you're exhausted from playing neurotypical, if you're ready to
 						work WITH your brain instead of against it, if you want someone
 						who gets the late-diagnosed AuDHD experience from the inside...
 					</p>
 
-					<p className="font-body text-xl md:text-2xl font-medium text-sd-text mb-4">
+					<p className="font-sans text-xl md:text-2xl font-medium text-gs-heading mb-4">
 						Let's talk.
 					</p>
 
-					<p
-						className="font-handwritten text-sd-emerald text-2xl mb-10"
-						style={{ transform: "rotate(-1deg)" }}
-					>
+					<p className="font-hand text-gs-ink text-2xl mb-12 rotate-[-1deg]">
 						forty years of masking is enough
 					</p>
 
 					<Link
 						to="/services"
-						className="group inline-flex items-center gap-3 px-10 py-5 rounded-full text-white font-body font-bold text-xl transition-transform duration-200 ease-out hover:-translate-y-2 hover:scale-105 bg-sd-deep-green shadow-[0_12px_35px_var(--sd-deep-green)/0.3]"
+						className="group inline-flex items-center gap-3 bg-gs-ink text-white rounded-2xl px-10 py-5 font-sans font-medium text-xl shadow-[0_4px_12px_rgba(67,91,114,0.15)] hover:-translate-y-0.5 hover:bg-gs-ink-hover hover:shadow-[0_6px_16px_rgba(67,91,114,0.2)] transition-all duration-300 gs-press"
 					>
 						Learn about the Re-Architect's Journey
 						<ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
 					</Link>
 
-					<p className="font-body text-base text-sd-dim-text mt-8 italic">
+					<p className="font-sans text-base text-gs-body mt-10 italic">
 						Because forty years of masking is enough. It's time to discover
 						who you are underneath.
 					</p>

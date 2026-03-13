@@ -11,13 +11,7 @@ import {
 	Timer,
 	Zap,
 } from "lucide-react";
-import {
-	BigDoodleLeaf,
-	DoodleCard,
-	ScribblyUnderline,
-	SparkleCluster,
-	WavyDivider,
-} from "~/components/doodles";
+import { AmbientBlob, FadeIn, GentleCard, PillDivider } from "~/components/doodles";
 import type { Route } from "./+types/home";
 
 export function meta({}: Route.MetaArgs) {
@@ -29,7 +23,7 @@ export function meta({}: Route.MetaArgs) {
 		{
 			name: "description",
 			content:
-				"Neuro-affirming coaching for late-diagnosed AuDHD adults who are ready to stop fighting their brain and start working with it. Book your free blueprint call today.",
+				"Neuro-affirming coaching for late-diagnosed AuDHD adults who are ready to stop fighting their brain and start working with it. Book your free Vibe Check call today.",
 		},
 	];
 }
@@ -111,39 +105,39 @@ export default function Home() {
 	return (
 		<>
 			{/* ═══════════════════════════════════════════
-			    HERO — cream background, maximum decoration
+			    HERO
 			    ═══════════════════════════════════════════ */}
-			<section className="relative pt-18 pb-20 md:pt-28 md:pb-32 overflow-hidden bg-sd-cream">
-				{/* Background decorations */}
-				<BigDoodleLeaf className="absolute top-20 left-4 w-20 h-28 float-b1" />
-				<SparkleCluster className="absolute top-[20%] right-8 w-10 h-10 twinkle-2" />
-				<SparkleCluster className="absolute bottom-[30%] left-8 w-14 h-14 twinkle-1" />
+			<section className="relative pt-20 pb-24 md:pt-32 md:pb-40 overflow-hidden bg-gs-cream">
+				{/* Ambient blobs */}
+				<AmbientBlob color="gold" position="top-[-10%] right-[-10%]" size="50vw" />
+				<AmbientBlob color="mist" position="bottom-[-20%] left-[-10%]" size="40vw" />
 
 				<div className="max-w-3xl mx-auto px-6 relative z-10 text-center">
 					{/* Handwritten welcome */}
-					<p className="font-handwritten text-sd-gold text-3xl mb-6" style={{ transform: "rotate(-3deg)" }}>
+					<p className="font-hand text-gs-ink text-2xl mb-6 rotate-[-2deg] gs-hero-enter gs-hero-delay-1">
 						oh hello there!
 					</p>
 
 					{/* Uppercase tagline */}
-					<p className="font-body text-sm font-medium mb-8 text-sd-emerald tracking-[0.35em] uppercase">
+					<p className="font-sans text-sm font-medium mb-8 text-gs-ink tracking-[0.35em] uppercase gs-hero-enter gs-hero-delay-2">
 						Neuro-Affirming Coaching for Late-Diagnosed Adults
 					</p>
 
 					{/* Main headline */}
-					<h1 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 font-semibold leading-[1.25] text-sd-heading">
+					<h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-8 font-semibold leading-[1.2] text-gs-heading tracking-[-0.01em] gs-hero-enter gs-hero-delay-3">
 						Your Brain Isn't Too Much.{" "}
 						<br />
-						<em className="text-sd-emerald">
+						<span className="text-gs-ink">
 							The World Just Isn't Built for Its Brilliance.
-						</em>
+						</span>
 					</h1>
 
-					<ScribblyUnderline colorVar="--sd-gold" className="w-48 md:w-64 mb-8" />
+					{/* Pill divider */}
+					<PillDivider className="mb-8 gs-hero-enter gs-hero-delay-4" />
 
 					{/* Subtitle */}
-					<p className="font-body text-xl md:text-2xl max-w-xl mx-auto mb-12 text-sd-dim-text leading-[2]">
-						<strong>
+					<p className="font-sans text-xl md:text-2xl max-w-xl mx-auto mb-16 text-gs-body leading-relaxed gs-hero-enter gs-hero-delay-5">
+						<strong className="text-gs-heading">
 							Neuro-affirming coaching for late-diagnosed AuDHD adults who are
 							ready to stop fighting their brain and start working with it.
 						</strong>
@@ -152,7 +146,7 @@ export default function Home() {
 					{/* Primary CTA */}
 					<Link
 						to="/services"
-						className="group inline-flex items-center gap-3 px-10 py-5 rounded-full text-white font-body font-bold text-xl transition-transform duration-200 ease-out hover:-translate-y-2 hover:scale-105 bg-sd-deep-green shadow-[0_12px_35px_var(--sd-deep-green)/0.3]"
+						className="group inline-flex items-center gap-3 bg-gs-ink text-white rounded-2xl px-10 py-5 font-sans font-medium text-xl shadow-[0_4px_12px_rgba(67,91,114,0.15)] hover:-translate-y-0.5 hover:bg-gs-ink-hover hover:shadow-[0_6px_16px_rgba(67,91,114,0.2)] transition-all duration-300 gs-press gs-hero-enter gs-hero-delay-5"
 					>
 						Learn about the Re-Architect's Journey
 						<ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
@@ -160,114 +154,104 @@ export default function Home() {
 				</div>
 			</section>
 
-			{/* ═══ Divider ═══ */}
-			<WavyDivider bgClass="bg-sd-linen" />
-
 			{/* ═══════════════════════════════════════════
-			    PAIN POINTS — linen background
+			    PAIN POINTS
 			    ═══════════════════════════════════════════ */}
-			<section className="py-20 md:py-28 relative overflow-hidden bg-sd-linen">
-				<SparkleCluster className="absolute top-12 right-12 w-10 h-10 twinkle-1" />
+			<section className="py-24 md:py-32 relative overflow-hidden bg-gs-cream">
+				<AmbientBlob color="mist" position="top-[10%] right-[-15%]" size="35vw" />
 
 				<div className="max-w-5xl mx-auto px-6 relative z-10">
-					<div className="text-center mb-14">
-						<h2 className="font-heading text-3xl md:text-4xl mb-4 font-normal text-sd-heading">
+					<div className="text-center mb-16">
+						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							Does This Sound Like Your Brain?
 						</h2>
-						<ScribblyUnderline colorVar="--sd-emerald" className="w-56 md:w-72 mb-4" />
-						<p className="font-handwritten text-sd-emerald text-2xl">
+						<PillDivider className="mb-6" />
+						<p className="font-hand text-gs-ink text-2xl rotate-[-2deg]">
 							what if none of these are flaws?
 						</p>
 					</div>
 
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
 						{painPoints.map((item, i) => (
-							<DoodleCard key={i}>
+							<GentleCard key={i}>
 								<div className="flex gap-5 items-start">
-									<div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 bg-sd-sage/15 text-sd-emerald">
+									<div className="w-14 h-14 rounded-2xl bg-gs-gold/60 text-gs-ink flex items-center justify-center flex-shrink-0">
 										<item.icon className="w-7 h-7" />
 									</div>
-									<p className="font-body text-lg md:text-xl text-sd-dim-text leading-[2]">
+									<p className="font-sans text-lg md:text-xl text-gs-body leading-relaxed">
 										{item.text}
 									</p>
 								</div>
-							</DoodleCard>
+							</GentleCard>
 						))}
 					</div>
 
-					<DoodleCard className="max-w-3xl mx-auto">
-						<div className="text-center space-y-3">
-							<p className="font-body text-lg md:text-xl font-semibold text-sd-text leading-[2]">
-								<strong>
-									You're not broken. You're not failing. You're AuDHD in a world
-									that wasn't designed for your operating system.
-								</strong>
+					<GentleCard className="max-w-3xl mx-auto">
+						<div className="text-center space-y-4">
+							<p className="font-sans text-lg md:text-xl font-medium text-gs-heading leading-relaxed">
+								You're not broken. You're not failing. You're AuDHD in a world
+								that wasn't designed for your operating system.
 							</p>
-							<p className="font-handwritten text-sd-gold text-2xl" style={{ transform: "rotate(2deg)" }}>
+							<p className="font-hand text-gs-ink text-2xl rotate-[2deg]">
 								(yes, YOU. the one reading this right now)
 							</p>
 						</div>
-					</DoodleCard>
+					</GentleCard>
 				</div>
 			</section>
 
-			{/* ═══ Divider ═══ */}
-			<WavyDivider bgClass="bg-sd-cream" />
-
 			{/* ═══════════════════════════════════════════
-			    ABOUT — cream background
+			    ABOUT
 			    ═══════════════════════════════════════════ */}
-			<section className="py-20 md:py-28 relative overflow-hidden bg-sd-cream">
-				<SparkleCluster className="absolute top-16 left-8 w-10 h-10 twinkle-2" />
+			<section className="py-24 md:py-32 relative overflow-hidden bg-gs-cream">
+				<AmbientBlob color="gold" position="top-[5%] left-[-15%]" size="35vw" />
 
 				<div className="max-w-4xl mx-auto px-6 relative z-10">
-					<div className="text-center mb-14">
-						<h2 className="font-heading text-3xl md:text-4xl mb-4 font-normal text-sd-heading">
+					<div className="text-center mb-16">
+						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							Hi, I'm Francois
 						</h2>
-						<ScribblyUnderline colorVar="--sd-sage" className="w-36 md:w-48 mb-4" />
+						<PillDivider />
 					</div>
 
 					<div className="flex flex-col lg:flex-row gap-12 items-center">
-						{/* Photo — polaroid-style with doodle border */}
-						<div className="lg:w-1/3 flex flex-col items-center relative">
-							<DoodleCard className="p-0">
-								<div className="p-4 pb-14">
-									<img
-										src="/avatar.jpeg"
-										alt="Francois Dab"
-										className="w-full h-auto rounded-sm aspect-square object-cover"
-										style={{ maxWidth: "280px" }}
-									/>
-									<p className="absolute bottom-8 left-0 right-0 text-center font-handwritten text-sd-dim-text text-xl">
-										Hi, I'm Francois
-									</p>
-								</div>
-							</DoodleCard>
+						{/* Photo — journal snapshot */}
+						<div className="lg:w-1/3 flex flex-col items-center">
+							<div className="rotate-[-2deg] hover:rotate-0 transition-transform duration-500">
+								<img
+									src="/avatar.jpeg"
+									alt="Francois Dab"
+									className="w-64 h-64 md:w-72 md:h-72 rounded-[1.5rem] object-cover shadow-[0_4px_12px_oklch(0%_0_0/0.08),0_16px_40px_oklch(0%_0_0/0.1)] ring-4 ring-gs-surface/80"
+								/>
+								<p className="text-center font-hand text-gs-ink text-xl mt-4 rotate-[1deg]">
+									Hi, I'm Francois
+								</p>
 							</div>
+						</div>
 
 						{/* Bio text */}
 						<div className="lg:w-2/3 space-y-5">
-							<p className="font-body text-lg md:text-xl text-sd-dim-text leading-[2]">
+							<p className="font-sans text-lg md:text-xl text-gs-body leading-relaxed">
 								At 40, I discovered I wasn't "too intense," "too sensitive," or
 								"too much." I was AuDHD.
 							</p>
-							<p className="font-body text-lg md:text-xl text-sd-dim-text leading-[2]">
+							<p className="font-sans text-lg md:text-xl text-gs-body leading-relaxed">
 								Looking back, the signs were everywhere—including the fact that
 								most of my coaching clients before my diagnosis were
 								neurodivergent. Game recognizes game, even when we don't have the
 								words for it yet.
 							</p>
-							<p className="font-body text-lg md:text-xl text-sd-dim-text leading-[2]">
+							<p className="font-sans text-lg md:text-xl text-gs-body leading-relaxed">
 								My special power? Taking the overwhelming complexity of life and
-								breaking it down into something actually manageable. (Still
-								working on applying this to my own executive dysfunction, but hey,
-								we're all works in progress.)
+								breaking it down into something actually manageable.
+							</p>
+							<p className="font-hand text-gs-ink text-xl rotate-[-1deg]">
+								(still working on applying this to my own executive dysfunction, but hey, we're all works in progress)
 							</p>
 							<div className="pt-4">
 								<Link
 									to="/about"
-									className="group inline-flex items-center gap-2 font-body font-bold text-lg hover:gap-3 transition-all text-sd-emerald"
+									className="group inline-flex items-center gap-2 font-sans font-medium text-lg text-gs-ink hover:gap-3 transition-all duration-300"
 								>
 									More About My Journey
 									<ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
@@ -278,131 +262,119 @@ export default function Home() {
 				</div>
 			</section>
 
-			{/* ═══ Divider ═══ */}
-			<WavyDivider bgClass="bg-sd-on-dark-bg" />
-
 			{/* ═══════════════════════════════════════════
-			    SERVICES — deepGreen dark section
+			    SERVICES
 			    ═══════════════════════════════════════════ */}
-			<section className="py-20 md:py-28 relative overflow-hidden bg-sd-on-dark-bg">
-				<SparkleCluster className="absolute top-12 right-16 w-10 h-10 twinkle-1" />
-				<SparkleCluster className="absolute bottom-16 left-12 w-12 h-12 twinkle-3" />
+			<section className="py-24 md:py-32 relative overflow-hidden bg-gs-cream">
+				<AmbientBlob color="mist" position="top-[-10%] left-[-10%]" size="45vw" />
+				<AmbientBlob color="gold" position="bottom-[-10%] right-[-10%]" size="35vw" />
 
 				<div className="max-w-5xl mx-auto px-6 relative z-10">
-					<div className="text-center mb-14">
-						<h2 className="font-heading text-3xl md:text-4xl mb-4 font-normal text-sd-on-dark-heading">
+					<div className="text-center mb-16">
+						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							How I Can Help
 						</h2>
-						<ScribblyUnderline colorVar="--sd-gold" className="w-48 md:w-64 mb-4" />
-						<p className="font-handwritten text-sd-on-dark-dim text-2xl">
+						<PillDivider className="mb-6" />
+						<p className="font-hand text-gs-ink text-2xl rotate-[1deg]">
 							pick your adventure!
 						</p>
 					</div>
 
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 						{services.map((item, i) => (
-							<div
-								key={i}
-								className="doodle-hover rounded-2xl flex flex-col h-full border-2 border-dashed border-sd-on-dark-dim/15 bg-sd-on-dark-text/5"
-							>
-								<div className="p-8 md:p-10 flex flex-col h-full">
-									<div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 mb-5 bg-sd-on-dark-dim/20 text-sd-gold">
+							<GentleCard key={i} className="flex flex-col h-full">
+								<div className="flex flex-col h-full">
+									<div className="w-14 h-14 rounded-2xl bg-gs-gold/60 text-gs-ink flex items-center justify-center flex-shrink-0 mb-5">
 										<item.icon className="w-7 h-7" />
 									</div>
-									<h3 className="font-heading text-2xl mb-3 font-semibold text-sd-on-dark-heading">
+									<h3 className="font-serif text-2xl mb-3 font-semibold text-gs-heading tracking-[-0.01em]">
 										{item.title}
 									</h3>
-									<p className="font-body text-base font-semibold mb-3 text-sd-on-dark-dim leading-relaxed">
+									<p className="font-sans text-base font-medium mb-3 text-gs-ink leading-relaxed">
 										{item.subtitle}
 									</p>
-									<p className="font-body text-[17px] mb-8 flex-grow text-sd-on-dark-text/75 leading-[2]">
+									<p className="font-sans text-[17px] mb-8 flex-grow text-gs-body leading-relaxed">
 										{item.desc}
 									</p>
 									<Link
 										to="/services"
-										className="group inline-flex items-center gap-2 font-body font-medium hover:gap-3 transition-all text-sd-gold"
+										className="group inline-flex items-center gap-2 font-sans font-medium text-gs-ink hover:gap-3 transition-all duration-300"
 									>
 										Learn More
 										<ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
 									</Link>
 								</div>
-							</div>
+							</GentleCard>
 						))}
 					</div>
 				</div>
 			</section>
 
-			{/* ═══ Divider ═══ */}
-			<WavyDivider bgClass="bg-sd-cream" />
-
 			{/* ═══════════════════════════════════════════
-			    TESTIMONIALS — cream background
+			    TESTIMONIALS
 			    ═══════════════════════════════════════════ */}
-			<section className="py-20 md:py-28 relative overflow-hidden bg-sd-cream">
-				<SparkleCluster className="absolute top-10 left-12 w-10 h-10 twinkle-1" />
+			<section className="py-24 md:py-32 relative overflow-hidden bg-gs-cream">
+				<AmbientBlob color="gold" position="top-[5%] right-[-10%]" size="30vw" />
 
 				<div className="max-w-5xl mx-auto px-6 relative z-10">
-					<div className="text-center mb-14">
-						<h2 className="font-heading text-3xl md:text-4xl mb-4 font-normal text-sd-heading">
+					<div className="text-center mb-16">
+						<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 							What Clients Say
 						</h2>
-						<ScribblyUnderline colorVar="--sd-gold" className="w-48 md:w-64 mb-4" />
-						<p className="font-handwritten text-sd-emerald text-2xl">
+						<PillDivider className="mb-6" />
+						<p className="font-hand text-gs-ink text-2xl rotate-[-1deg]">
 							in their own words
 						</p>
 					</div>
 
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 						{testimonials.map((t, i) => (
-							<DoodleCard key={i}>
-								<p className="font-heading text-lg md:text-xl italic mb-6 font-normal text-sd-text leading-[2]">
+							<GentleCard key={i}>
+								<p className="font-sans text-lg md:text-xl italic mb-6 text-gs-heading leading-relaxed">
 									"{t.quote}"
 								</p>
 								<div className="flex items-center gap-3">
-									<div className="w-8 h-1 rounded-full bg-sd-emerald/30" />
-									<p className="font-body text-sm font-bold text-sd-emerald">
-										- {t.author}, {t.context}
+									<div className="w-8 h-1 rounded-full bg-gs-gold" />
+									<p className="font-sans text-sm font-medium text-gs-ink">
+										— {t.author}, {t.context}
 									</p>
 								</div>
-							</DoodleCard>
+							</GentleCard>
 						))}
 					</div>
 				</div>
 			</section>
 
-			{/* ═══ Divider ═══ */}
-			<WavyDivider bgClass="bg-sd-linen" />
-
 			{/* ═══════════════════════════════════════════
-			    FINAL CTA — linen background
+			    FINAL CTA
 			    ═══════════════════════════════════════════ */}
-			<section className="py-24 md:py-32 relative overflow-hidden bg-sd-linen">
-				<SparkleCluster className="absolute top-12 right-16 w-10 h-10 twinkle-2" />
-				<BigDoodleLeaf flip className="absolute top-8 left-4 w-16 h-24 float-b3" />
+			<section className="py-28 md:py-36 relative overflow-hidden bg-gs-cream">
+				<AmbientBlob color="mist" position="top-[-10%] left-[-10%]" size="40vw" />
+				<AmbientBlob color="gold" position="bottom-[-10%] right-[-5%]" size="30vw" />
 
-				<div className="max-w-2xl mx-auto px-6 relative z-10 text-center">
-					<h2 className="font-heading text-3xl md:text-4xl mb-4 font-normal text-sd-heading">
+				<FadeIn className="max-w-2xl mx-auto px-6 relative z-10 text-center">
+					<h2 className="font-serif text-3xl md:text-4xl mb-4 font-semibold text-gs-heading tracking-[-0.01em]">
 						Ready to Stop Fighting Your Brain?
 					</h2>
-					<ScribblyUnderline colorVar="--sd-gold" className="w-56 md:w-72 mb-6" />
+					<PillDivider className="mb-8" />
 
-					<p className="font-body text-lg md:text-xl mb-4 text-sd-dim-text leading-[2]">
+					<p className="font-sans text-lg md:text-xl mb-4 text-gs-body leading-relaxed">
 						Your AuDHD brain isn't a bug—it's a feature. Let's figure out how
 						to work with your unique operating system instead of against it.
 					</p>
 
-					<p className="font-handwritten text-sd-emerald text-2xl mb-10" style={{ transform: "rotate(-1deg)" }}>
+					<p className="font-hand text-gs-ink text-2xl mb-12 rotate-[-1deg]">
 						with kindness, curiosity, and a little bit of play
 					</p>
 
 					<Link
 						to="/services"
-						className="group inline-flex items-center gap-3 px-10 py-5 rounded-full text-white font-body font-bold text-xl transition-transform duration-200 ease-out hover:-translate-y-2 hover:scale-105 bg-sd-deep-green shadow-[0_12px_35px_var(--sd-deep-green)/0.3]"
+						className="group inline-flex items-center gap-3 bg-gs-ink text-white rounded-2xl px-10 py-5 font-sans font-medium text-xl shadow-[0_4px_12px_rgba(67,91,114,0.15)] hover:-translate-y-0.5 hover:bg-gs-ink-hover hover:shadow-[0_6px_16px_rgba(67,91,114,0.2)] transition-all duration-300 gs-press"
 					>
 						Learn about the Re-Architect's Journey
 						<ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
 					</Link>
-				</div>
+				</FadeIn>
 			</section>
 		</>
 	);

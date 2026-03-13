@@ -1,174 +1,105 @@
 /* ─────────────────────────────────────────────
-   Shared SVG Decorative Components
-   "Sunshine & Doodles" design system
+   The Worn Journal — Shared UI Primitives
+   Ambient blobs, soft card/divider components.
    ───────────────────────────────────────────── */
 
-export function SparkleCluster({ className = "" }: { className?: string }) {
-	return (
-		<svg viewBox="0 0 60 60" fill="none" className={className}>
-			<path
-				d="M30 20 L33 27 L40 30 L33 33 L30 40 L27 33 L20 30 L27 27 Z"
-				style={{ fill: "var(--sd-gold)" }}
-				opacity={0.5}
-			/>
-			<circle cx="15" cy="15" r="2" style={{ fill: "var(--sd-gold)" }} opacity={0.3} />
-			<circle cx="45" cy="12" r="1.5" style={{ fill: "var(--sd-gold)" }} opacity={0.4} />
-			<circle cx="12" cy="45" r="1.5" style={{ fill: "var(--sd-gold)" }} opacity={0.35} />
-			<circle cx="48" cy="42" r="2" style={{ fill: "var(--sd-gold)" }} opacity={0.3} />
-		</svg>
-	);
-}
+import { useRef, useEffect, useState } from "react";
 
-export function SunburstSVG({ className = "" }: { className?: string }) {
-	const lines = Array.from({ length: 12 }, (_, i) => {
-		const angle = (i * 30 * Math.PI) / 180;
-		const len = i % 2 === 0 ? 32 : 24;
-		return {
-			x1: 40 + 14 * Math.cos(angle),
-			y1: 40 + 14 * Math.sin(angle),
-			x2: 40 + len * Math.cos(angle),
-			y2: 40 + len * Math.sin(angle),
-		};
-	});
-	return (
-		<svg viewBox="0 0 80 80" fill="none" className={className}>
-			<circle
-				cx="40"
-				cy="40"
-				r="12"
-				style={{ fill: "var(--sd-gold)", fillOpacity: 0.12 }}
-				stroke="var(--sd-gold)"
-				strokeWidth="2"
-				opacity={0.4}
-			/>
-			{lines.map((l, i) => (
-				<line
-					key={i}
-					x1={l.x1}
-					y1={l.y1}
-					x2={l.x2}
-					y2={l.y2}
-					stroke="var(--sd-gold)"
-					strokeWidth="2"
-					opacity={0.35}
-				/>
-			))}
-		</svg>
-	);
-}
-
-export function ScribblyUnderline({
-	colorVar = "--sd-gold",
+/* ── Scroll-Reveal Wrapper ── */
+export function FadeIn({
+	children,
 	className = "",
-}: { colorVar?: string; className?: string }) {
+	delay = 0,
+}: {
+	children: React.ReactNode;
+	className?: string;
+	delay?: number;
+}) {
+	const ref = useRef<HTMLDivElement>(null);
+	const [isVisible, setIsVisible] = useState(false);
+
+	useEffect(() => {
+		const el = ref.current;
+		if (!el) return;
+
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				if (entry.isIntersecting) {
+					setIsVisible(true);
+					observer.disconnect();
+				}
+			},
+			{ threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
+		);
+
+		observer.observe(el);
+		return () => observer.disconnect();
+	}, []);
+
 	return (
-		<svg
-			viewBox="0 0 200 12"
-			className={`h-3 mx-auto ${className}`}
-			fill="none"
+		<div
+			ref={ref}
+			className={`gs-reveal ${isVisible ? "gs-visible" : ""} ${className}`}
+			style={delay ? { transitionDelay: `${delay}ms` } : undefined}
 		>
-			<path
-				d="M5 8 C25 3, 45 11, 65 7 C85 3, 105 11, 125 7 C145 3, 165 11, 195 6"
-				stroke={`var(${colorVar})`}
-				strokeWidth="3"
-				strokeLinecap="round"
-				opacity={0.5}
-			/>
-		</svg>
-	);
-}
-
-export function DoodleArrow({
-	flip = false,
-	className = "",
-}: { flip?: boolean; className?: string }) {
-	return (
-		<svg
-			viewBox="0 0 60 40"
-			fill="none"
-			className={className}
-			style={flip ? { transform: "scaleX(-1)" } : undefined}
-		>
-			<path
-				d="M5 30 C15 10, 35 5, 50 15"
-				stroke="var(--sd-emerald)"
-				strokeWidth="2.5"
-				strokeLinecap="round"
-				opacity={0.4}
-			/>
-			<path
-				d="M45 8 L50 15 L42 17"
-				stroke="var(--sd-emerald)"
-				strokeWidth="2.5"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-				opacity={0.4}
-			/>
-		</svg>
-	);
-}
-
-export function BigDoodleLeaf({
-	flip = false,
-	className = "",
-}: { flip?: boolean; className?: string }) {
-	return (
-		<svg
-			viewBox="0 0 80 110"
-			fill="none"
-			className={className}
-			style={flip ? { transform: "scaleX(-1)" } : undefined}
-		>
-			<path
-				d="M40 10 C60 20, 70 50, 60 80 C55 95, 45 100, 40 105 C35 100, 25 95, 20 80 C10 50, 20 20, 40 10Z"
-				style={{ fill: "var(--sd-sage)", fillOpacity: 0.09 }}
-				stroke="var(--sd-emerald)"
-				strokeWidth="2.5"
-			/>
-			<path d="M40 15 L40 95" stroke="var(--sd-emerald)" strokeWidth="1.5" opacity={0.4} />
-			<path d="M40 40 L55 30" stroke="var(--sd-emerald)" strokeWidth="1.5" opacity={0.3} />
-			<path d="M40 60 L25 50" stroke="var(--sd-emerald)" strokeWidth="1.5" opacity={0.3} />
-		</svg>
-	);
-}
-
-export function BigDoodleStar({ className = "" }: { className?: string }) {
-	return (
-		<svg viewBox="0 0 70 70" fill="none" className={className}>
-			<path
-				d="M35 5 L42 25 L63 25 L46 38 L52 58 L35 46 L18 58 L24 38 L7 25 L28 25 Z"
-				style={{ fill: "var(--sd-gold)", fillOpacity: 0.09 }}
-				stroke="var(--sd-gold)"
-				strokeWidth="2.5"
-				opacity={0.5}
-			/>
-		</svg>
-	);
-}
-
-export function WavyDivider({
-	bgClass = "bg-sd-linen",
-	showDot = true,
-}: { bgClass?: string; showDot?: boolean }) {
-	return (
-		<div className={`flex justify-center py-4 ${bgClass}`}>
-			<svg viewBox="0 0 400 20" className="w-80 h-5" fill="none">
-				<path
-					d="M0 10 C50 5 100 15 150 10 C200 5 250 15 300 10 C350 5 380 12 400 10"
-					stroke="var(--sd-sage)"
-					strokeWidth="2"
-					strokeLinecap="round"
-					opacity={0.3}
-				/>
-				{showDot && (
-					<circle cx="200" cy="10" r="4" style={{ fill: "var(--sd-gold)" }} opacity={0.4} />
-				)}
-			</svg>
+			{children}
 		</div>
 	);
 }
 
-export function DoodleCard({
+/* ── Ambient Background Blob ── */
+export function AmbientBlob({
+	color = "gold",
+	size = "40vw",
+	position = "top-0 right-0",
+	className = "",
+}: {
+	color?: "gold" | "mist";
+	size?: string;
+	position?: string;
+	className?: string;
+}) {
+	const bgColor = color === "gold" ? "bg-gs-gold" : "bg-gs-mist";
+	return (
+		<div
+			className={`absolute ${position} rounded-full ${bgColor} opacity-40 dark:opacity-[0.007] blur-[100px] dark:blur-[200px] pointer-events-none animate-[gentle-pulse_8s_ease-in-out_infinite_alternate] ${className}`}
+			style={{ width: size, height: size }}
+		/>
+	);
+}
+
+/* ── Pill Divider ── */
+export function PillDivider({ className = "" }: { className?: string }) {
+	return (
+		<div className={`w-24 h-1 bg-gs-mist mx-auto rounded-full ${className}`} />
+	);
+}
+
+/* ── Gentle Card ── */
+export function GentleCard({
+	children,
+	className = "",
+	variant = "white",
+}: {
+	children: React.ReactNode;
+	className?: string;
+	variant?: "white" | "cream";
+}) {
+	const bgClass = variant === "white"
+		? "bg-gs-surface border border-gs-mist/20"
+		: "bg-gs-cream/50 border border-gs-mist/15";
+
+	return (
+		<div
+			className={`rounded-[1.5rem] ${bgClass} shadow-[0_1px_3px_oklch(0%_0_0/0.04),0_8px_24px_oklch(0%_0_0/0.06)] p-8 md:p-10 gs-card-hover ${className}`}
+		>
+			{children}
+		</div>
+	);
+}
+
+/* ── Section card (larger border-radius) ── */
+export function SectionCard({
 	children,
 	className = "",
 }: {
@@ -177,14 +108,9 @@ export function DoodleCard({
 }) {
 	return (
 		<div
-			className={`relative doodle-hover flex flex-col ${className}`}
+			className={`rounded-[2rem] bg-gs-surface border border-gs-mist/20 shadow-[0_1px_3px_oklch(0%_0_0/0.04),0_8px_24px_oklch(0%_0_0/0.06)] p-10 md:p-16 ${className}`}
 		>
-			{/* Dashed border overlay */}
-			<div className="absolute inset-[-3px] rounded-2xl pointer-events-none border-2 border-dashed border-sd-sage/35" />
-			{/* Card body */}
-			<div className="p-8 md:p-10 rounded-2xl relative bg-sd-cream flex-1">
-				{children}
-			</div>
+			{children}
 		</div>
 	);
 }

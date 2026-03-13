@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   isRouteErrorResponse,
   Links,
@@ -23,15 +24,22 @@ export const links: Route.LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Kalam&display=swap",
   },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    console.log(
+      "%cHey there, fellow curious brain \uD83D\uDC4B",
+      "font-size: 16px; font-weight: bold; color: #435B72;",
+    );
+    console.log(
+      "%cIf you're inspecting source code, we're probably the same kind of neurodivergent.\nBuilt with care, hyperfocus, and a lot of coffee.\n\nfrandab.com",
+      "font-size: 12px; color: #6E635A; line-height: 1.6;",
+    );
+  }, []);
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
@@ -58,7 +66,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {/* SEO Meta Tags */}
         <meta name="author" content="Francois Dab" />
         <meta name="robots" content="index, follow" />
-        <meta name="theme-color" content="#1B4332" />
+        <meta name="theme-color" content="#F5F0E8" />
         
         {/* Open Graph */}
         <meta property="og:site_name" content="Francois Dab - AuDHD Life Coach" />
@@ -75,27 +83,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
         
-        {/* Theme Script - Must be inline to prevent flash */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var savedTheme = localStorage.getItem('theme');
-                  var systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                  var shouldUseDark = savedTheme === 'dark' || (!savedTheme && systemPrefersDark);
-                  
-                  if (shouldUseDark) {
-                    document.documentElement.classList.add('dark');
-                  }
-                } catch (e) {
-                  // Fallback for SSR or if localStorage is not available
-                }
-              })();
-            `,
-          }}
-        />
-        
+        {/* Theme init — runs before paint to prevent FOUC */}
+        <script dangerouslySetInnerHTML={{ __html: `(function(){var t=localStorage.getItem("theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme:dark)").matches))document.documentElement.classList.add("dark")})()` }} />
+
         <Meta />
         <Links />
       </head>
@@ -113,30 +103,66 @@ export default function App() {
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  const is404 = isRouteErrorResponse(error) && error.status === 404;
+
+  if (is404) {
+    return (
+      <main className="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center">
+        <p className="font-hand text-gs-ink text-2xl mb-6 rotate-[-2deg]">
+          well, this is awkward
+        </p>
+        <h1 className="font-serif text-4xl md:text-5xl font-semibold text-gs-heading mb-4 tracking-[-0.01em]">
+          Page Not Found
+        </h1>
+        <div className="w-24 h-1 bg-gs-mist mx-auto rounded-full mb-8" />
+        <p className="font-sans text-lg md:text-xl text-gs-body leading-relaxed max-w-md mb-8">
+          This page wandered off — probably got distracted by something shiny.
+        </p>
+        <a
+          href="/"
+          className="group inline-flex items-center gap-2 font-sans font-medium text-lg text-gs-ink hover:gap-3 transition-all duration-300"
+        >
+          Head back home
+          <span className="group-hover:translate-x-1 transition-transform inline-block">&rarr;</span>
+        </a>
+      </main>
+    );
+  }
+
   let message = "Oops!";
   let details = "An unexpected error occurred.";
   let stack: string | undefined;
 
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? "404" : "Error";
-    details =
-      error.status === 404
-        ? "The requested page could not be found."
-        : error.statusText || details;
+    message = `Error ${error.status}`;
+    details = error.statusText || details;
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;
     stack = error.stack;
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
+    <main className="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center">
+      <p className="font-hand text-gs-ink text-2xl mb-6 rotate-[-1deg]">
+        something went sideways
+      </p>
+      <h1 className="font-serif text-3xl md:text-4xl font-semibold text-gs-heading mb-4 tracking-[-0.01em]">
+        {message}
+      </h1>
+      <div className="w-24 h-1 bg-gs-mist mx-auto rounded-full mb-8" />
+      <p className="font-sans text-lg text-gs-body leading-relaxed max-w-md mb-8">{details}</p>
       {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
+        <pre className="w-full max-w-3xl p-4 overflow-x-auto mt-2 bg-gs-surface rounded-[2rem] text-left">
+          <code className="text-sm">{stack}</code>
         </pre>
       )}
+      <a
+        href="/"
+        className="group inline-flex items-center gap-2 font-sans font-medium text-lg text-gs-ink hover:gap-3 transition-all duration-300 mt-6"
+      >
+        Head back home
+        <span className="group-hover:translate-x-1 transition-transform inline-block">&rarr;</span>
+      </a>
     </main>
   );
 }

@@ -1,15 +1,7 @@
 import { Link } from "react-router";
 import { ArrowRight } from "lucide-react";
 import { ContactEmailLink } from "~/components/ui/EmailLink";
-import {
-	BigDoodleLeaf,
-	BigDoodleStar,
-	DoodleCard,
-	ScribblyUnderline,
-	SparkleCluster,
-	SunburstSVG,
-	WavyDivider,
-} from "~/components/doodles";
+import { AmbientBlob, GentleCard, PillDivider } from "~/components/doodles";
 import type { Route } from "./+types/faq";
 
 export function meta({}: Route.MetaArgs) {
@@ -26,10 +18,9 @@ export function meta({}: Route.MetaArgs) {
 export default function FAQ() {
 	const faqs = [
 		{
-			question:
-				"“What’s the difference between coaching and therapy?”",
+			question: "\u201CWhat\u2019s the difference between coaching and therapy?\u201D",
 			answer: (
-				<div className="space-y-5 font-body text-sd-dim-text text-lg md:text-xl leading-[2]">
+				<div className="space-y-5 font-sans text-gs-body text-lg md:text-xl leading-relaxed">
 					<p>Great question! Here's my take:</p>
 					<p>
 						Therapy typically focuses on healing past wounds, processing trauma,
@@ -44,10 +35,10 @@ export default function FAQ() {
 					</p>
 					<p>
 						That said, I don't follow the traditional coaching model of
-						“you have all the answers inside you.” Sometimes those
-						“answers” are just 40 years of masking strategies.
-						Sometimes you need someone to say, “Hey, that's an
-						executive function thing, here's what actually helps.”
+						"you have all the answers inside you." Sometimes those
+						"answers" are just 40 years of masking strategies.
+						Sometimes you need someone to say, "Hey, that's an
+						executive function thing, here's what actually helps."
 					</p>
 					<p>
 						I'm not a therapist, and coaching isn't therapy. Many of
@@ -58,10 +49,10 @@ export default function FAQ() {
 			),
 		},
 		{
-			question: "“Do I need an official diagnosis?”",
+			question: "\u201CDo I need an official diagnosis?\u201D",
 			answer: (
-				<div className="space-y-5 font-body text-sd-dim-text text-lg md:text-xl leading-[2]">
-					<p className="font-semibold">Absolutely not.</p>
+				<div className="space-y-5 font-sans text-gs-body text-lg md:text-xl leading-relaxed">
+					<p className="font-medium text-gs-heading">Absolutely not.</p>
 					<p>
 						The path to formal diagnosis is a maze of waitlists, expenses, and
 						professionals who don't understand adult presentations
@@ -69,22 +60,20 @@ export default function FAQ() {
 						the autistic community, and it's valid here.
 					</p>
 					<p>
-						If you relate to the AuDHD experience, you're welcome here.
-						Period.
+						If you relate to the AuDHD experience, you're welcome here. Period.
 					</p>
 				</div>
 			),
 		},
 		{
-			question:
-				"“What if I’m not sure I’m autistic/ADHD/AuDHD?”",
+			question: "\u201CWhat if I\u2019m not sure I\u2019m autistic/ADHD/AuDHD?\u201D",
 			answer: (
-				<div className="space-y-5 font-body text-sd-dim-text text-lg md:text-xl leading-[2]">
+				<div className="space-y-5 font-sans text-gs-body text-lg md:text-xl leading-relaxed">
 					<p>That's okay! Questioning is part of the journey.</p>
 					<p>
 						If you're here, something resonates. Maybe you're not
-						ready to claim the label. Maybe you're in the “but
-						I'm not autistic enough” phase (spoiler: that's
+						ready to claim the label. Maybe you're in the "but
+						I'm not autistic enough" phase (spoiler: that's
 						often internalized ableism talking). Maybe you're just starting
 						to peek behind your mask.
 					</p>
@@ -96,89 +85,45 @@ export default function FAQ() {
 			),
 		},
 		{
-			question:
-				"“How is your coaching different from neurotypical coaching?”",
+			question: "\u201CHow is your coaching different from neurotypical coaching?\u201D",
 			answer: (
-				<div className="space-y-5 font-body text-sd-dim-text text-lg md:text-xl leading-[2]">
+				<div className="space-y-5 font-sans text-gs-body text-lg md:text-xl leading-relaxed">
 					<p>Where do I start?</p>
 					<ul className="space-y-3">
-						<li className="flex items-start space-x-3">
-							<span className="text-sd-emerald mt-1 flex-shrink-0">
-								&bull;
-							</span>
-							<span>
-								I won't tell you to “just trust the
-								process” when the process wasn't built for your
-								brain
-							</span>
-						</li>
-						<li className="flex items-start space-x-3">
-							<span className="text-sd-emerald mt-1 flex-shrink-0">
-								&bull;
-							</span>
-							<span>
-								I understand that sometimes you need scripts, not
-								“intuition”
-							</span>
-						</li>
-						<li className="flex items-start space-x-3">
-							<span className="text-sd-emerald mt-1 flex-shrink-0">
-								&bull;
-							</span>
-							<span>
-								I know that “just do it” isn't helpful when
-								executive dysfunction has you stuck
-							</span>
-						</li>
-						<li className="flex items-start space-x-3">
-							<span className="text-sd-emerald mt-1 flex-shrink-0">
-								&bull;
-							</span>
-							<span>
-								I get that some days, showering IS the achievement
-							</span>
-						</li>
-						<li className="flex items-start space-x-3">
-							<span className="text-sd-emerald mt-1 flex-shrink-0">
-								&bull;
-							</span>
-							<span>
-								I won't shame you for your coping mechanisms (yes, even
-								the “weird” ones)
-							</span>
-						</li>
-						<li className="flex items-start space-x-3">
-							<span className="text-sd-emerald mt-1 flex-shrink-0">
-								&bull;
-							</span>
-							<span>
-								I understand the both/and of AuDHD, not just autism OR ADHD
-							</span>
-						</li>
+						{[
+							"I won't tell you to \"just trust the process\" when the process wasn't built for your brain",
+							"I understand that sometimes you need scripts, not \"intuition\"",
+							"I know that \"just do it\" isn't helpful when executive dysfunction has you stuck",
+							"I get that some days, showering IS the achievement",
+							"I won't shame you for your coping mechanisms (yes, even the \"weird\" ones)",
+							"I understand the both/and of AuDHD, not just autism OR ADHD",
+						].map((item, i) => (
+							<li key={i} className="flex items-start gap-3">
+								<div className="w-1.5 h-1.5 rounded-full bg-gs-ink mt-3 flex-shrink-0" />
+								<span>{item}</span>
+							</li>
+						))}
 					</ul>
 					<p>
 						Plus, I share my own struggles. You won't get toxic positivity
-						from someone who's “figured it all out.”
+						from someone who's "figured it all out."
 						You'll get real support from someone still figuring it out too.
 					</p>
 				</div>
 			),
 		},
 		{
-			question:
-				"“What happens in the free blueprint call?”",
+			question: "\u201CWhat happens in the free Vibe Check call?\u201D",
 			answer: (
-				<div className="space-y-5 font-body text-sd-dim-text text-lg md:text-xl leading-[2]">
+				<div className="space-y-5 font-sans text-gs-body text-lg md:text-xl leading-relaxed">
 					<p>
-						It's 30 or 90 minutes (depending on your preferences) of
-						checking if we're a good match—hence why I also call it
-						a “blueprint call.” No pressure, no sales pitch.
+						It's up to 40 minutes of checking if we're a good
+						match—a Vibe Check. No pressure, no sales pitch.
 					</p>
 					<p>
 						You'll share what's bringing you to coaching. I'll
 						probably overshare about my own journey (occupational hazard of being
-						AuDHD). We'll discuss how I work and what support might look
-						like.
+						AuDHD). We'll discuss how I work and what support might look like.
 					</p>
 					<p>
 						You can ask me anything. Turn your camera off if you want. Take
@@ -193,9 +138,9 @@ export default function FAQ() {
 			),
 		},
 		{
-			question: "“What if I need to cancel last minute?”",
+			question: "\u201CWhat if I need to cancel last minute?\u201D",
 			answer: (
-				<div className="space-y-5 font-body text-sd-dim-text text-lg md:text-xl leading-[2]">
+				<div className="space-y-5 font-sans text-gs-body text-lg md:text-xl leading-relaxed">
 					<p>Life happens. Especially AuDHD life.</p>
 					<p>
 						Sometimes you wake up and the thought of human interaction makes you
@@ -203,66 +148,43 @@ export default function FAQ() {
 						dysfunction wins. Sometimes you're in burnout.
 					</p>
 					<p>
-						I get it. I've been there. We'll reschedule without
-						judgment.
+						I get it. I've been there. We'll reschedule without judgment.
 					</p>
 					<p>
 						Just please send me a message, even if it's very last minute.
-						I struugle with waiting and uncertainty too.
+						I struggle with waiting and uncertainty too.
 					</p>
 				</div>
 			),
 		},
 		{
-			question:
-				"“Can you help with workplace accommodations?”",
+			question: "\u201CCan you help with workplace accommodations?\u201D",
 			answer: (
-				<div className="space-y-5 font-body text-sd-dim-text text-lg md:text-xl leading-[2]">
+				<div className="space-y-5 font-sans text-gs-body text-lg md:text-xl leading-relaxed">
 					<p>Yes! This is a common focus area. We can work on:</p>
 					<ul className="space-y-3">
-						<li className="flex items-start space-x-3">
-							<span className="text-sd-emerald mt-1 flex-shrink-0">
-								&bull;
-							</span>
-							<span>
-								Figuring out what accommodations you actually need
-							</span>
-						</li>
-						<li className="flex items-start space-x-3">
-							<span className="text-sd-emerald mt-1 flex-shrink-0">
-								&bull;
-							</span>
-							<span>Scripts for talking to HR or your manager</span>
-						</li>
-						<li className="flex items-start space-x-3">
-							<span className="text-sd-emerald mt-1 flex-shrink-0">
-								&bull;
-							</span>
-							<span>
-								Strategies for when formal accommodations aren't possible
-							</span>
-						</li>
-						<li className="flex items-start space-x-3">
-							<span className="text-sd-emerald mt-1 flex-shrink-0">
-								&bull;
-							</span>
-							<span>
-								Building sustainable work habits that honor your neurotype
-							</span>
-						</li>
+						{[
+							"Figuring out what accommodations you actually need",
+							"Scripts for talking to HR or your manager",
+							"Strategies for when formal accommodations aren't possible",
+							"Building sustainable work habits that honor your neurotype",
+						].map((item, i) => (
+							<li key={i} className="flex items-start gap-3">
+								<div className="w-1.5 h-1.5 rounded-full bg-gs-ink mt-3 flex-shrink-0" />
+								<span>{item}</span>
+							</li>
+						))}
 					</ul>
 					<p>
-						I can't provide legal advice, but I can help you advocate for
-						yourself effectively.
+						I can't provide legal advice, but I can help you advocate for yourself effectively.
 					</p>
 				</div>
 			),
 		},
 		{
-			question:
-				"“Do you work with family members or partners?”",
+			question: "\u201CDo you work with family members or partners?\u201D",
 			answer: (
-				<div className="space-y-5 font-body text-sd-dim-text text-lg md:text-xl leading-[2]">
+				<div className="space-y-5 font-sans text-gs-body text-lg md:text-xl leading-relaxed">
 					<p>
 						I primarily work with AuDHD individuals, but I do offer limited
 						sessions for partners who want to better understand and support their
@@ -270,38 +192,24 @@ export default function FAQ() {
 					</p>
 					<p>These sessions focus on:</p>
 					<ul className="space-y-3">
-						<li className="flex items-start space-x-3">
-							<span className="text-sd-emerald mt-1 flex-shrink-0">
-								&bull;
-							</span>
-							<span>
-								Understanding neurodivergent communication styles
-							</span>
-						</li>
-						<li className="flex items-start space-x-3">
-							<span className="text-sd-emerald mt-1 flex-shrink-0">
-								&bull;
-							</span>
-							<span>
-								Learning how to support without enabling masking
-							</span>
-						</li>
-						<li className="flex items-start space-x-3">
-							<span className="text-sd-emerald mt-1 flex-shrink-0">
-								&bull;
-							</span>
-							<span>
-								Building a relationship that works for both neurotypes
-							</span>
-						</li>
+						{[
+							"Understanding neurodivergent communication styles",
+							"Learning how to support without enabling masking",
+							"Building a relationship that works for both neurotypes",
+						].map((item, i) => (
+							<li key={i} className="flex items-start gap-3">
+								<div className="w-1.5 h-1.5 rounded-full bg-gs-ink mt-3 flex-shrink-0" />
+								<span>{item}</span>
+							</li>
+						))}
 					</ul>
 				</div>
 			),
 		},
 		{
-			question: "“What’s your cancellation policy?”",
+			question: "\u201CWhat\u2019s your cancellation policy?\u201D",
 			answer: (
-				<div className="space-y-5 font-body text-sd-dim-text text-lg md:text-xl leading-[2]">
+				<div className="space-y-5 font-sans text-gs-body text-lg md:text-xl leading-relaxed">
 					<p>
 						Life happens, especially in neurospicy brains. I ask for 24 hours
 						notice when possible, but I understand that's not always
@@ -312,19 +220,18 @@ export default function FAQ() {
 			),
 		},
 		{
-			question:
-				"“What if I’m too overwhelmed to even start?”",
+			question: "\u201CWhat if I\u2019m too overwhelmed to even start?\u201D",
 			answer: (
-				<div className="space-y-5 font-body text-sd-dim-text text-lg md:text-xl leading-[2]">
+				<div className="space-y-5 font-sans text-gs-body text-lg md:text-xl leading-relaxed">
 					<p>That's exactly when you need support most.</p>
 					<p>
 						We can start tiny. Like, ridiculously tiny. Sometimes the first win
-						is just “I showed up to the call.” We'll build
+						is just "I showed up to the call." We'll build
 						from there, at whatever pace works for your current capacity.
 					</p>
 					<p>
 						Remember: I specialize in decomplexification. I can break
-						“starting” down into the less spoon-consuming possible
+						"starting" down into the less spoon-consuming possible
 						steps. Because it's not about how big or small a task is,
 						it's about how much it costs you.
 					</p>
@@ -336,144 +243,114 @@ export default function FAQ() {
 
 	return (
 		<>
-			{/* ── Hero Section ── */}
-			<section className="relative pt-18 pb-20 md:pt-28 md:pb-32 overflow-hidden bg-sd-cream">
-				{/* Decorations */}
-				<SparkleCluster className="absolute top-10 right-12 w-14 h-14 twinkle-1" />
-				<BigDoodleLeaf className="absolute -bottom-4 right-6 w-20 h-28 float-b2 opacity-50" />
+			{/* ═══ HERO ═══ */}
+			<section className="relative pt-20 pb-24 md:pt-32 md:pb-40 overflow-hidden bg-gs-cream">
+				<AmbientBlob color="gold" position="top-[-10%] right-[-10%]" size="45vw" />
+				<AmbientBlob color="mist" position="bottom-[-15%] left-[-10%]" size="35vw" />
 
 				<div className="max-w-3xl mx-auto px-6 text-center relative z-10">
-					{/* Handwritten annotation */}
-					<p className="font-handwritten text-sd-gold text-3xl mb-6" style={{ transform: "rotate(-3deg)" }}>
+					<p className="font-hand text-gs-ink text-2xl mb-6 rotate-[-2deg]">
 						we love a thorough question around here
 					</p>
 
-					<h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-semibold text-sd-heading mb-6 leading-[1.25]">
+					<h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-gs-heading mb-8 leading-[1.2] tracking-[-0.01em]">
 						Questions from Fellow{" "}
-						<em className="text-sd-emerald">Overthinkers</em>
+						<span className="text-gs-ink">Overthinkers</span>
 					</h1>
 
-					<ScribblyUnderline
-						colorVar="--sd-gold"
-						className="w-48 md:w-64 mb-8"
-					/>
+					<PillDivider className="mb-8" />
 
-					<p className="font-body text-xl md:text-2xl leading-[2] text-sd-dim-text max-w-xl mx-auto">
+					<p className="font-sans text-xl md:text-2xl leading-relaxed text-gs-body max-w-xl mx-auto">
 						Because we're neurodivergent—of course we have detailed
 						questions about everything.
 					</p>
 				</div>
 			</section>
 
-			<WavyDivider bgClass="bg-sd-linen" />
-
-			{/* ── FAQ Cards Section ── */}
-			<section className="py-20 md:py-28 relative overflow-hidden bg-sd-linen">
-				{/* Decorations */}
-				<SparkleCluster className="absolute top-20 right-10 w-12 h-12 twinkle-2" />
-				<BigDoodleStar className="absolute top-32 left-6 w-14 h-14 twinkle-1 opacity-40" />
+			{/* ═══ FAQ Cards — The Big Ones ═══ */}
+			<section className="py-24 md:py-32 relative overflow-hidden bg-gs-cream">
+				<AmbientBlob color="mist" position="top-[5%] right-[-15%]" size="30vw" />
 
 				<div className="max-w-5xl mx-auto px-6 relative z-10">
-					<div className="text-center mb-14">
-						<h2 className="font-heading text-3xl md:text-4xl font-normal text-sd-heading mb-4">
+					<div className="text-center mb-16">
+						<h2 className="font-serif text-3xl md:text-4xl font-semibold text-gs-heading mb-4 tracking-[-0.01em]">
 							The Big Ones
 						</h2>
-						<ScribblyUnderline
-							colorVar="--sd-emerald"
-							className="w-36 md:w-48 mb-4"
-						/>
-						<p className="font-handwritten text-sd-emerald text-2xl rotate-1">
+						<PillDivider className="mb-6" />
+						<p className="font-hand text-gs-ink text-2xl rotate-[1deg]">
 							(the questions everyone asks first)
 						</p>
 					</div>
 
 					<div className="space-y-10">
 						{faqs.slice(0, 5).map((faq, i) => (
-							<DoodleCard
-								key={i}
-								className="max-w-4xl mx-auto"
-							>
-								<h3 className="font-heading text-xl md:text-2xl font-semibold text-sd-heading mb-5">
+							<GentleCard key={i} className="max-w-4xl mx-auto">
+								<h3 className="font-serif text-xl md:text-2xl font-semibold text-gs-heading mb-5 tracking-[-0.01em]">
 									{faq.question}
 								</h3>
 								{faq.answer}
-							</DoodleCard>
+							</GentleCard>
 						))}
 					</div>
 				</div>
 			</section>
 
-			<WavyDivider bgClass="bg-sd-cream" />
-
-			{/* ── More Questions Section ── */}
-			<section className="py-20 md:py-28 relative overflow-hidden bg-sd-cream">
-				{/* Decorations */}
-				<SunburstSVG className="absolute bottom-10 right-8 w-20 h-20 spin-lazy opacity-30" />
-				<SparkleCluster className="absolute top-16 left-12 w-10 h-10 twinkle-3" />
+			{/* ═══ More Questions — The Practical Stuff ═══ */}
+			<section className="py-24 md:py-32 relative overflow-hidden bg-gs-cream">
+				<AmbientBlob color="gold" position="top-[-5%] left-[-10%]" size="35vw" />
 
 				<div className="max-w-5xl mx-auto px-6 relative z-10">
-					<div className="text-center mb-14">
-						<h2 className="font-heading text-3xl md:text-4xl font-normal text-sd-heading mb-4">
+					<div className="text-center mb-16">
+						<h2 className="font-serif text-3xl md:text-4xl font-semibold text-gs-heading mb-4 tracking-[-0.01em]">
 							The Practical Stuff
 						</h2>
-						<ScribblyUnderline
-							colorVar="--sd-sage"
-							className="w-40 md:w-56 mb-4"
-						/>
-						<p className="font-handwritten text-sd-gold text-2xl -rotate-2">
+						<PillDivider className="mb-6" />
+						<p className="font-hand text-gs-ink text-2xl rotate-[-2deg]">
 							equally important, just different vibes
 						</p>
 					</div>
 
 					<div className="space-y-10">
 						{faqs.slice(5).map((faq, i) => (
-							<DoodleCard
-								key={i + 5}
-								className="max-w-4xl mx-auto"
-							>
-								<h3 className="font-heading text-xl md:text-2xl font-semibold text-sd-heading mb-5">
+							<GentleCard key={i + 5} className="max-w-4xl mx-auto">
+								<h3 className="font-serif text-xl md:text-2xl font-semibold text-gs-heading mb-5 tracking-[-0.01em]">
 									{faq.question}
 								</h3>
 								{faq.answer}
-							</DoodleCard>
+							</GentleCard>
 						))}
 					</div>
 				</div>
 			</section>
 
-			<WavyDivider bgClass="bg-sd-on-dark-bg" showDot={false} />
-
-			{/* ── Still Have Questions? (Dark Section) ── */}
-			<section className="py-20 md:py-28 relative overflow-hidden bg-sd-on-dark-bg">
-				{/* Decorations */}
-				<SparkleCluster className="absolute top-12 right-16 w-12 h-12 twinkle-1" />
+			{/* ═══ Still Have Questions? ═══ */}
+			<section className="py-28 md:py-36 relative overflow-hidden bg-gs-cream">
+				<AmbientBlob color="mist" position="top-[-10%] left-[-10%]" size="40vw" />
+				<AmbientBlob color="gold" position="bottom-[-10%] right-[-5%]" size="30vw" />
 
 				<div className="max-w-2xl mx-auto px-6 text-center relative z-10">
-					<h2 className="font-heading text-3xl md:text-4xl font-normal text-sd-on-dark-heading mb-4">
+					<h2 className="font-serif text-3xl md:text-4xl font-semibold text-gs-heading mb-4 tracking-[-0.01em]">
 						Still Have Questions?
 					</h2>
-					<ScribblyUnderline
-						colorVar="--sd-gold"
-						className="w-44 md:w-60 mb-6"
-					/>
+					<PillDivider className="mb-8" />
 
-					<p className="font-handwritten text-sd-on-dark-dim text-2xl -rotate-1 mb-6">
+					<p className="font-hand text-gs-ink text-2xl rotate-[-1deg] mb-6">
 						my inbox loves a good info-dump
 					</p>
 
-					<p className="font-body text-lg md:text-xl leading-[2] text-sd-on-dark-text mb-10">
+					<p className="font-sans text-lg md:text-xl leading-relaxed text-gs-body mb-12">
 						My inbox is always open. Send me your wonderings, your concerns,
 						your overthinking spirals. I'll respond with the same verbose
 						enthusiasm I bring to everything.
 					</p>
 
 					<div className="flex flex-col sm:flex-row gap-5 justify-center">
-						<ContactEmailLink className="group inline-flex items-center gap-3 px-10 py-5 rounded-full bg-sd-gold text-sd-on-dark-bg font-body font-bold text-lg md:text-xl transition-transform duration-200 ease-out hover:-translate-y-2 hover:scale-105">
+						<ContactEmailLink className="group inline-flex items-center gap-3 bg-gs-ink text-white rounded-2xl px-10 py-5 font-sans font-medium text-lg md:text-xl shadow-[0_4px_12px_rgba(67,91,114,0.15)] hover:-translate-y-0.5 hover:bg-gs-ink-hover hover:shadow-[0_6px_16px_rgba(67,91,114,0.2)] transition-all duration-300 gs-press">
 							Email me at hello@frandab.com
 						</ContactEmailLink>
 						<Link
 							to="/services"
-							className="group inline-flex items-center gap-3 px-10 py-5 rounded-full bg-sd-deep-green text-white font-body font-bold text-lg md:text-xl transition-transform duration-200 ease-out hover:-translate-y-2 hover:scale-105 border-2 border-sd-sage/30"
+							className="group inline-flex items-center gap-3 bg-gs-surface border border-gs-mist text-gs-ink rounded-2xl px-10 py-5 font-sans font-medium text-lg md:text-xl shadow-[0_20px_40px_rgba(0,0,0,0.03)] hover:-translate-y-0.5 transition-all duration-300"
 						>
 							Learn about the Re-Architect's Journey
 							<ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
